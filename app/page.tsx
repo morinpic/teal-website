@@ -1,4 +1,8 @@
 import Link from "next/link";
+import MenuSection from "@/components/MenuSection";
+import StaffSection from "@/components/StaffSection";
+import SnsSection from "@/components/SnsSection";
+import AccessSection from "@/components/AccessSection";
 
 // ダミーデータ（microCMS 未接続時）
 const dummyNews = [
@@ -215,6 +219,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <MenuSection />
+      <StaffSection />
+      <SnsSection />
+      <AccessSection />
     </main>
   );
 }
