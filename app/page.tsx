@@ -5,6 +5,7 @@ import MenuSection from "@/components/MenuSection";
 import StaffSection from "@/components/StaffSection";
 import SnsSection from "@/components/SnsSection";
 import AccessSection from "@/components/AccessSection";
+import { getNewsList, getStyleList } from "@/lib/microcms";
 
 export const metadata: Metadata = {
   title: "teal. | 横浜元町の美容院",
@@ -47,62 +48,9 @@ const localBusinessJsonLd = {
   sameAs: [],
 };
 
-// ダミーデータ（microCMS 未接続時）
-const dummyNews = [
-  {
-    id: "1",
-    date: "2026.02.20",
-    title: "春のキャンペーンのお知らせ",
-    excerpt:
-      "3月・4月限定でカラーとトリートメントのセットメニューをご用意しました。ぜひこの機会にご利用ください。",
-  },
-  {
-    id: "2",
-    date: "2026.02.10",
-    title: "スタッフ紹介を更新しました",
-    excerpt:
-      "新しいスタッフが加わりました。各スタッフのプロフィールをぜひご覧ください。",
-  },
-  {
-    id: "3",
-    date: "2026.01.25",
-    title: "2月の定休日について",
-    excerpt:
-      "2月の定休日・営業時間変更についてお知らせします。ご来店の際は事前にご確認ください。",
-  },
-  {
-    id: "4",
-    date: "2026.01.15",
-    title: "新メニュー「ケアカラー」登場",
-    excerpt:
-      "髪へのダメージを最小限に抑えた新しいカラーメニューをご用意しました。",
-  },
-  {
-    id: "5",
-    date: "2025.12.20",
-    title: "年末年始の営業について",
-    excerpt:
-      "年末年始の営業時間・休業日についてお知らせします。ご予約はお早めにどうぞ。",
-  },
-  {
-    id: "6",
-    date: "2025.12.01",
-    title: "冬のヘアケアセミナー開催",
-    excerpt:
-      "乾燥しやすい冬の季節に向けたヘアケアセミナーを開催します。参加無料です。",
-  },
-];
-
-const dummyStyles = [
-  { id: "1", name: "ナチュラルウェーブ", category: "パーマ" },
-  { id: "2", name: "アッシュベージュ", category: "カラー" },
-  { id: "3", name: "ショートボブ", category: "カット" },
-  { id: "4", name: "ハイライトカラー", category: "カラー" },
-  { id: "5", name: "ゆるふわパーマ", category: "パーマ" },
-  { id: "6", name: "インナーカラー", category: "カラー" },
-];
-
-export default function Home() {
+export default async function Home() {
+  const { contents: newsList } = await getNewsList(6, 0, "category[equals]news");
+  const { contents: styles } = await getStyleList(6, 0);
   return (
     <>
       {/* LocalBusiness 構造化データ */}
@@ -179,22 +127,28 @@ export default function Home() {
 
           {/* ニュースリスト */}
           <ul className="divide-y divide-dark-text/10">
-            {dummyNews.map((item) => (
+            {newsList.map((item) => (
               <li key={item.id}>
                 <Link
-                  href={`/news/${item.id}`}
+                  href={`/news/${item.slug}`}
                   className="group flex flex-col gap-2 py-6 transition-colors hover:text-teal-primary tablet:flex-row tablet:items-start tablet:gap-8"
                 >
                   <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-28 tablet:pt-0.5">
-                    {item.date}
+                    {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })}
                   </time>
                   <div className="flex flex-col gap-1">
                     <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
                       {item.title}
                     </p>
-                    <p className="text-sm leading-relaxed text-dark-text/60">
-                      {item.excerpt}
-                    </p>
+                    {item.excerpt && (
+                      <p className="text-sm leading-relaxed text-dark-text/60">
+                        {item.excerpt}
+                      </p>
+                    )}
                   </div>
                 </Link>
               </li>
@@ -229,21 +183,34 @@ export default function Home() {
 
           {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:1列） */}
           <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
-            {dummyStyles.map((style) => (
+            {styles.map((style) => (
               <Link
                 key={style.id}
-                href={`/style/${style.id}`}
+                href={`/style/${style.slug}`}
                 className="group block overflow-hidden"
               >
-                {/* プレースホルダー画像 */}
-                <div className="aspect-square w-full bg-gray-200 transition-opacity duration-300 group-hover:opacity-80" />
+                {/* 画像 */}
+                {style.image?.url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={style.image.url}
+                    alt={style.title}
+                    width={style.image.width}
+                    height={style.image.height}
+                    className="aspect-square w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
+                  />
+                ) : (
+                  <div className="aspect-square w-full bg-gray-200 transition-opacity duration-300 group-hover:opacity-80" />
+                )}
                 {/* スタイル情報 */}
                 <div className="mt-3 flex flex-col gap-1">
-                  <p className="text-xs tracking-widest text-teal-primary">
-                    {style.category}
-                  </p>
+                  {style.menu && (
+                    <p className="text-xs tracking-widest text-teal-primary">
+                      {style.menu}
+                    </p>
+                  )}
                   <p className="text-sm font-medium text-dark-text">
-                    {style.name}
+                    {style.title}
                   </p>
                 </div>
               </Link>
