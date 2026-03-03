@@ -6,3 +6,72 @@
 
   --breakpoint-tablet: 769px;
 }
+
+/* リッチテキスト（microCMS 本文）スタイル */
+.rich-text h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e5e5;
+  color: #231815;
+}
+
+.rich-text h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: #231815;
+}
+
+.rich-text p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  line-height: 1.9;
+  color: #231815;
+}
+
+.rich-text ul,
+.rich-text ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  line-height: 1.9;
+}
+
+.rich-text ul {
+  list-style-type: disc;
+}
+
+.rich-text ol {
+  list-style-type: decimal;
+}
+
+.rich-text li {
+  margin-bottom: 0.5rem;
+}
+
+.rich-text a {
+  color: #008080;
+  text-decoration: underline;
+}
+
+.rich-text a:hover {
+  opacity: 0.7;
+}
+
+.rich-text img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.rich-text blockquote {
+  border-left: 3px solid #008080;
+  padding-left: 1rem;
+  margin-left: 0;
+  color: #231815cc;
+  font-style: italic;
+}

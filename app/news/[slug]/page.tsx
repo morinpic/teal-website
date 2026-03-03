@@ -54,9 +54,21 @@ export default async function NewsDetailPage({ params }: Props) {
   return (
     <main className="min-h-screen">
       {/* ページヘッダー */}
-      <div className="bg-teal-primary/5 py-20">
+      <div className="bg-[#f8f6f4] py-16">
         <div className="mx-auto max-w-screen-lg px-6">
-          <p className="mb-4 text-xs tracking-widest text-dark-text/50">
+          {/* パンくずリスト */}
+          <nav className="mb-6 flex flex-wrap items-center gap-2 text-xs tracking-widest text-dark-text/40">
+            <Link href="/" className="transition-colors hover:text-teal-primary">
+              HOME
+            </Link>
+            <span>/</span>
+            <Link href="/news" className="transition-colors hover:text-teal-primary">
+              NEWS
+            </Link>
+            <span>/</span>
+            <span className="line-clamp-1 text-dark-text/70">{item.title}</span>
+          </nav>
+          <p className="mb-3 text-xs tracking-widest text-dark-text/50">
             {publishedDate}
           </p>
           <h1 className="text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
@@ -66,10 +78,10 @@ export default async function NewsDetailPage({ params }: Props) {
       </div>
 
       {/* 記事本文 */}
-      <article className="py-20">
+      <article className="bg-white py-20">
         <div className="mx-auto max-w-screen-lg px-6">
           <div
-            className="prose prose-sm max-w-none leading-relaxed text-dark-text lg:prose-base"
+            className="rich-text"
             dangerouslySetInnerHTML={{ __html: item.content }}
           />
 
@@ -99,7 +111,7 @@ export default async function NewsDetailPage({ params }: Props) {
                   href="/news"
                   className="text-xs tracking-widest text-dark-text/40 transition-colors hover:text-teal-primary"
                 >
-                  NEWS一覧
+                  ← NEWS一覧に戻る
                 </Link>
               </div>
 
