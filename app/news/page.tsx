@@ -1,13 +1,28 @@
 import Link from "next/link";
 import { getNewsList } from "@/lib/microcms";
 
+const PER_PAGE = 10;
+
 export const metadata = {
   title: "NEWS | teal.",
   description: "teal.からのお知らせ一覧です。",
 };
 
-export default async function NewsPage() {
-  const { contents: newsList } = await getNewsList(100, 0, "category[equals]news");
+type Props = {
+  searchParams: Promise<{ page?: string }>;
+};
+
+export default async function NewsPage({ searchParams }: Props) {
+  const { page } = await searchParams;
+  const currentPage = Math.max(1, parseInt(page ?? "1", 10));
+  const offset = (currentPage - 1) * PER_PAGE;
+
+  const { contents: newsList, totalCount } = await getNewsList(
+    PER_PAGE,
+    offset,
+    "category[equals]news"
+  );
+  const totalPages = Math.ceil(totalCount / PER_PAGE);
 
   return (
     <main className="min-h-screen">
@@ -31,34 +46,74 @@ export default async function NewsPage() {
               現在お知らせはありません。
             </p>
           ) : (
-            <ul className="divide-y divide-dark-text/10">
-              {newsList.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={`/news/${item.slug}`}
-                    className="group flex flex-col gap-2 py-8 transition-colors tablet:flex-row tablet:items-start tablet:gap-10"
-                  >
-                    <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-32 tablet:pt-1">
-                      {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
-                        year: "numeric",
-                        month: "2-digit",
-                        day: "2-digit",
-                      })}
-                    </time>
-                    <div className="flex flex-col gap-1">
-                      <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
-                        {item.title}
-                      </p>
-                      {item.excerpt && (
-                        <p className="text-sm leading-relaxed text-dark-text/60">
-                          {item.excerpt}
+            <>
+              <ul className="divide-y divide-dark-text/10">
+                {newsList.map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      href={`/news/${item.slug}`}
+                      className="group flex flex-col gap-2 py-8 transition-colors tablet:flex-row tablet:items-start tablet:gap-10"
+                    >
+                      <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-32 tablet:pt-1">
+                        {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                        })}
+                      </time>
+                      <div className="flex flex-col gap-1">
+                        <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
+                          {item.title}
                         </p>
-                      )}
-                    </div>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                        {item.excerpt && (
+                          <p className="text-sm leading-relaxed text-dark-text/60">
+                            {item.excerpt}
+                          </p>
+                        )}
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* ページネーション */}
+              {totalPages > 1 && (
+                <nav
+                  className="mt-16 flex items-center justify-center gap-2"
+                  aria-label="ページネーション"
+                >
+                  {currentPage > 1 && (
+                    <Link
+                      href={`/news?page=${currentPage - 1}`}
+                      className="flex h-10 w-10 items-center justify-center border border-dark-text/20 text-sm text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
+                    >
+                      ←
+                    </Link>
+                  )}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                    <Link
+                      key={p}
+                      href={`/news?page=${p}`}
+                      className={`flex h-10 w-10 items-center justify-center border text-sm transition-colors ${
+                        p === currentPage
+                          ? "border-teal-primary bg-teal-primary text-white"
+                          : "border-dark-text/20 text-dark-text/50 hover:border-teal-primary hover:text-teal-primary"
+                      }`}
+                    >
+                      {p}
+                    </Link>
+                  ))}
+                  {currentPage < totalPages && (
+                    <Link
+                      href={`/news?page=${currentPage + 1}`}
+                      className="flex h-10 w-10 items-center justify-center border border-dark-text/20 text-sm text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
+                    >
+                      →
+                    </Link>
+                  )}
+                </nav>
+              )}
+            </>
           )}
         </div>
       </section>
