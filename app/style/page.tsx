@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStyleList } from "@/lib/microcms";
 
 const PER_PAGE = 12;
@@ -59,13 +60,12 @@ export default async function StyleListPage({ searchParams }: Props) {
                   {/* 写真 */}
                   <div className="relative aspect-[3/4] overflow-hidden bg-dark-text/10">
                     {style.image?.url ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
+                      <Image
                         src={style.image.url}
                         alt={style.title}
-                        width={style.image.width}
-                        height={style.image.height}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        fill
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-dark-text/5 to-teal-primary/10">

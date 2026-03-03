@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStaffDetail, getStaffList } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 
@@ -53,15 +54,14 @@ export default async function StaffDetailPage({ params }: Props) {
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-20">
           {/* スタッフ写真 */}
           <div className="shrink-0 lg:w-80">
-            <div className="aspect-square overflow-hidden bg-dark-text/10 lg:aspect-[3/4]">
+            <div className="relative aspect-square overflow-hidden bg-dark-text/10 lg:aspect-[3/4]">
               {staff.photo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={staff.photo.url}
                   alt={staff.name}
-                  width={staff.photo.width}
-                  height={staff.photo.height}
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 320px"
+                  className="object-cover"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-dark-text/5 to-teal-primary/10">

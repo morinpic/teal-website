@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getNewsDetail, getNewsList } from "@/lib/microcms";
 import type { News } from "@/lib/types";
@@ -83,12 +84,12 @@ export default async function BlogDetailPage({ params }: Props) {
       {/* eyecatch */}
       {item.eyecatch && (
         <div className="mx-auto max-w-screen-lg px-6 pt-10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={item.eyecatch.url}
             alt={item.title}
-            width={item.eyecatch.width}
-            height={item.eyecatch.height}
+            width={item.eyecatch.width ?? 800}
+            height={item.eyecatch.height ?? 450}
+            sizes="(max-width: 1024px) 100vw, 1024px"
             className="w-full object-cover"
           />
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStyleDetail, getStyleList } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 
@@ -55,15 +56,14 @@ export default async function StyleDetailPage({ params }: Props) {
         <div className="flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* スタイル写真 */}
           <div className="w-full lg:w-1/2">
-            <div className="aspect-[3/4] overflow-hidden bg-dark-text/10">
+            <div className="relative aspect-[3/4] overflow-hidden bg-dark-text/10">
               {style.image?.url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
+                <Image
                   src={style.image.url}
                   alt={style.title}
-                  width={style.image.width}
-                  height={style.image.height}
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               ) : (
                 <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-dark-text/5 to-teal-primary/10">

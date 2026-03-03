@@ -190,18 +190,17 @@ export default async function Home() {
                 className="group block overflow-hidden"
               >
                 {/* 画像 */}
-                {style.image?.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={style.image.url}
-                    alt={style.title}
-                    width={style.image.width}
-                    height={style.image.height}
-                    className="aspect-square w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
-                  />
-                ) : (
-                  <div className="aspect-square w-full bg-gray-200 transition-opacity duration-300 group-hover:opacity-80" />
-                )}
+                <div className="relative aspect-square w-full overflow-hidden bg-gray-200">
+                  {style.image?.url && (
+                    <Image
+                      src={style.image.url}
+                      alt={style.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+                    />
+                  )}
+                </div>
                 {/* スタイル情報 */}
                 <div className="mt-3 flex flex-col gap-1">
                   {style.menu && (

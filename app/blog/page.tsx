@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getNewsList } from "@/lib/microcms";
 
 const PER_PAGE = 9;
@@ -66,18 +67,17 @@ export default async function BlogPage({ searchParams }: Props) {
                       className="group flex flex-col gap-4"
                     >
                       {/* サムネイル */}
-                      {item.eyecatch ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          src={item.eyecatch.url}
-                          alt={item.title}
-                          width={item.eyecatch.width}
-                          height={item.eyecatch.height}
-                          className="aspect-video w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
-                        />
-                      ) : (
-                        <div className="aspect-video w-full bg-gray-200 transition-opacity duration-300 group-hover:opacity-80" />
-                      )}
+                      <div className="relative aspect-video w-full overflow-hidden bg-gray-200">
+                        {item.eyecatch && (
+                          <Image
+                            src={item.eyecatch.url}
+                            alt={item.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-opacity duration-300 group-hover:opacity-80"
+                          />
+                        )}
+                      </div>
 
                       <div className="flex flex-col gap-2">
                         <time className="text-xs tracking-widest text-dark-text/50">

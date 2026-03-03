@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getStaffList } from "@/lib/microcms";
 
 export default async function StaffSection() {
@@ -26,15 +27,14 @@ export default async function StaffSection() {
               className="group flex w-64 flex-col items-center text-center"
             >
               {/* 写真プレースホルダー */}
-              <div className="mb-6 h-64 w-64 overflow-hidden bg-white/20">
+              <div className="relative mb-6 h-64 w-64 overflow-hidden bg-white/20">
                 {staff.photo ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
+                  <Image
                     src={staff.photo.url}
                     alt={staff.name}
-                    width={staff.photo.width}
-                    height={staff.photo.height}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    sizes="256px"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center text-white/40">
