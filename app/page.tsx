@@ -58,7 +58,7 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
-      <main>
+      <main id="main-content">
       {/* Hero セクション */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* 背景画像 */}

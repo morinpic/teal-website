@@ -73,6 +73,9 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${notoSansJP.className} text-dark-text antialiased`}>
+        <a href="#main-content" className="skip-link">
+          メインコンテンツへスキップ
+        </a>
         <Header />
         {children}
         <Footer />

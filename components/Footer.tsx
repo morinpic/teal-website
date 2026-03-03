@@ -31,7 +31,7 @@ export default function Footer() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label="Instagramを開く"
               className="text-white/70 transition-colors hover:text-white"
             >
               {/* Instagram SVG */}
@@ -57,6 +57,7 @@ export default function Footer() {
               href={RESERVE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="ホットペッパービューティーで予約する"
               className="border border-white px-6 py-2 text-xs font-medium tracking-widest text-white transition-colors hover:bg-white hover:text-dark-text"
             >
               RESERVE
@@ -65,7 +66,7 @@ export default function Footer() {
         </div>
 
         {/* ナビリンク */}
-        <nav className="flex flex-wrap justify-center gap-6 py-10 lg:justify-start">
+        <nav className="flex flex-wrap justify-center gap-6 py-10 lg:justify-start" aria-label="フッターナビゲーション">
           {navLinks.map((link) => (
             <Link
               key={link.label}

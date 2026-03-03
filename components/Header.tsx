@@ -45,7 +45,7 @@ export default function Header() {
           </Link>
 
           {/* PCナビゲーション */}
-          <nav className="hidden items-center gap-8 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex" aria-label="メインナビゲーション">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -63,6 +63,7 @@ export default function Header() {
               href={RESERVE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="ホットペッパービューティーで予約する"
               className="hidden rounded-none border border-teal-primary px-5 py-2 text-xs font-medium tracking-widest text-teal-primary transition-colors hover:bg-teal-primary hover:text-white lg:block"
             >
               RESERVE
@@ -116,7 +117,7 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-center justify-center gap-10">
+          <nav className="flex flex-1 flex-col items-center justify-center gap-10" aria-label="モバイルナビゲーション">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
@@ -131,6 +132,7 @@ export default function Header() {
               href={RESERVE_URL}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="ホットペッパービューティーで予約する"
               className="mt-4 border border-teal-primary px-8 py-3 text-sm font-medium tracking-widest text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               RESERVE
