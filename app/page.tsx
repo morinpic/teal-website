@@ -5,6 +5,7 @@ import MenuSection from "@/components/MenuSection";
 import StaffSection from "@/components/StaffSection";
 import SnsSection from "@/components/SnsSection";
 import AccessSection from "@/components/AccessSection";
+import ScrollAnimation from "@/components/ScrollAnimation";
 import { getNewsList, getStyleList } from "@/lib/microcms";
 
 export const metadata: Metadata = {
@@ -24,7 +25,6 @@ const localBusinessJsonLd = {
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
   url: "https://teal-website.vercel.app",
-  telephone: "",
   address: {
     "@type": "PostalAddress",
     streetAddress: "元町3-131-1 グローバル横浜元町4F",
@@ -115,7 +115,7 @@ export default async function Home() {
       <section id="news" className="bg-white py-24">
         <div className="mx-auto max-w-screen-xl px-6">
           {/* セクションヘッダー */}
-          <div className="mb-16 flex flex-col items-center gap-3">
+          <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold tracking-[0.2em] text-dark-text lg:text-4xl">
               NEWS
             </h2>
@@ -123,7 +123,7 @@ export default async function Home() {
               お知らせ
             </p>
             <div className="mt-2 h-px w-12 bg-teal-primary" />
-          </div>
+          </ScrollAnimation>
 
           {/* ニュースリスト */}
           <ul className="divide-y divide-dark-text/10">
@@ -156,14 +156,14 @@ export default async function Home() {
           </ul>
 
           {/* READ MORE ボタン */}
-          <div className="mt-16 flex justify-center">
+          <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
             <Link
               href="/news"
               className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               READ MORE
             </Link>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
@@ -171,7 +171,7 @@ export default async function Home() {
       <section id="style" className="bg-teal-primary/5 py-24">
         <div className="mx-auto max-w-screen-xl px-6">
           {/* セクションヘッダー */}
-          <div className="mb-16 flex flex-col items-center gap-3">
+          <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold tracking-[0.2em] text-dark-text lg:text-4xl">
               STYLE
             </h2>
@@ -179,7 +179,7 @@ export default async function Home() {
               スタイルギャラリー
             </p>
             <div className="mt-2 h-px w-12 bg-teal-primary" />
-          </div>
+          </ScrollAnimation>
 
           {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:1列） */}
           <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
@@ -218,21 +218,29 @@ export default async function Home() {
           </div>
 
           {/* READ MORE ボタン */}
-          <div className="mt-16 flex justify-center">
+          <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
             <Link
               href="/style"
               className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               READ MORE
             </Link>
-          </div>
+          </ScrollAnimation>
         </div>
       </section>
 
-      <MenuSection />
-      <StaffSection />
-      <SnsSection />
-      <AccessSection />
+      <ScrollAnimation>
+        <MenuSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <StaffSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <SnsSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <AccessSection />
+      </ScrollAnimation>
     </main>
     </>
   );

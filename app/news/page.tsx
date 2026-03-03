@@ -5,7 +5,7 @@ const PER_PAGE = 10;
 
 export const metadata = {
   title: "NEWS",
-  description: "teal.からのお知らせ一覧です。",
+  description: "teal.からのお知らせ一覧。横浜元町の美容院teal.の最新情報をお届けします。",
 };
 
 type Props = {

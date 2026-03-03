@@ -5,7 +5,7 @@ const PER_PAGE = 9;
 
 export const metadata = {
   title: "BLOG",
-  description: "teal.スタッフによるブログです。ヘアケアやトレンド情報をお届けします。",
+  description: "横浜元町の美容院teal.のブログ。ヘアケアやスタイリングのお役立ち情報を発信しています。",
 };
 
 type Props = {

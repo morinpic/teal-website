@@ -5,7 +5,7 @@ const PER_PAGE = 12;
 
 export const metadata = {
   title: "STYLE",
-  description: "横浜元町の美容院 teal. のスタイルギャラリー。",
+  description: "横浜元町の美容院teal.のスタイルギャラリー。最新のヘアスタイルをご覧ください。",
 };
 
 type Props = {

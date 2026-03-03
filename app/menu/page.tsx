@@ -3,7 +3,7 @@ import { menuCategories, menuNote } from "@/lib/menu-data";
 
 export const metadata = {
   title: "MENU",
-  description: "横浜元町の美容院 teal. のメニュー・料金表。カット、カラー、パーマ、トリートメントなど。",
+  description: "横浜元町の美容院teal.のメニュー・料金表。カット、カラー、パーマ等の料金をご案内します。",
 };
 
 export default function MenuPage() {
