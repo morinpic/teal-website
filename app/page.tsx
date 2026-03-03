@@ -1,8 +1,50 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import MenuSection from "@/components/MenuSection";
 import StaffSection from "@/components/StaffSection";
 import SnsSection from "@/components/SnsSection";
 import AccessSection from "@/components/AccessSection";
+
+export const metadata: Metadata = {
+  title: "teal. | 横浜元町の美容院",
+  description:
+    "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
+  alternates: {
+    canonical: "https://teal-website.vercel.app",
+  },
+};
+
+// LocalBusiness 構造化データ
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HairSalon",
+  name: "teal.",
+  description:
+    "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
+  url: "https://teal-website.vercel.app",
+  telephone: "",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "元町3-131-1 グローバル横浜元町4F",
+    addressLocality: "横浜市中区",
+    addressRegion: "神奈川県",
+    postalCode: "231-0861",
+    addressCountry: "JP",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 35.4438,
+    longitude: 139.6422,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    },
+  ],
+  priceRange: "¥¥",
+  sameAs: [],
+};
 
 // ダミーデータ（microCMS 未接続時）
 const dummyNews = [
@@ -61,7 +103,13 @@ const dummyStyles = [
 
 export default function Home() {
   return (
-    <main>
+    <>
+      {/* LocalBusiness 構造化データ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <main>
       {/* Hero セクション */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* 背景グラデーション（ティール系） */}
@@ -203,5 +251,6 @@ export default function Home() {
       <SnsSection />
       <AccessSection />
     </main>
+    </>
   );
 }
