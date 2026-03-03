@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: Props) {
   try {
     const staff = await getStaffDetail(slug);
     return {
-      title: `${staff.name} | STAFF | teal.`,
+      title: `${staff.name} | STAFF`,
       description: `teal. スタッフ紹介: ${staff.name}（${staff.position}）`,
     };
   } catch {
-    return { title: "STAFF | teal." };
+    return { title: "STAFF" };
   }
 }
 

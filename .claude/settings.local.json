@@ -1,11 +1,20 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(git ls-tree -r auto-claude/001-create-a-website)"
-    ]
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git ls-tree -r auto-claude/001-create-a-website)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(grep:*)",
+      "Bash(git rm:*)",
+      "Bash(tmux:*)"
+    ]
   },
   "teammateMode": "tmux"
 }

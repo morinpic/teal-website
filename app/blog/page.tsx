@@ -4,7 +4,7 @@ import { getNewsList } from "@/lib/microcms";
 const PER_PAGE = 9;
 
 export const metadata = {
-  title: "BLOG | teal.",
+  title: "BLOG",
   description: "teal.スタッフによるブログです。ヘアケアやトレンド情報をお届けします。",
 };
 

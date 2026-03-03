@@ -17,11 +17,11 @@ export async function generateMetadata({ params }: Props) {
   try {
     const item = await getNewsDetail(slug);
     return {
-      title: `${item.title} | BLOG | teal.`,
+      title: `${item.title} | BLOG`,
       description: item.excerpt ?? item.title,
     };
   } catch {
-    return { title: "BLOG | teal." };
+    return { title: "BLOG" };
   }
 }
 

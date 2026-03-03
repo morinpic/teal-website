@@ -4,7 +4,7 @@ import { getNewsList } from "@/lib/microcms";
 const PER_PAGE = 10;
 
 export const metadata = {
-  title: "NEWS | teal.",
+  title: "NEWS",
   description: "teal.からのお知らせ一覧です。",
 };
 

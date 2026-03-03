@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: Props) {
   try {
     const style = await getStyleDetail(slug);
     return {
-      title: `${style.title} | STYLE | teal.`,
+      title: `${style.title} | STYLE`,
       description: style.description ?? `teal. のスタイルギャラリー: ${style.title}`,
     };
   } catch {
-    return { title: "STYLE | teal." };
+    return { title: "STYLE" };
   }
 }
 

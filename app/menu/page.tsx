@@ -2,7 +2,7 @@ import Link from "next/link";
 import { menuCategories, menuNote } from "@/lib/menu-data";
 
 export const metadata = {
-  title: "MENU | teal.",
+  title: "MENU",
   description: "横浜元町の美容院 teal. のメニュー・料金表。カット、カラー、パーマ、トリートメントなど。",
 };
 
