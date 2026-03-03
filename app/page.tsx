@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import MenuSection from "@/components/MenuSection";
 import StaffSection from "@/components/StaffSection";
 import SnsSection from "@/components/SnsSection";
@@ -112,14 +113,29 @@ export default function Home() {
       <main>
       {/* Hero セクション */}
       <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        {/* 背景グラデーション（ティール系） */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#006666] to-[#008080]" />
+        {/* 背景画像 */}
+        <Image
+          src="/images/hero-bg.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+          aria-hidden="true"
+        />
+        {/* オーバーレイ */}
+        <div className="absolute inset-0 bg-black/60" />
 
         {/* コンテンツ */}
         <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center text-white">
-          <h1 className="text-7xl font-bold tracking-widest text-white lg:text-9xl">
-            teal.
-          </h1>
+          <h1 className="sr-only">teal.</h1>
+          <Image
+            src="/images/teal_w.svg"
+            alt="teal."
+            width={240}
+            height={240}
+            className="lg:w-[360px] lg:h-[360px]"
+            priority
+          />
           <p className="text-xs font-light tracking-[0.4em] text-white/80">
             hair salon / yokohama motomachi
           </p>
