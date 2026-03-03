@@ -16,7 +16,7 @@ export default function AccessSection() {
           {/* Google Maps 埋め込み */}
           <div className="aspect-video w-full overflow-hidden lg:flex-1">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.867!2d139.648!3d35.443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185d2a9a1b8b8b%3A0x0!2z5LuK5bed5bed5bed5bed!5e0!3m2!1sja!2sjp!4v1000000000000!5m2!1sja!2sjp&q=神奈川県横浜市中区元町3-131-1+グローバル横浜元町4F"
+              src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%85%83%E7%94%BA3-131-1+%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E6%A8%AA%E6%B5%9C%E5%85%83%E7%94%BA4F&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
