@@ -14,7 +14,8 @@ type Props = {
 
 export default async function StyleListPage({ searchParams }: Props) {
   const { page: pageParam } = await searchParams;
-  const page = Math.max(1, parseInt(pageParam ?? "1", 10));
+  const parsedPage = parseInt(pageParam ?? "1", 10);
+  const page = Number.isNaN(parsedPage) ? 1 : Math.max(1, parsedPage);
   const offset = (page - 1) * PER_PAGE;
 
   const { contents: styles, totalCount } = await getStyleList(PER_PAGE, offset);

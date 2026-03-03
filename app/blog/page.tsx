@@ -14,7 +14,8 @@ type Props = {
 
 export default async function BlogPage({ searchParams }: Props) {
   const { page } = await searchParams;
-  const currentPage = Math.max(1, parseInt(page ?? "1", 10));
+  const parsed = parseInt(page ?? "1", 10);
+  const currentPage = Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
   const offset = (currentPage - 1) * PER_PAGE;
 
   const { contents: blogList, totalCount } = await getNewsList(
