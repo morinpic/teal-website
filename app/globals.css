@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-primary: #008080;
+  --color-dark-text: #231815;
+
+  --breakpoint-tablet: 769px;
+}
