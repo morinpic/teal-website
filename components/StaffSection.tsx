@@ -68,6 +68,16 @@ export default async function StaffSection() {
             </Link>
           ))}
         </div>
+
+        {/* READ MORE ボタン */}
+        <div className="mt-16 flex justify-center">
+          <Link
+            href="/staff"
+            className="border border-white px-12 py-3 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-white hover:text-teal-primary"
+          >
+            READ MORE
+          </Link>
+        </div>
       </div>
     </section>
   );

@@ -140,10 +140,10 @@ export default async function StaffDetailPage({ params }: Props) {
       {/* 一覧に戻る */}
       <div className="bg-white px-6 py-10 text-center">
         <Link
-          href="/#staff"
+          href="/staff"
           className="text-xs tracking-widest text-dark-text/50 transition-colors hover:text-teal-primary"
         >
-          ← BACK TO TOP
+          ← BACK TO STAFF
         </Link>
       </div>
     </div>
