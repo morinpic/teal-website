@@ -104,7 +104,7 @@ export default async function StaffDetailPage({ params }: Props) {
                   PROFILE
                 </h2>
                 <div
-                  className="prose prose-sm max-w-none text-dark-text/80 leading-loose"
+                  className="rich-text"
                   dangerouslySetInnerHTML={{ __html: staff.profile }}
                 />
               </div>

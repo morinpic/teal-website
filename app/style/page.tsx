@@ -22,6 +22,15 @@ export default async function StyleListPage({ searchParams }: Props) {
 
   return (
     <div className="min-h-screen">
+      {/* パンくず */}
+      <div className="bg-white px-6 py-4 border-b border-dark-text/5">
+        <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">
+          <Link href="/" className="hover:text-teal-primary">HOME</Link>
+          <span className="mx-2">/</span>
+          <span className="text-dark-text">STYLE</span>
+        </nav>
+      </div>
+
       {/* ページヘッダー */}
       <div className="bg-white px-6 py-16 text-center">
         <h1 className="text-3xl font-bold tracking-widest text-dark-text lg:text-4xl">
