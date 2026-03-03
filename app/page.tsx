@@ -63,39 +63,30 @@ export default function Home() {
   return (
     <main>
       {/* Hero セクション */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-dark-text">
-        {/* 背景グラデーション */}
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-text via-[#3a2e2b] to-[#1a2a2a]" />
-
-        {/* 装飾ライン */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <div className="h-[600px] w-[600px] rounded-full border border-white" />
-          <div className="absolute h-[400px] w-[400px] rounded-full border border-white" />
-        </div>
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        {/* 背景グラデーション（ティール系） */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#006666] to-[#008080]" />
 
         {/* コンテンツ */}
-        <div className="relative z-10 flex flex-col items-center gap-8 px-6 text-center text-white">
-          <p className="text-xs font-light tracking-[0.4em] text-white/60">
-            HAIR SALON IN YOKOHAMA MOTOMACHI
-          </p>
+        <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center text-white">
           <h1 className="text-7xl font-bold tracking-widest text-white lg:text-9xl">
             teal.
           </h1>
-          <p className="text-sm font-light tracking-widest text-white/70">
-            あなたらしい美しさを、ともに。
+          <p className="text-xs font-light tracking-[0.4em] text-white/80">
+            hair salon / yokohama motomachi
           </p>
-          <div className="mt-4 flex flex-col items-center gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row">
             <a
               href="https://beauty.hotpepper.jp/slnH000784195/"
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-white px-10 py-3 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-white hover:text-dark-text"
+              className="border border-white px-10 py-3 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-white hover:text-teal-primary"
             >
               RESERVE
             </a>
             <Link
               href="#news"
-              className="px-10 py-3 text-xs font-medium tracking-[0.3em] text-white/60 transition-colors hover:text-white"
+              className="px-10 py-3 text-xs font-medium tracking-[0.3em] text-white/70 transition-colors hover:text-white"
             >
               SCROLL DOWN
             </Link>
@@ -104,7 +95,7 @@ export default function Home() {
 
         {/* 下部スクロール示唆 */}
         <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
-          <div className="h-12 w-px animate-pulse bg-white/30" />
+          <div className="h-12 w-px animate-pulse bg-white/50" />
         </div>
       </section>
 
@@ -150,7 +141,7 @@ export default function Home() {
           <div className="mt-16 flex justify-center">
             <Link
               href="/news"
-              className="border border-dark-text px-12 py-3 text-xs font-medium tracking-[0.3em] text-dark-text transition-colors hover:bg-dark-text hover:text-white"
+              className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               READ MORE
             </Link>
@@ -159,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* STYLE セクション */}
-      <section id="style" className="bg-[#f8f6f4] py-24">
+      <section id="style" className="bg-teal-primary/5 py-24">
         <div className="mx-auto max-w-screen-xl px-6">
           {/* セクションヘッダー */}
           <div className="mb-16 flex flex-col items-center gap-3">
@@ -172,8 +163,8 @@ export default function Home() {
             <div className="mt-2 h-px w-12 bg-teal-primary" />
           </div>
 
-          {/* スタイルグリッド（3×2） */}
-          <div className="grid grid-cols-2 gap-4 tablet:grid-cols-3 lg:gap-6">
+          {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:1列） */}
+          <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
             {dummyStyles.map((style) => (
               <Link
                 key={style.id}
@@ -181,22 +172,9 @@ export default function Home() {
                 className="group block overflow-hidden"
               >
                 {/* プレースホルダー画像 */}
-                <div className="relative aspect-[3/4] overflow-hidden bg-dark-text/10">
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-br from-dark-text/5 to-teal-primary/10 transition-transform duration-500 group-hover:scale-105">
-                    <div className="h-16 w-16 rounded-full border border-dark-text/20" />
-                    <span className="text-xs tracking-widest text-dark-text/30">
-                      PHOTO
-                    </span>
-                  </div>
-                  {/* ホバーオーバーレイ */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-dark-text/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="text-xs font-medium tracking-[0.3em] text-white">
-                      VIEW
-                    </span>
-                  </div>
-                </div>
+                <div className="aspect-square w-full bg-gray-200 transition-opacity duration-300 group-hover:opacity-80" />
                 {/* スタイル情報 */}
-                <div className="mt-3 flex flex-col gap-1 px-1">
+                <div className="mt-3 flex flex-col gap-1">
                   <p className="text-xs tracking-widest text-teal-primary">
                     {style.category}
                   </p>
@@ -212,7 +190,7 @@ export default function Home() {
           <div className="mt-16 flex justify-center">
             <Link
               href="/style"
-              className="border border-dark-text px-12 py-3 text-xs font-medium tracking-[0.3em] text-dark-text transition-colors hover:bg-dark-text hover:text-white"
+              className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               READ MORE
             </Link>
