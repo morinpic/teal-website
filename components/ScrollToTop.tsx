@@ -20,7 +20,7 @@ export default function ScrollToTop() {
         <motion.button
           onClick={scrollTop}
           aria-label="ページトップに戻る"
-          className="fixed right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-teal-primary text-white shadow-lg transition-shadow hover:shadow-xl bottom-24 lg:bottom-8"
+          className="fixed right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-teal-primary text-white shadow-lg transition-shadow hover:shadow-xl bottom-28 lg:bottom-8"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
