@@ -107,7 +107,7 @@ export default function SnsSection() {
                   href={post.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group relative aspect-square w-full overflow-hidden bg-gradient-to-br ${fallbackStyles[i]} transition-all hover:shadow-md`}
+                  className={`group relative aspect-square w-full overflow-hidden bg-gradient-to-br ${fallbackStyles[i]} transition-all hover:shadow-md border border-teal-primary/20`}
                   aria-label="Instagramで投稿を見る"
                 >
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25 transition-colors group-hover:text-teal-primary">
@@ -119,7 +119,7 @@ export default function SnsSection() {
             : posts.map((post) => (
                 <div
                   key={post.id}
-                  className="relative aspect-square w-full overflow-hidden bg-dark-text/5"
+                  className="relative aspect-square w-full overflow-hidden bg-dark-text/5 border border-teal-primary/20"
                 >
                   {/* embed.js が生成する iframe を写真部分のみ表示するためにネガティブマージンで上部ヘッダーを隠す */}
                   <div className="-mt-[54px]" style={{ width: "calc(100% + 2px)", marginLeft: "-1px" }}>

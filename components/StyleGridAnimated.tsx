@@ -30,16 +30,16 @@ export default function StyleGridAnimated({ styles }: { styles: StyleItem[] }) {
         >
           <Link
             href={`/style/${style.slug}`}
-            className="group block overflow-hidden transition-transform duration-300"
+            className="group block overflow-hidden border-2 border-transparent hover:border-teal-primary transition-colors duration-300"
           >
-            <div className="relative aspect-square w-full overflow-hidden bg-gray-200 group-hover:ring-2 group-hover:ring-teal-primary/30">
+            <div className="relative aspect-square w-full overflow-hidden bg-gray-200">
               {style.image?.url && (
                 <Image
                   src={style.image.url}
                   alt={style.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-all duration-300 group-hover:opacity-90 group-hover:-translate-y-1 group-hover:shadow-lg"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               )}
             </div>
