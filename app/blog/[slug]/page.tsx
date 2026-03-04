@@ -72,11 +72,14 @@ export default async function BlogDetailPage({ params }: Props) {
           <p className="mb-2 text-xs tracking-widest text-teal-primary">
             BLOG
           </p>
-          <p className="mb-3 text-xs tracking-widest text-dark-text/50">
+          <h1 className="mb-4 text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
+            {item.title}
+          </h1>
+          <p className="mb-2 text-xs tracking-widest text-dark-text/50">
             {publishedDate}
           </p>
           {item.tags && item.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-3">
+            <div className="flex flex-wrap gap-1.5">
               {item.tags.map((t) => (
                 <Link
                   key={t}
@@ -88,9 +91,6 @@ export default async function BlogDetailPage({ params }: Props) {
               ))}
             </div>
           )}
-          <h1 className="text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
-            {item.title}
-          </h1>
         </div>
       </div>
 
