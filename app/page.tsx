@@ -181,8 +181,8 @@ export default async function Home() {
             <div className="mt-2 h-px w-12 bg-teal-primary" />
           </ScrollAnimation>
 
-          {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:1列） */}
-          <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
+          {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:2列） */}
+          <div className="grid grid-cols-2 gap-4 tablet:gap-6 lg:grid-cols-3">
             {styles.map((style) => (
               <Link
                 key={style.id}
