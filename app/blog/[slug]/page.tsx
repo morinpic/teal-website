@@ -75,6 +75,19 @@ export default async function BlogDetailPage({ params }: Props) {
           <p className="mb-3 text-xs tracking-widest text-dark-text/50">
             {publishedDate}
           </p>
+          {item.tags && item.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-3">
+              {item.tags.map((t) => (
+                <Link
+                  key={t}
+                  href={`/blog?tag=${t}`}
+                  className="text-[10px] tracking-wider text-teal-primary border border-teal-primary/30 px-2 py-0.5 transition-colors hover:bg-teal-primary hover:text-white"
+                >
+                  {t}
+                </Link>
+              ))}
+            </div>
+          )}
           <h1 className="text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
             {item.title}
           </h1>
