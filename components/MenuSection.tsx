@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { menuCategories, menuNote } from "@/lib/menu-data";
 
 export default function MenuSection() {
@@ -18,7 +17,7 @@ export default function MenuSection() {
         {/* カテゴリ一覧 */}
         <div className="grid gap-8 tablet:grid-cols-2 lg:grid-cols-3">
           {menuCategories.map((category) => (
-            <div key={category.id} className="border border-dark-text/10 p-8">
+            <div key={category.id} className="border border-dark-text/10 p-8 transition-colors hover:border-teal-primary/40">
               <h3 className="mb-1 text-lg font-bold tracking-widest text-teal-primary">
                 {category.title}
               </h3>
@@ -43,14 +42,16 @@ export default function MenuSection() {
         {/* 注記 */}
         <p className="mt-8 text-center text-sm text-dark-text/60">{menuNote}</p>
 
-        {/* 詳細ページリンク */}
+        {/* 予約リンク */}
         <div className="mt-12 text-center">
-          <Link
-            href="/menu"
-            className="inline-block border border-dark-text px-10 py-3 text-xs font-medium tracking-widest text-dark-text transition-colors hover:bg-dark-text hover:text-white"
+          <a
+            href="https://beauty.hotpepper.jp/slnH000784195/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-teal-primary px-10 py-3 text-xs font-medium tracking-widest text-white transition-colors hover:bg-teal-primary/80"
           >
-            VIEW ALL MENU
-          </Link>
+            RESERVE
+          </a>
         </div>
       </div>
     </section>

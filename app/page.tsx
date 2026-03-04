@@ -124,7 +124,7 @@ export default async function Home() {
             <p className="text-sm tracking-widest text-dark-text/50">
               お知らせ
             </p>
-            <div className="mt-2 h-px w-12 bg-teal-primary" />
+            <div className="mt-2 h-0.5 w-16 bg-teal-primary" />
           </ScrollAnimation>
 
           {/* ニュースリスト */}
@@ -133,7 +133,7 @@ export default async function Home() {
               <li key={item.id}>
                 <Link
                   href={`/news/${item.slug}`}
-                  className="group flex flex-col gap-2 py-6 transition-colors hover:text-teal-primary tablet:flex-row tablet:items-start tablet:gap-8"
+                  className="group flex flex-col gap-2 py-6 transition-colors hover:text-teal-primary hover:pl-3 hover:border-l-2 hover:border-teal-primary tablet:flex-row tablet:items-start tablet:gap-8"
                 >
                   <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-28 tablet:pt-0.5">
                     {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
@@ -180,7 +180,7 @@ export default async function Home() {
             <p className="text-sm tracking-widest text-dark-text/50">
               スタイルギャラリー
             </p>
-            <div className="mt-2 h-px w-12 bg-teal-primary" />
+            <div className="mt-2 h-0.5 w-16 bg-teal-primary" />
           </ScrollAnimation>
 
           {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:2列） */}
@@ -192,7 +192,7 @@ export default async function Home() {
                 className="group block overflow-hidden"
               >
                 {/* 画像 */}
-                <div className="relative aspect-square w-full overflow-hidden bg-gray-200">
+                <div className="relative aspect-square w-full overflow-hidden bg-gray-200 group-hover:ring-2 group-hover:ring-teal-primary/30">
                   {style.image?.url && (
                     <Image
                       src={style.image.url}
