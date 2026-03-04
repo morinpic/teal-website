@@ -17,7 +17,7 @@ export default function MenuSection() {
         {/* カテゴリ一覧 */}
         <div className="grid gap-8 tablet:grid-cols-2 lg:grid-cols-3">
           {menuCategories.map((category) => (
-            <div key={category.id} className="border border-dark-text/10 p-8 transition-colors hover:border-teal-primary/40">
+            <div key={category.id} className="border border-dark-text/10 p-8">
               <h3 className="mb-1 text-lg font-bold tracking-widest text-teal-primary">
                 {category.title}
               </h3>

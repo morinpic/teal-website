@@ -29,7 +29,7 @@ export default function NewsListAnimated({ items }: { items: NewsItem[] }) {
         >
           <Link
             href={`/news/${item.slug}`}
-            className="group flex flex-col gap-2 py-6 rounded transition-colors hover:bg-teal-primary/5 tablet:flex-row tablet:items-start tablet:gap-8"
+            className="group flex flex-col gap-2 py-6 transition-colors tablet:flex-row tablet:items-start tablet:gap-8"
           >
             <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-28 tablet:pt-0.5">
               {new Date(item.publishedAt).toLocaleDateString("ja-JP", {

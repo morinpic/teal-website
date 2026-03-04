@@ -30,7 +30,7 @@ export default function StyleGridAnimated({ styles }: { styles: StyleItem[] }) {
         >
           <Link
             href={`/style/${style.slug}`}
-            className="group block overflow-hidden border-2 border-transparent hover:border-teal-primary transition-colors duration-300"
+            className="group block overflow-hidden"
           >
             <div className="relative aspect-square w-full overflow-hidden bg-gray-200">
               {style.image?.url && (
@@ -39,9 +39,15 @@ export default function StyleGridAnimated({ styles }: { styles: StyleItem[] }) {
                   alt={style.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               )}
+              {/* ホバーオーバーレイ */}
+              <div className="absolute inset-0 flex items-center justify-center bg-dark-text/60 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="text-xs font-medium tracking-[0.3em] text-white">
+                  VIEW
+                </span>
+              </div>
             </div>
             <div className="mt-3 flex flex-col gap-1">
               {style.menu && (

@@ -149,7 +149,7 @@ export default function SnsSection() {
                     href={post.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute inset-0 z-10"
+                    className="absolute inset-0 z-10 bg-black/0 transition-colors duration-300 hover:bg-black/20"
                     aria-label="Instagramで投稿を見る"
                   />
                 </div>

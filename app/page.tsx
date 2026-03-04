@@ -180,6 +180,18 @@ export default async function Home() {
                   )}
                 </div>
                 <div className="p-6">
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="mb-2 flex flex-wrap gap-1">
+                      {post.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[10px] tracking-wider text-teal-primary border border-teal-primary/30 px-2 py-0.5"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <time className="text-xs tracking-widest text-dark-text/50">
                     {new Date(post.publishedAt).toLocaleDateString("ja-JP", {
                       year: "numeric",
