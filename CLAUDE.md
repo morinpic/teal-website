@@ -48,7 +48,7 @@ npm run lint     # ESLint実行
 - ブレイクポイント: SP（〜768px）、tablet（769px〜、Tailwindカスタム）、PC（1025px〜）
 
 ### ページ構成
-- `/` - トップページ（Hero, NEWS, STYLE, BLOG, MENU, STAFF, SNS, ACCESS セクション）
+- `/` - トップページ（Hero, NEWS, STYLE, MENU, STAFF, BLOG, SNS, ACCESS セクション）
 - `/news`, `/news/[slug]` - お知らせ一覧・詳細
 - `/style`, `/style/[slug]` - スタイルギャラリー一覧・詳細
 - `/blog`, `/blog/[slug]` - ブログ一覧・詳細（news APIからカテゴリでフィルタ）

@@ -141,8 +141,15 @@ export default async function Home() {
         </div>
       </section>
 
+      <ScrollAnimation>
+        <MenuSection />
+      </ScrollAnimation>
+      <ScrollAnimation>
+        <StaffSection />
+      </ScrollAnimation>
+
       {/* BLOG セクション */}
-      <section id="blog" className="bg-white py-24">
+      <section id="blog" className="bg-teal-primary/5 py-24">
         <div className="mx-auto max-w-screen-xl px-6">
           <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
             <h2 className="text-3xl font-bold tracking-[0.2em] text-dark-text lg:text-4xl">
@@ -193,13 +200,6 @@ export default async function Home() {
           </ScrollAnimation>
         </div>
       </section>
-
-      <ScrollAnimation>
-        <MenuSection />
-      </ScrollAnimation>
-      <ScrollAnimation>
-        <StaffSection />
-      </ScrollAnimation>
       <ScrollAnimation>
         <SnsSection />
       </ScrollAnimation>
