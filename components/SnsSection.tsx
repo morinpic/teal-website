@@ -145,6 +145,13 @@ export default function SnsSection() {
                       <div className="h-1 w-8 animate-pulse rounded bg-teal-primary/30" />
                     </div>
                   )}
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-10"
+                    aria-label="Instagramで投稿を見る"
+                  />
                 </div>
               ))}
         </div>

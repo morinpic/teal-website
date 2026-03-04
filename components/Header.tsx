@@ -9,7 +9,7 @@ const navLinks = [
   { label: "NEWS", href: "/#news" },
   { label: "STYLE", href: "/#style" },
   { label: "MENU", href: "/#menu" },
-  { label: "STAFF", href: "/staff" },
+  { label: "STAFF", href: "/#staff" },
   { label: "BLOG", href: "/#blog" },
   { label: "ACCESS", href: "/#access" },
 ];
