@@ -12,7 +12,7 @@ const notoSansJP = Noto_Sans_JP({
   display: "swap",
 });
 
-const siteUrl = "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -13,9 +13,11 @@ export const metadata: Metadata = {
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
   alternates: {
-    canonical: "https://teal-website.vercel.app",
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app",
   },
 };
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 // LocalBusiness 構造化データ
 const localBusinessJsonLd = {
@@ -24,7 +26,7 @@ const localBusinessJsonLd = {
   name: "teal.",
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
-  url: "https://teal-website.vercel.app",
+  url: siteUrl,
   address: {
     "@type": "PostalAddress",
     streetAddress: "元町3-131-1 グローバル横浜元町4F",

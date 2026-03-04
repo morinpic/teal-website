@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
-import { getNewsList, getStyleList } from "@/lib/microcms";
+import { getNewsList, getStaffList, getStyleList } from "@/lib/microcms";
 
-const siteUrl = "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 固定ページ
@@ -36,6 +36,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    {
+      url: `${siteUrl}/staff`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 
   // NEWS 記事ページ
@@ -65,5 +71,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticRoutes, ...newsRoutes, ...blogRoutes, ...styleRoutes];
+  // STAFF 詳細ページ
+  const { contents: staffList } = await getStaffList();
+  const staffRoutes: MetadataRoute.Sitemap = staffList.map((item) => ({
+    url: `${siteUrl}/staff/${item.slug}`,
+    lastModified: new Date(item.updatedAt),
+    changeFrequency: "monthly",
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...newsRoutes, ...blogRoutes, ...styleRoutes, ...staffRoutes];
 }
