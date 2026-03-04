@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const navLinks = [
@@ -37,11 +38,8 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4">
           {/* ロゴ */}
-          <Link
-            href="/"
-            className="text-2xl font-bold tracking-widest text-dark-text"
-          >
-            teal.
+          <Link href="/" className="flex items-center">
+            <Image src="/images/teal_t.svg" alt="teal." width={80} height={32} className="h-8 w-auto" priority />
           </Link>
 
           {/* PCナビゲーション */}
@@ -100,12 +98,8 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden">
           <div className="flex items-center justify-between px-6 py-4">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              className="text-2xl font-bold tracking-widest text-dark-text"
-            >
-              teal.
+            <Link href="/" onClick={closeMenu} className="flex items-center">
+              <Image src="/images/teal_t.svg" alt="teal." width={80} height={32} className="h-8 w-auto" />
             </Link>
             <button
               onClick={closeMenu}

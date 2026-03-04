@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { label: "NEWS", href: "/#news" },
@@ -18,11 +19,8 @@ export default function Footer() {
       <div className="mx-auto max-w-screen-xl">
         {/* ロゴ + 予約ボタン */}
         <div className="flex flex-col items-center gap-8 border-b border-white/20 pb-12 lg:flex-row lg:justify-between">
-          <Link
-            href="/"
-            className="text-3xl font-bold tracking-widest text-white"
-          >
-            teal.
+          <Link href="/" className="flex items-center">
+            <Image src="/images/teal_w.svg" alt="teal." width={100} height={40} className="h-10 w-auto" />
           </Link>
 
           <div className="flex items-center gap-6">
