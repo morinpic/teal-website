@@ -168,7 +168,7 @@ export const dummyStaffList: Staff[] = [
     name: "橋本 貴広",
     nameEn: "Takahiro Hashimoto",
     position: "owner / hair designer",
-    photo: undefined,
+    photo: { url: "https://imgbp.hotp.jp/CSP/IMG_SRC/72/38/B252057238/B252057238.jpg", width: 400, height: 400 },
     profile: "<p>横浜元町の美容院 teal. のオーナー兼ヘアデザイナー。お客様一人ひとりに寄り添ったスタイルをご提案します。</p>",
     message: "あなたの魅力を最大限に引き出すスタイルをご一緒に作りましょう。",
     slug: "takahiro-hashimoto",
