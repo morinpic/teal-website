@@ -6,6 +6,10 @@ import StaffSection from "@/components/StaffSection";
 import SnsSection from "@/components/SnsSection";
 import AccessSection from "@/components/AccessSection";
 import ScrollAnimation from "@/components/ScrollAnimation";
+import HeroContent from "@/components/HeroContent";
+import NewsListAnimated from "@/components/NewsListAnimated";
+import StyleGridAnimated from "@/components/StyleGridAnimated";
+import AnimatedLine from "@/components/AnimatedLine";
 import { getNewsList, getStyleList } from "@/lib/microcms";
 
 export const metadata: Metadata = {
@@ -75,42 +79,7 @@ export default async function Home() {
         {/* オーバーレイ */}
         <div className="absolute inset-0 bg-black/60" />
 
-        {/* コンテンツ */}
-        <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center text-white">
-          <h1 className="sr-only">teal.</h1>
-          <Image
-            src="/images/teal_w.svg"
-            alt="teal."
-            width={240}
-            height={240}
-            className="lg:w-[360px] lg:h-[360px]"
-            priority
-          />
-          <p className="text-xs font-light tracking-[0.4em] text-white/80">
-            hair salon / yokohama motomachi
-          </p>
-          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row">
-            <a
-              href="https://beauty.hotpepper.jp/slnH000784195/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white px-10 py-3 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-white hover:text-teal-primary"
-            >
-              RESERVE
-            </a>
-            <Link
-              href="#news"
-              className="px-10 py-3 text-xs font-medium tracking-[0.3em] text-white/70 transition-colors hover:text-white"
-            >
-              SCROLL DOWN
-            </Link>
-          </div>
-        </div>
-
-        {/* 下部スクロール示唆 */}
-        <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
-          <div className="h-12 w-px animate-pulse bg-white/50" />
-        </div>
+        <HeroContent />
       </section>
 
       {/* NEWS セクション */}
@@ -124,38 +93,11 @@ export default async function Home() {
             <p className="text-sm tracking-widest text-dark-text/50">
               お知らせ
             </p>
-            <div className="mt-2 h-0.5 w-16 bg-teal-primary" />
+            <AnimatedLine />
           </ScrollAnimation>
 
           {/* ニュースリスト */}
-          <ul className="divide-y divide-dark-text/10">
-            {newsList.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={`/news/${item.slug}`}
-                  className="group flex flex-col gap-2 py-6 transition-colors hover:text-teal-primary hover:pl-3 hover:border-l-2 hover:border-teal-primary tablet:flex-row tablet:items-start tablet:gap-8"
-                >
-                  <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-28 tablet:pt-0.5">
-                    {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
-                      year: "numeric",
-                      month: "2-digit",
-                      day: "2-digit",
-                    })}
-                  </time>
-                  <div className="flex flex-col gap-1">
-                    <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
-                      {item.title}
-                    </p>
-                    {item.excerpt && (
-                      <p className="text-sm leading-relaxed text-dark-text/60">
-                        {item.excerpt}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NewsListAnimated items={newsList} />
 
           {/* READ MORE ボタン */}
           <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
@@ -180,43 +122,11 @@ export default async function Home() {
             <p className="text-sm tracking-widest text-dark-text/50">
               スタイルギャラリー
             </p>
-            <div className="mt-2 h-0.5 w-16 bg-teal-primary" />
+            <AnimatedLine />
           </ScrollAnimation>
 
           {/* スタイルグリッド（PC:3列×2行、tablet:2列×3行、SP:2列） */}
-          <div className="grid grid-cols-2 gap-4 tablet:gap-6 lg:grid-cols-3">
-            {styles.map((style) => (
-              <Link
-                key={style.id}
-                href={`/style/${style.slug}`}
-                className="group block overflow-hidden"
-              >
-                {/* 画像 */}
-                <div className="relative aspect-square w-full overflow-hidden bg-gray-200 group-hover:ring-2 group-hover:ring-teal-primary/30">
-                  {style.image?.url && (
-                    <Image
-                      src={style.image.url}
-                      alt={style.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-opacity duration-300 group-hover:opacity-80"
-                    />
-                  )}
-                </div>
-                {/* スタイル情報 */}
-                <div className="mt-3 flex flex-col gap-1">
-                  {style.menu && (
-                    <p className="text-xs tracking-widest text-teal-primary">
-                      {style.menu}
-                    </p>
-                  )}
-                  <p className="text-sm font-medium text-dark-text">
-                    {style.title}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
+          <StyleGridAnimated styles={styles} />
 
           {/* READ MORE ボタン */}
           <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import AnimatedLine from "@/components/AnimatedLine";
 
 const INSTAGRAM_URL = "https://www.instagram.com/hashimoto514yokohama";
 
@@ -91,7 +92,7 @@ export default function SnsSection() {
           <p className="text-sm tracking-widest text-dark-text/50">
             ソーシャルメディア
           </p>
-          <div className="mt-2 h-0.5 w-16 bg-teal-primary" />
+          <AnimatedLine />
         </div>
 
         {/* Instagramグリッド */}
