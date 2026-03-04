@@ -1,8 +1,6 @@
-// Instagram Graph API または oEmbed URL による投稿取得が必要
-// 環境変数: INSTAGRAM_ACCESS_TOKEN（未設定）
-// 参考: https://developers.facebook.com/docs/instagram-basic-display-api
+"use client";
 
-const INSTAGRAM_URL = "https://www.instagram.com/";
+const INSTAGRAM_URL = "https://www.instagram.com/hashimoto514yokohama";
 
 const InstagramIcon = ({ size = 20 }: { size?: number }) => (
   <svg
@@ -23,14 +21,13 @@ const InstagramIcon = ({ size = 20 }: { size?: number }) => (
   </svg>
 );
 
-// 6枚のプレースホルダーカード（3列×2行）
-const placeholders = [
-  { id: 1, tone: "bg-teal-primary/10" },
-  { id: 2, tone: "bg-dark-text/5" },
-  { id: 3, tone: "bg-teal-primary/15" },
-  { id: 4, tone: "bg-dark-text/8" },
-  { id: 5, tone: "bg-teal-primary/8" },
-  { id: 6, tone: "bg-dark-text/5" },
+const cards = [
+  { id: 1, bg: "from-teal-primary/10 to-teal-primary/5" },
+  { id: 2, bg: "from-dark-text/5 to-dark-text/10" },
+  { id: 3, bg: "from-teal-primary/15 to-teal-primary/8" },
+  { id: 4, bg: "from-dark-text/8 to-dark-text/5" },
+  { id: 5, bg: "from-teal-primary/8 to-teal-primary/12" },
+  { id: 6, bg: "from-dark-text/5 to-teal-primary/5" },
 ];
 
 export default function SnsSection() {
@@ -48,27 +45,26 @@ export default function SnsSection() {
           <div className="mt-2 h-px w-12 bg-teal-primary" />
         </div>
 
-        {/* Instagram投稿風プレースホルダーグリッド（3列×2行） */}
+        {/* Instagramカードグリッド */}
         <div className="mb-12 grid grid-cols-2 gap-2 tablet:grid-cols-3 lg:gap-3">
-          {placeholders.map((item) => (
+          {cards.map((card) => (
             <a
-              key={item.id}
+              key={card.id}
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative aspect-square w-full overflow-hidden ${item.tone} transition-opacity hover:opacity-80`}
-              aria-label="Instagramの投稿を見る"
+              className={`group relative aspect-square w-full overflow-hidden bg-gradient-to-br ${card.bg} transition-opacity hover:opacity-80`}
+              aria-label="Instagramで投稿を見る"
             >
-              {/* Instagramアイコン（中央） */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25 transition-colors group-hover:text-teal-primary/60">
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/30 transition-colors group-hover:text-teal-primary">
                 <InstagramIcon size={32} />
-                <p className="text-xs tracking-widest">準備中</p>
+                <p className="text-xs tracking-widest">Instagram で見る</p>
               </div>
             </a>
           ))}
         </div>
 
-        {/* Instagramをフォローボタン（強調） */}
+        {/* Instagramフォローボタン */}
         <div className="flex justify-center">
           <a
             href={INSTAGRAM_URL}

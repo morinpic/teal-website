@@ -11,7 +11,7 @@ const navLinks = [
 ];
 
 const RESERVE_URL = "https://beauty.hotpepper.jp/slnH000784195/";
-const INSTAGRAM_URL = "https://www.instagram.com/";
+const INSTAGRAM_URL = "https://www.instagram.com/hashimoto514yokohama";
 
 export default function Footer() {
   return (
