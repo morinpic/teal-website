@@ -16,7 +16,7 @@ export default function AccessSection() {
           {/* Google Maps 埋め込み */}
           <div className="aspect-video w-full overflow-hidden lg:flex-1">
             <iframe
-              src="https://maps.google.com/maps?q=%E7%A5%9E%E5%A5%88%E5%B7%9D%E7%9C%8C%E6%A8%AA%E6%B5%9C%E5%B8%82%E4%B8%AD%E5%8C%BA%E5%85%83%E7%94%BA3-131-1+%E3%82%B0%E3%83%AD%E3%83%BC%E3%83%90%E3%83%AB%E6%A8%AA%E6%B5%9C%E5%85%83%E7%94%BA4F&z=17&output=embed"
+              src="https://maps.google.com/maps?q=35.4424,139.6508&z=17&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}
