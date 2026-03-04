@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         {/* ナビリンク */}
-        <nav className="flex flex-wrap justify-center gap-6 py-10 lg:justify-start" aria-label="フッターナビゲーション">
+        <nav className="grid grid-cols-3 gap-4 py-10 lg:flex lg:justify-start lg:gap-6" aria-label="フッターナビゲーション">
           {navLinks.map((link) => (
             <Link
               key={link.label}
