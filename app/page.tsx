@@ -56,6 +56,7 @@ const localBusinessJsonLd = {
 
 export default async function Home() {
   const { contents: newsList } = await getNewsList(6, 0, "category[equals]news");
+  const { contents: blogList } = await getNewsList(3, 0, "category[equals]blog");
   const { contents: styles } = await getStyleList(6, 0);
   return (
     <>
@@ -132,6 +133,59 @@ export default async function Home() {
           <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
             <Link
               href="/style"
+              className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
+            >
+              READ MORE
+            </Link>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* BLOG セクション */}
+      <section id="blog" className="bg-white py-24">
+        <div className="mx-auto max-w-screen-xl px-6">
+          <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
+            <h2 className="text-3xl font-bold tracking-[0.2em] text-dark-text lg:text-4xl">
+              BLOG
+            </h2>
+            <p className="text-sm tracking-widest text-dark-text/50">
+              ブログ
+            </p>
+            <AnimatedLine />
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 gap-6 tablet:grid-cols-2 lg:grid-cols-3">
+            {blogList.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                className="group border border-dark-text/10 p-6 transition-colors hover:border-teal-primary/40"
+              >
+                <time className="text-xs tracking-widest text-dark-text/50">
+                  {new Date(post.publishedAt).toLocaleDateString("ja-JP", {
+                    year: "numeric",
+                    month: "2-digit",
+                    day: "2-digit",
+                  })}
+                </time>
+                <p className="mt-2 font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
+                  {post.title}
+                </p>
+                {post.excerpt && (
+                  <p className="mt-2 text-sm leading-relaxed text-dark-text/60 line-clamp-3">
+                    {post.excerpt}
+                  </p>
+                )}
+                <p className="mt-4 text-xs tracking-widest text-teal-primary">
+                  READ MORE →
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
+            <Link
+              href="/blog"
               className="border border-teal-primary px-12 py-3 text-xs font-medium tracking-[0.3em] text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
             >
               READ MORE

@@ -112,6 +112,10 @@
 | 31 | ティールカラー（ブランドカラー）の差し色強化 | ✅ |
 | 32 | ヘッダーナビのスムーズスクロール対応 | ✅ |
 | 33 | アニメーションの品質向上（引き算の美学） | ✅ |
+| 34 | Lenis + GSAP ScrollTrigger 導入（スクロール体験の改善） | 🔲 |
+| 35 | ヘッダーSTAFFリンクをセクションスクロールに修正 | ✅ |
+| 36 | トップページにBLOGセクションを追加 | ✅ |
+| 37 | Instagram動画投稿のクリック不能問題の修正 | ✅ |
 
 ### 13. ✅ スクロールアニメーション
 - **対応済み**: framer-motion を使用し、各セクションにフェードイン / スライドインアニメーションを実装
@@ -173,6 +177,26 @@
   - STYLEホバーエフェクト改善: `group-hover:opacity-90 group-hover:-translate-y-1 group-hover:shadow-lg` で微かに浮き上がる上品なエフェクト
   - イージング統一: 全体を `cubicBezier(0.16, 1, 0.3, 1)` に統一（ScrollAnimation、template.tsx、新規コンポーネント全て）
 
+### 34. 🔲 Lenis + GSAP ScrollTrigger 導入（スクロール体験の改善）
+- **目的**: スクロール自体を柔らかくし、スクロール連動アニメーションでより自然な表示演出を実現
+- **導入ライブラリ**:
+  - `lenis`（13.1K stars, ~2KB gzip）— 慣性スクロール（ぬるっとした手触り）
+  - `gsap` + `@gsap/react`（22.5K stars）— ScrollTrigger によるスクロール連動アニメーション
+- **改善内容**:
+  - (a) Lenis によるスムーズスクロール導入（lerp: 0.1 程度の柔らかい慣性）
+  - (b) 既存の framer-motion `useInView` ベースのスクロールアニメーションを GSAP ScrollTrigger に置き換え（ScrollAnimation、NewsListAnimated、StyleGridAnimated、AnimatedLine）
+  - (c) framer-motion は Hero ページロードアニメーション（HeroContent.tsx）とページ遷移（template.tsx）のみに残す
+- **方針**: 派手にしない。柔らかく自然な動きを追求
+
+### 35. ✅ ヘッダーSTAFFリンクをセクションスクロールに修正
+- **対応済み**: `components/Header.tsx` の navLinks で STAFF の href を `/staff` → `/#staff` に変更。トップページのSTAFFセクションにスムーズスクロールするように修正
+
+### 36. ✅ トップページにBLOGセクションを追加
+- **対応済み**: `app/page.tsx` にBLOGセクションを新規追加（STYLEとMENUの間に配置）。`getNewsList(3, 0, "category[equals]blog")` でブログ記事を取得し、カード形式（border + hover効果）で表示。セクションヘッダー（ScrollAnimation + AnimatedLine）、READ MOREボタン付き
+
+### 37. ✅ Instagram動画投稿のクリック不能問題の修正
+- **対応済み**: `components/SnsSection.tsx` の embed 表示時の各投稿コンテナに透明リンクオーバーレイ（`<a className="absolute inset-0 z-10">`）を追加。動画投稿を含む全投稿がクリックで元のInstagram投稿に遷移可能に
+
 ---
 
 ## P3：コンテンツ（オーナー側の対応タスク）
@@ -212,9 +236,9 @@
 |--------|------|--------|--------|----------|--------|
 | P0 | 6 | 5 | 0 | 0 | 1 |
 | P1 | 8 | 8 | 0 | 0 | 0 |
-| P2 | 15 | 14 | 0 | 1 | 0 |
+| P2 | 19 | 17 | 0 | 2 | 0 |
 | P3 | 4 | 1 | 0 | 0 | 3 |
-| **合計** | **33** | **28** | **0** | **1** | **4** |
+| **合計** | **37** | **31** | **0** | **2** | **4** |
 
 ## 対応スケジュール目安
 
@@ -228,5 +252,5 @@
 ---
 
 *作成日: 2026年3月4日*
-*最終更新: 2026年3月4日（#33 アニメーション品質向上 — Hero段階的フェードイン・装飾線アニメ・スタガーアニメ・イージング統一・ホバーエフェクト改善）*
+*最終更新: 2026年3月4日（#35〜#37 STAFFリンク修正・BLOGセクション追加・Instagram動画修正 対応完了）*
 *このファイルを GitHub リポジトリの `docs/` に配置し、Claude Code で参照しながら改善を進めることを推奨*
