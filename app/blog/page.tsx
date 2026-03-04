@@ -9,20 +9,26 @@ export const metadata = {
   description: "横浜元町の美容院teal.のブログ。ヘアケアやスタイリングのお役立ち情報を発信しています。",
 };
 
+const ALL_TAGS = ["ヘアカラー", "トレンド", "ヘアケア", "パーマ・縮毛矯正"];
+
 type Props = {
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; tag?: string }>;
 };
 
 export default async function BlogPage({ searchParams }: Props) {
-  const { page } = await searchParams;
+  const { page, tag } = await searchParams;
   const parsed = parseInt(page ?? "1", 10);
   const currentPage = Number.isNaN(parsed) ? 1 : Math.max(1, parsed);
   const offset = (currentPage - 1) * PER_PAGE;
 
+  const filters = tag
+    ? `category[equals]blog[and]tags[contains]${tag}`
+    : "category[equals]blog";
+
   const { contents: blogList, totalCount } = await getNewsList(
     PER_PAGE,
     offset,
-    "category[equals]blog"
+    filters
   );
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 
@@ -53,6 +59,33 @@ export default async function BlogPage({ searchParams }: Props) {
       {/* 記事一覧 */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-screen-lg px-6">
+          {/* タグフィルター */}
+          <div className="mb-12 flex flex-wrap items-center gap-2">
+            <Link
+              href="/blog"
+              className={`px-4 py-1.5 text-xs tracking-widest transition-colors ${
+                !tag
+                  ? "bg-teal-primary text-white"
+                  : "border border-dark-text/20 text-dark-text/60 hover:border-teal-primary hover:text-teal-primary"
+              }`}
+            >
+              ALL
+            </Link>
+            {ALL_TAGS.map((t) => (
+              <Link
+                key={t}
+                href={`/blog?tag=${t}`}
+                className={`px-4 py-1.5 text-xs tracking-widest transition-colors ${
+                  tag === t
+                    ? "bg-teal-primary text-white"
+                    : "border border-dark-text/20 text-dark-text/60 hover:border-teal-primary hover:text-teal-primary"
+                }`}
+              >
+                {t}
+              </Link>
+            ))}
+          </div>
+
           {blogList.length === 0 ? (
             <p className="text-center text-dark-text/50">
               現在ブログ記事はありません。
@@ -80,6 +113,19 @@ export default async function BlogPage({ searchParams }: Props) {
                       </div>
 
                       <div className="flex flex-col gap-2">
+                        {/* タグ */}
+                        {item.tags && item.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1">
+                            {item.tags.map((t) => (
+                              <span
+                                key={t}
+                                className="text-[10px] tracking-wider text-teal-primary border border-teal-primary/30 px-2 py-0.5"
+                              >
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                         <time className="text-xs tracking-widest text-dark-text/50">
                           {new Date(item.publishedAt).toLocaleDateString("ja-JP", {
                             year: "numeric",
@@ -109,7 +155,7 @@ export default async function BlogPage({ searchParams }: Props) {
                 >
                   {currentPage > 1 ? (
                     <Link
-                      href={`/blog?page=${currentPage - 1}`}
+                      href={`/blog?page=${currentPage - 1}${tag ? `&tag=${tag}` : ''}`}
                       className="border border-dark-text/20 px-6 py-2 text-xs tracking-widest text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
                     >
                       ← 前へ
@@ -124,7 +170,7 @@ export default async function BlogPage({ searchParams }: Props) {
                   </span>
                   {currentPage < totalPages ? (
                     <Link
-                      href={`/blog?page=${currentPage + 1}`}
+                      href={`/blog?page=${currentPage + 1}${tag ? `&tag=${tag}` : ''}`}
                       className="border border-dark-text/20 px-6 py-2 text-xs tracking-widest text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
                     >
                       次へ →

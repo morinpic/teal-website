@@ -22,6 +22,7 @@ export type News = MicroCMSBase & {
   eyecatch?: MicroCMSImage;
   slug: string;
   excerpt?: string; // 概要
+  tags?: string[];
 };
 
 // Style (スタイルギャラリー)

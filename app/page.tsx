@@ -166,26 +166,39 @@ export default async function Home() {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group border border-dark-text/10 p-6 transition-colors hover:border-teal-primary/40"
+                className="group block overflow-hidden border border-dark-text/10 transition-colors hover:border-teal-primary/40"
               >
-                <time className="text-xs tracking-widest text-dark-text/50">
-                  {new Date(post.publishedAt).toLocaleDateString("ja-JP", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
-                </time>
-                <p className="mt-2 font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
-                  {post.title}
-                </p>
-                {post.excerpt && (
-                  <p className="mt-2 text-sm leading-relaxed text-dark-text/60 line-clamp-3">
-                    {post.excerpt}
+                <div className="relative aspect-video w-full overflow-hidden bg-gray-200">
+                  {post.eyecatch && (
+                    <Image
+                      src={post.eyecatch.url}
+                      alt={post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  )}
+                </div>
+                <div className="p-6">
+                  <time className="text-xs tracking-widest text-dark-text/50">
+                    {new Date(post.publishedAt).toLocaleDateString("ja-JP", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })}
+                  </time>
+                  <p className="mt-2 font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
+                    {post.title}
                   </p>
-                )}
-                <p className="mt-4 text-xs tracking-widest text-teal-primary">
-                  READ MORE →
-                </p>
+                  {post.excerpt && (
+                    <p className="mt-2 text-sm leading-relaxed text-dark-text/60 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                  )}
+                  <p className="mt-4 text-xs tracking-widest text-teal-primary">
+                    READ MORE →
+                  </p>
+                </div>
               </Link>
             ))}
           </div>

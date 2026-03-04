@@ -50,6 +50,8 @@ export const dummyNewsList: News[] = [
     category: "blog",
     slug: "spring-color-trend-2026",
     excerpt: "今年の春トレンドカラーをご紹介します。",
+    eyecatch: { url: "https://placehold.jp/008080/ffffff/800x450.png?text=Hair+Color+Trend", width: 800, height: 450 },
+    tags: ["ヘアカラー", "トレンド"],
   },
   {
     id: "blog-2",
@@ -62,6 +64,8 @@ export const dummyNewsList: News[] = [
     category: "blog",
     slug: "correct-shampooing",
     excerpt: "毎日のシャンプーで気をつけたいポイントをお伝えします。",
+    eyecatch: { url: "https://placehold.jp/008080/ffffff/800x450.png?text=Hair+Care", width: 800, height: 450 },
+    tags: ["ヘアケア"],
   },
   {
     id: "blog-3",
@@ -74,6 +78,8 @@ export const dummyNewsList: News[] = [
     category: "blog",
     slug: "rebonding-vs-straightperm",
     excerpt: "縮毛矯正とストレートパーマの違いを解説します。",
+    eyecatch: { url: "https://placehold.jp/008080/ffffff/800x450.png?text=Straight+Perm", width: 800, height: 450 },
+    tags: ["パーマ・縮毛矯正"],
   },
 ];
 

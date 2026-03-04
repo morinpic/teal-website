@@ -29,6 +29,10 @@ export async function getNewsList(
       if (match) {
         contents = contents.filter((n) => n.category === match[1]);
       }
+      const tagMatch = filters.match(/tags\[contains\](.+)/);
+      if (tagMatch) {
+        contents = contents.filter((n) => n.tags?.includes(tagMatch[1]));
+      }
     }
     const sliced = contents.slice(offset, offset + limit);
     return { contents: sliced, totalCount: contents.length };
