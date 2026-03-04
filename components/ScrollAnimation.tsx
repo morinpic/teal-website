@@ -17,9 +17,9 @@ export default function ScrollAnimation({ children, className, delay = 0 }: Prop
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
     >
       {children}
     </motion.div>
