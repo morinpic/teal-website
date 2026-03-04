@@ -125,9 +125,10 @@
 - 優先度は低いが、モダンなサイトとしての差別化に
 
 ### 18. ✅ Instagram投稿の埋め込み表示
-- **対応済み**: InstagramアカウントURL（`https://www.instagram.com/hashimoto514yokohama`）を設定し、プロフィールへのリンクカード方式で実装。6枚のカードグリッド（モバイル2列、tablet以上3列）でInstagramプロフィールへ誘導。「INSTAGRAM をフォロー」ボタンも正しいURLに更新済み
-- **フッターのInstagramリンクも更新済み**
-- **今後**: 個別の投稿URLが判明次第、embed.js を使った投稿埋め込みに差し替え可能
+- **対応済み**: Instagram公式 embed.js を使い、最新6投稿を `blockquote` + `useEffect` で動的埋め込み表示。グリッドレイアウト（モバイル2列、tablet以上3列）、aspect-square で統一
+- **埋め込み投稿**: DS1yxDICTBe, DSBzQ3kCZIA, CyfqhGcvsuc, BmsrHENgAP4, BmnqJAWg_Ce, BkSVzyHgBia
+- **フォールバック**: embed.js 読み込み失敗時はプロフィールへのリンクカードを表示
+- **フッター・フォローボタン**: `https://www.instagram.com/hashimoto514yokohama` に設定済み
 
 ### 25. ✅ モバイルのSTYLEセクションを2カラム化
 - **対応済み**: トップページのSTYLEグリッドを `grid-cols-2` に変更。モバイルでも2カラム表示でスクロール距離を短縮
@@ -193,5 +194,5 @@
 ---
 
 *作成日: 2026年3月4日*
-*最終更新: 2026年3月4日（Instagram埋め込み・スタッフ暫定写真対応）*
+*最終更新: 2026年3月4日（Instagram embed.js 投稿埋め込み実装完了）*
 *このファイルを GitHub リポジトリの `docs/` に配置し、Claude Code で参照しながら改善を進めることを推奨*
