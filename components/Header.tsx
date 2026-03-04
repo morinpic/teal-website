@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "NEWS", href: "/#news" },
@@ -18,6 +19,7 @@ const RESERVE_URL = "https://beauty.hotpepper.jp/slnH000784195/";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +31,24 @@ export default function Header() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+    afterScroll?: () => void
+  ) => {
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.slice(2);
+      const element = document.getElementById(id);
+      if (element) {
+        const headerOffset = 64;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+      }
+      afterScroll?.();
+    }
+  };
+
   return (
     <>
       <header
@@ -39,7 +59,7 @@ export default function Header() {
         <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4">
           {/* ロゴ */}
           <Link href="/" className="flex items-center">
-            <Image src="/images/teal_t.svg" alt="teal." width={80} height={32} className="h-8 w-auto" priority />
+            <Image src="/images/teal_t.svg" alt="teal." width={100} height={40} className="h-10 w-auto" priority />
           </Link>
 
           {/* PCナビゲーション */}
@@ -48,6 +68,7 @@ export default function Header() {
               <Link
                 key={link.label}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-sm font-medium tracking-widest text-dark-text transition-colors hover:text-teal-primary"
               >
                 {link.label}
@@ -99,7 +120,7 @@ export default function Header() {
         <div className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden">
           <div className="flex items-center justify-between px-6 py-4">
             <Link href="/" onClick={closeMenu} className="flex items-center">
-              <Image src="/images/teal_t.svg" alt="teal." width={80} height={32} className="h-8 w-auto" />
+              <Image src="/images/teal_t.svg" alt="teal." width={100} height={40} className="h-10 w-auto" />
             </Link>
             <button
               onClick={closeMenu}
@@ -116,7 +137,7 @@ export default function Header() {
               <Link
                 key={link.label}
                 href={link.href}
-                onClick={closeMenu}
+                onClick={(e) => handleNavClick(e, link.href, closeMenu)}
                 className="text-xl font-medium tracking-widest text-dark-text transition-colors hover:text-teal-primary"
               >
                 {link.label}
