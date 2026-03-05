@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getStaffList } from "@/lib/microcms";
+import Button from "@/components/Button";
 
 export default async function StaffSection() {
   const { contents: staffList } = await getStaffList();
@@ -71,12 +72,9 @@ export default async function StaffSection() {
 
         {/* READ MORE ボタン */}
         <div className="mt-16 flex justify-center">
-          <Link
-            href="/staff"
-            className="border border-white px-12 py-3 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-white hover:text-teal-primary"
-          >
+          <Button variant="ghost-white" href="/staff">
             READ MORE
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

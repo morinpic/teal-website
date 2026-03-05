@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-teal-primary: #008080;
-  --color-dark-text: #231815;
+  /* Primary */
+  --color-teal-primary: #17a2b8;
+  --color-teal-dark: #138a98;
+  --color-teal-light: #e0f6fa;
+
+  /* Text */
+  --color-dark-text: #1a1a1a;
+  --color-gray-mid: #555555;
+
+  /* Gold Accent */
+  --color-gold-accent: #d4af37;
+  --color-gold-light: #f4e8d0;
 
   --breakpoint-tablet: 769px;
 }
@@ -14,7 +24,7 @@
   left: 0;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: #008080;
+  background: var(--color-teal-primary);
   color: white;
   font-size: 0.875rem;
   text-decoration: none;
@@ -26,8 +36,66 @@
 
 /* フォーカスアウトライン（アクセシビリティ） */
 *:focus-visible {
-  outline: 2px solid #008080;
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-teal-primary), 0 0 0 4px rgba(23, 162, 184, 0.2);
+}
+
+/* ボタン共通 */
+.btn {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding: 0.75rem 2rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Primary: 塗りあり */
+.btn-primary {
+  background-color: var(--color-teal-primary);
+  color: #ffffff;
+  border-color: var(--color-teal-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-teal-dark);
+  border-color: var(--color-teal-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+/* Secondary: 枠線のみ（teal） */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-teal-primary);
+  border-color: var(--color-teal-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-teal-primary);
+  color: #ffffff;
+}
+
+/* Ghost white: 暗背景用（白枠線） */
+.btn-ghost-white {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.btn-ghost-white:hover {
+  background-color: #ffffff;
+  color: var(--color-teal-primary);
 }
 
 /* リッチテキスト（microCMS 本文）スタイル */
@@ -38,7 +106,7 @@
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #e5e5e5;
-  color: #231815;
+  color: var(--color-dark-text);
 }
 
 .rich-text h3 {
@@ -46,14 +114,14 @@
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
-  color: #231815;
+  color: var(--color-dark-text);
 }
 
 .rich-text p {
   margin-top: 0;
   margin-bottom: 1.5rem;
   line-height: 1.9;
-  color: #231815;
+  color: var(--color-dark-text);
 }
 
 .rich-text ul,
@@ -76,7 +144,7 @@
 }
 
 .rich-text a {
-  color: #008080;
+  color: var(--color-teal-primary);
   text-decoration: underline;
 }
 
@@ -92,9 +160,9 @@
 }
 
 .rich-text blockquote {
-  border-left: 3px solid #008080;
+  border-left: 3px solid var(--color-teal-primary);
   padding-left: 1rem;
   margin-left: 0;
-  color: #231815cc;
+  color: rgba(26, 26, 26, 0.8);
   font-style: italic;
 }

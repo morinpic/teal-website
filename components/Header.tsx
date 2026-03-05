@@ -4,12 +4,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Button from "@/components/Button";
 
 const navLinks = [
-  { label: "NEWS", href: "/#news" },
+  { label: "ABOUT", href: "/#about" },
   { label: "STYLE", href: "/#style" },
   { label: "MENU", href: "/#menu" },
   { label: "STAFF", href: "/#staff" },
+  { label: "FAQ", href: "/#faq" },
+  { label: "NEWS", href: "/#news" },
   { label: "BLOG", href: "/#blog" },
   { label: "ACCESS", href: "/#access" },
 ];
@@ -63,13 +66,13 @@ export default function Header() {
           </Link>
 
           {/* PCナビゲーション */}
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="メインナビゲーション">
+          <nav className="hidden items-center gap-6 lg:flex" aria-label="メインナビゲーション">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium tracking-widest text-dark-text transition-colors hover:text-teal-primary"
+                className="relative text-xs font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-teal-primary after:transition-[width] after:duration-200 hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -78,15 +81,15 @@ export default function Header() {
 
           {/* 予約ボタン（PC） + ハンバーガー（SP） */}
           <div className="flex items-center gap-4">
-            <a
+            <Button
+              variant="primary"
               href={RESERVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              external
               aria-label="ホットペッパービューティーで予約する"
-              className="hidden rounded-none border border-teal-primary px-5 py-2 text-xs font-medium tracking-widest text-teal-primary transition-colors hover:bg-teal-primary hover:text-white lg:block"
+              className="hidden lg:inline-block"
             >
               RESERVE
-            </a>
+            </Button>
 
             {/* ハンバーガーボタン（SP/tablet） */}
             <button
@@ -132,26 +135,27 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-center justify-center gap-10" aria-label="モバイルナビゲーション">
+          <nav className="flex flex-1 flex-col items-center justify-center gap-8" aria-label="モバイルナビゲーション">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href, closeMenu)}
-                className="text-xl font-medium tracking-widest text-dark-text transition-colors hover:text-teal-primary"
+                className="text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
               >
                 {link.label}
               </Link>
             ))}
-            <a
-              href={RESERVE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="ホットペッパービューティーで予約する"
-              className="mt-4 border border-teal-primary px-8 py-3 text-sm font-medium tracking-widest text-teal-primary transition-colors hover:bg-teal-primary hover:text-white"
-            >
-              RESERVE
-            </a>
+            <div className="mt-4">
+              <Button
+                variant="primary"
+                href={RESERVE_URL}
+                external
+                aria-label="ホットペッパービューティーで予約する"
+              >
+                RESERVE
+              </Button>
+            </div>
           </nav>
         </div>
       )}
