@@ -1,9 +1,5 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
-## プロジェクト概要
-
 teal.（横浜元町の美容院）の公式ウェブサイト。Next.js App Router + microCMS + Vercel で構成。
 
 ## コマンド
@@ -39,14 +35,6 @@ npm run lint     # ESLint実行
 - `MICROCMS_API_KEY` - microCMS APIキー
 - `.env.local.example` にテンプレートあり
 
-### ブランドカラー（Tailwind カスタムカラー）
-- `teal-primary`: #008080（プライマリ）
-- `dark-text`: #231815（テキスト・ロゴ）
-
-### レスポンシブ
-- モバイルファースト
-- ブレイクポイント: SP（〜768px）、tablet（769px〜、Tailwindカスタム）、PC（1025px〜）
-
 ### ページ構成
 - `/` - トップページ（Hero, NEWS, STYLE, MENU, STAFF, BLOG, SNS, ACCESS セクション）
 - `/news`, `/news/[slug]` - お知らせ一覧・詳細
@@ -55,24 +43,8 @@ npm run lint     # ESLint実行
 - `/menu` - メニュー・料金表
 - `/staff/[slug]` - スタッフ詳細
 
-## 仕様書
+## 参照ドキュメント
 
-詳細な要件定義は `docs/teal-requirements.md` を参照。店舗情報、メニュー料金、デザイン仕様等を含む。
-
-## チーム作業について
-* チームで相談し、修正を行ってください。
-* ディレクター、デザイナー、コーダー、で実装して下さい。
-* メンバーが足りない場合は、適切に増員してください。
-* 適切な粒度でgit commitしてください（コミットメッセージは1行で簡潔にまとめてください）
-* ディレクター以外はモデルはSonnetを使用してください。
-* 複数ファイルにまたがる大きなタスクはAgent Teams（Task）で並列実行を検討すること
-* 単一ファイルの小さな修正はチーム不要、直接対応でOK
-
-## Cowork（ディレクター）との作業ルール
-* Cowork上ではソースコードを直接修正しない
-* 実装指示はClaude Code用のプロンプト（コードブロック形式）で提供する
-* Coworkが編集するのはプランやドキュメント（docs/配下）のみ
-
-## 改善計画
-* プロジェクトの進捗管理は `docs/teal-improvement-plan.md` を参照
-* 新しい改善項目は番号付きでこのファイルに追加する
+- 要件定義: `docs/teal-requirements.md`
+- 改善計画・進捗管理: `docs/teal-improvement-plan.md`
+- インフラセットアップ手順: `docs/setup-guide.md`
