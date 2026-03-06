@@ -2,7 +2,7 @@
 
 @theme {
   /* Primary */
-  --color-teal-primary: #17a2b8;
+  --color-teal-primary: #0c7c7c;
   --color-teal-dark: #138a98;
   --color-teal-light: #e0f6fa;
 
@@ -37,7 +37,7 @@
 /* フォーカスアウトライン（アクセシビリティ） */
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-teal-primary), 0 0 0 4px rgba(23, 162, 184, 0.2);
+  box-shadow: 0 0 0 2px var(--color-teal-primary), 0 0 0 4px rgba(12, 124, 124, 0.2);
 }
 
 /* ボタン共通 */
