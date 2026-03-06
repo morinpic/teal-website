@@ -10,7 +10,7 @@ teal. ウェブサイトの WCAG AA 準拠状況と実装ガイドライン。
 |---|---|---|
 | 画像に alt 属性 | 適合 | 全 `<Image>` に alt 指定済み |
 | 装飾SVGに `aria-hidden="true"` | 適合 | アイコンSVG全てに設定 |
-| テキストのコントラスト比 4.5:1 | 適合 | dark-text/white: 約15.3:1, teal-primary/white: 約4.6:1 |
+| テキストのコントラスト比 4.5:1 | 適合 | dark-text/white: 約15.3:1, teal-primary/white: 約5.0:1 |
 | 不透明度テキストのコントラスト | 要注意 | `dark-text/50` は補助情報のみに限定 |
 | iframe に title 属性 | 適合 | Google Maps に `title="teal. アクセスマップ"` |
 
@@ -48,7 +48,7 @@ teal. ウェブサイトの WCAG AA 準拠状況と実装ガイドライン。
   left: 0;
   z-index: 100;
   padding: 0.5rem 1rem;
-  background: #008080;
+  background: #0c7c7c;
   color: white;
   font-size: 0.875rem;
   text-decoration: none;
@@ -75,13 +75,13 @@ teal. ウェブサイトの WCAG AA 準拠状況と実装ガイドライン。
 ```css
 /* globals.css */
 *:focus-visible {
-  outline: 2px solid #008080;
+  outline: 2px solid #0c7c7c;
   outline-offset: 2px;
 }
 ```
 
 - 全フォーカス可能要素に適用
-- teal-primary (#008080) のアウトライン
+- teal-primary (#0c7c7c) のアウトライン
 - 2px のオフセットで要素との間隔を確保
 - `:focus-visible` を使用（マウスクリック時は非表示、キーボード操作時のみ表示）
 
@@ -124,12 +124,12 @@ teal. ウェブサイトの WCAG AA 準拠状況と実装ガイドライン。
 | 組み合わせ | コントラスト比 | 用途 | AA判定 |
 |---|---|---|---|
 | #231815 on #ffffff | 約 15.3:1 | 本文テキスト | 合格 |
-| #008080 on #ffffff | 約 4.6:1 | リンク、カテゴリタイトル | 合格 |
-| #ffffff on #008080 | 約 4.6:1 | STAFFセクション文字 | 合格 |
+| #0c7c7c on #ffffff | 約 5.0:1 | リンク、カテゴリタイトル | 合格 |
+| #ffffff on #0c7c7c | 約 5.0:1 | STAFFセクション文字 | 合格 |
 | #ffffff on #231815 | 約 15.3:1 | フッター、ACCESSセクション | 合格 |
 | #231815/60% on #ffffff | 約 7.0:1（推定） | サブテキスト | 合格 |
 | #231815/50% on #ffffff | 約 5.3:1（推定） | 日付、メタ情報 | 合格 |
-| #ffffff/70% on #008080 | 約 3.3:1（推定） | STAFFサブテキスト | 大テキストのみ合格 |
+| #ffffff/70% on #0c7c7c | 約 3.3:1（推定） | STAFFサブテキスト | 大テキストのみ合格 |
 | #ffffff/50% on #231815 | 約 5.5:1（推定） | フッターコピーライト | 合格 |
 
 ## キーボード操作

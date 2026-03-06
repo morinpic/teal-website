@@ -4,7 +4,7 @@ teal. ウェブサイトの主要UIコンポーネントの仕様。
 
 ## ボタンパターン
 
-現在、共通 Button コンポーネントは未実装。各コンポーネントでインラインスタイルとして記述されている。以下は既存のボタンバリエーション:
+共通 Button コンポーネント（`components/Button.tsx`）実装済み。以下の3バリアントを提供:
 
 ### Primary（塗りつぶし）
 
@@ -15,7 +15,7 @@ className="bg-teal-primary px-10 py-3 text-xs font-medium tracking-widest text-w
 
 | プロパティ | 値 |
 |---|---|
-| 背景 | `bg-teal-primary` (#008080) |
+| 背景 | `bg-teal-primary` (#0c7c7c) |
 | 文字色 | `text-white` |
 | ホバー | `hover:bg-teal-primary/80` |
 | パディング | `px-10 py-3` |

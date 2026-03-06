@@ -45,6 +45,22 @@ npm run lint     # ESLint実行
 
 ## 参照ドキュメント
 
-- 要件定義: `docs/teal-requirements.md`
-- 改善計画・進捗管理: `docs/teal-improvement-plan.md`
-- インフラセットアップ手順: `docs/setup-guide.md`
+### プロジェクト管理 (`docs/project/`)
+- 要件定義: `docs/project/requirements.md`
+- 開発改善計画・進捗管理: `docs/project/improvement-plan.md`
+- デザイン改善バックログ: `docs/project/improvement-list.md`
+
+### デザインシステム (`docs/design-system/`)
+- カラーシステム: `docs/design-system/color-system.md`
+- タイポグラフィ: `docs/design-system/typography.md`
+- コンポーネント設計: `docs/design-system/components.md`
+- レスポンシブブレークポイント: `docs/design-system/breakpoints.md`
+- アクセシビリティガイドライン: `docs/design-system/accessibility.md`
+
+### インフラ (`docs/infra/`)
+- セットアップ手順: `docs/infra/setup-guide.md`
+
+## ドキュメント命名規則
+
+- `docs/` 配下のファイル・フォルダ: **lowercase kebab-case**（例: `color-system.md`）
+- リポジトリルートの重要ファイル: **UPPERCASE**（例: `README.md`, `CHANGELOG.md`）
