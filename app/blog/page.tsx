@@ -5,8 +5,8 @@ import { getNewsList } from "@/lib/microcms";
 const PER_PAGE = 9;
 
 export const metadata = {
-  title: "BLOG",
-  description: "横浜元町の美容院teal.のブログ。ヘアケアやスタイリングのお役立ち情報を発信しています。",
+  title: "BLOG | teal.",
+  description: "横浜元町の美容院 teal.（ティール）スタイリストによるブログ。ヘアケア・カラー・トレンドスタイルなど、お役立ち情報を発信しています。",
 };
 
 const ALL_TAGS = ["ヘアカラー", "トレンド", "ヘアケア", "パーマ・縮毛矯正"];

@@ -5,8 +5,8 @@ import { getStyleList } from "@/lib/microcms";
 const PER_PAGE = 12;
 
 export const metadata = {
-  title: "STYLE",
-  description: "横浜元町の美容院teal.のスタイルギャラリー。最新のヘアスタイルをご覧ください。",
+  title: "STYLE | teal.",
+  description: "横浜元町の美容院 teal.（ティール）のスタイルギャラリー。カット・カラー・パーマなど、最新ヘアスタイル作品をご覧ください。",
 };
 
 type Props = {

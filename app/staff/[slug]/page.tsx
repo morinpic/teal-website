@@ -4,6 +4,8 @@ import { getStaffDetail, getStaffList } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -17,12 +19,18 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   try {
     const staff = await getStaffDetail(slug);
+    const description = `横浜元町の美容院 teal. スタッフ: ${staff.name}（${staff.position}）`;
     return {
-      title: `${staff.name} | STAFF`,
-      description: `teal. スタッフ紹介: ${staff.name}（${staff.position}）`,
+      title: `${staff.name} | STAFF | teal.`,
+      description,
+      openGraph: {
+        title: `${staff.name} | teal.`,
+        description,
+        ...(staff.photo ? { images: [{ url: staff.photo.url }] } : {}),
+      },
     };
   } catch {
-    return { title: "STAFF" };
+    return { title: "STAFF | teal." };
   }
 }
 
@@ -36,8 +44,39 @@ export default async function StaffDetailPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "HOME", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "STAFF", item: `${siteUrl}/staff` },
+      { "@type": "ListItem", position: 3, name: staff.name, item: `${siteUrl}/staff/${slug}` },
+    ],
+  };
+
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: staff.name,
+    jobTitle: staff.position,
+    worksFor: {
+      "@type": "HairSalon",
+      name: "teal.",
+      url: siteUrl,
+    },
+    ...(staff.photo ? { image: staff.photo.url } : {}),
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f6f4]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       {/* パンくず */}
       <div className="bg-white px-6 py-4">
         <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">

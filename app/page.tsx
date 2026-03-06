@@ -33,6 +33,7 @@ const localBusinessJsonLd = {
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
   url: siteUrl,
+  image: `${siteUrl}/ogp.jpg`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "元町3-131-1 グローバル横浜元町4F",
@@ -49,11 +50,22 @@ const localBusinessJsonLd = {
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      dayOfWeek: ["Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday", "Sunday"],
+      opens: "10:00",
+      closes: "19:00",
     },
   ],
   priceRange: "¥¥",
-  sameAs: [],
+  sameAs: [
+    "https://www.instagram.com/hashimoto514yokohama",
+    "https://beauty.hotpepper.jp/slnH000784195/",
+  ],
 };
 
 export default async function Home() {

@@ -3,6 +3,8 @@ import Image from "next/image";
 import { getStyleDetail, getStyleList } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -16,12 +18,18 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   try {
     const style = await getStyleDetail(slug);
+    const description = style.description ?? `横浜元町の美容院 teal. のスタイル作品: ${style.title}`;
     return {
-      title: `${style.title} | STYLE`,
-      description: style.description ?? `teal. のスタイルギャラリー: ${style.title}`,
+      title: `${style.title} | STYLE | teal.`,
+      description,
+      openGraph: {
+        title: `${style.title} | teal.`,
+        description,
+        ...(style.image ? { images: [{ url: style.image.url }] } : {}),
+      },
     };
   } catch {
-    return { title: "STYLE" };
+    return { title: "STYLE | teal." };
   }
 }
 
@@ -35,8 +43,22 @@ export default async function StyleDetailPage({ params }: Props) {
     notFound();
   }
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "HOME", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "STYLE", item: `${siteUrl}/style` },
+      { "@type": "ListItem", position: 3, name: style.title, item: `${siteUrl}/style/${slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f6f4]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* パンくず */}
       <div className="bg-white px-6 py-4">
         <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">

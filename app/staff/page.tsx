@@ -3,8 +3,8 @@ import Link from "next/link";
 import { getStaffList } from "@/lib/microcms";
 
 export const metadata: Metadata = {
-  title: "STAFF",
-  description: "横浜元町の美容院teal.のスタッフ紹介。",
+  title: "STAFF | teal.",
+  description: "横浜元町の美容院 teal.（ティール）のスタッフ紹介。経験豊富なスタイリストが、お客様一人ひとりのご要望に丁寧に対応いたします。",
 };
 
 export default async function StaffPage() {
