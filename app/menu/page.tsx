@@ -36,7 +36,7 @@ export default function MenuPage() {
             <section key={category.id} id={category.id}>
               {/* カテゴリ見出し */}
               <div className="mb-8 flex items-center gap-6">
-                <h2 className="font-accent text-2xl font-normal tracking-widest text-teal-primary lg:text-3xl">
+                <h2 className="font-urbanist text-2xl font-normal tracking-widest text-teal-primary lg:text-3xl">
                   {category.title}
                 </h2>
                 {category.note && (

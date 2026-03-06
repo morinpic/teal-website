@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Noto_Serif_JP, Cormorant_Garamond } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP, Cormorant_Garamond, Urbanist } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -25,6 +25,13 @@ const cormorantGaramond = Cormorant_Garamond({
   weight: ["300", "400", "500", "600"],
   display: "swap",
   variable: "--font-accent",
+});
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  display: "swap",
+  variable: "--font-urbanist",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
@@ -88,7 +95,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${cormorantGaramond.variable} bg-background font-sans text-dark-text antialiased`}
+        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${cormorantGaramond.variable} ${urbanist.variable} bg-background font-sans text-dark-text antialiased`}
       >
         <a href="#main-content" className="skip-link">
           メインコンテンツへスキップ

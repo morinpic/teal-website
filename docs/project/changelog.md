@@ -256,6 +256,18 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 46. ✅ Urbanistフォント導入・フォントシステム整理（backlog #45）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/urbanist-font-system`
+
+- `app/layout.tsx` に `Urbanist`（weight: 300/400/500/600, variable: `--font-urbanist`）を追加し、body の className に `urbanist.variable` を追加
+- `app/globals.css` の `@theme` に `--font-urbanist: var(--font-urbanist), "Urbanist", sans-serif` を追加（Tailwind で `font-urbanist` クラスとして使用可能に）
+- `components/SectionHeading.tsx` / `components/AccessSection.tsx` / `app/menu/page.tsx` の h2 を `font-accent` → `font-urbanist` に差し替え
+- Cormorant Garamond（font-accent）はスタッフ英語名・Hero サブテキスト等の小アクセント用途に限定
+- `docs/design-system/typography.md` にフォントファミリー比較表と Urbanist の選定理由・適用ルールを追記
+
+---
+
 ### 45. ✅ デザインPolish Phase2 — #40/#41/#42 対応
 
 **対応日:** 2026-03-07 / ブランチ: `feat/design-polish-phase2`
@@ -299,5 +311,5 @@
 ---
 
 *作成日: 2026年3月4日*
-*最終更新: 2026年3月7日（#40/#41/#42 デザインPolish Phase2 対応完了）*
+*最終更新: 2026年3月7日（#45 Urbanistフォント導入・フォントシステム整理）*
 *このファイルを GitHub リポジトリの `docs/` に配置し、Claude Code で参照しながら改善を進めることを推奨*
