@@ -37,6 +37,7 @@ export default function StaffCardAnimated({ staff, index }: Props) {
               alt={staff.name}
               fill
               sizes="256px"
+              quality={85}
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
           ) : (

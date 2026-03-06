@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import AnimatedLine from "@/components/AnimatedLine";
+import SectionHeading from "@/components/SectionHeading";
+import Button from "@/components/Button";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 const INSTAGRAM_URL = "https://www.instagram.com/hashimoto514yokohama";
 
@@ -84,90 +86,85 @@ export default function SnsSection() {
   return (
     <section id="sns" className="bg-white px-6 py-20 lg:py-32">
       <div className="mx-auto max-w-screen-xl">
-        {/* セクションヘッダー */}
-        <div className="mb-16 flex flex-col items-center gap-3 text-center">
-          <h2 className="text-3xl font-bold tracking-[0.2em] text-dark-text lg:text-4xl">
-            SNS
-          </h2>
-          <p className="text-sm tracking-widest text-dark-text/50">
-            ソーシャルメディア
-          </p>
-          <AnimatedLine />
-        </div>
+        <SectionHeading title="SNS" subtitle="ソーシャルメディア" />
 
         {/* Instagramグリッド */}
-        <div
-          ref={containerRef}
-          className="mb-12 grid grid-cols-2 gap-2 tablet:grid-cols-3 lg:gap-3"
-        >
-          {embedFailed
-            ? posts.map((post, i) => (
-                <a
-                  key={post.id}
-                  href={post.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`group relative aspect-square w-full overflow-hidden bg-gradient-to-br ${fallbackStyles[i]} transition-all hover:shadow-md border border-teal-primary/20`}
-                  aria-label="Instagramで投稿を見る"
-                >
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25 transition-colors group-hover:text-teal-primary">
-                    <InstagramIcon size={32} />
-                    <p className="text-xs tracking-widest">VIEW POST</p>
-                  </div>
-                </a>
-              ))
-            : posts.map((post) => (
-                <div
-                  key={post.id}
-                  className="relative aspect-square w-full overflow-hidden bg-dark-text/5 border border-teal-primary/20"
-                >
-                  {/* embed.js が生成する iframe を写真部分のみ表示するためにネガティブマージンで上部ヘッダーを隠す */}
-                  <div className="-mt-[54px]" style={{ width: "calc(100% + 2px)", marginLeft: "-1px" }}>
-                    <blockquote
-                      className="instagram-media"
-                      data-instgrm-captioned={false}
-                      data-instgrm-permalink={post.url}
-                      data-instgrm-version="14"
-                      style={{
-                        background: "transparent",
-                        border: 0,
-                        margin: 0,
-                        padding: 0,
-                        width: "100%",
-                        maxWidth: "none",
-                      }}
-                    />
-                  </div>
-                  {/* 読み込み中のプレースホルダー */}
-                  {!embedLoaded && (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25">
-                      <InstagramIcon size={28} />
-                      <div className="h-1 w-8 animate-pulse rounded bg-teal-primary/30" />
-                    </div>
-                  )}
+        <ScrollAnimation>
+          <div
+            ref={containerRef}
+            className="mb-12 grid grid-cols-2 gap-2 tablet:grid-cols-3 lg:gap-3"
+          >
+            {embedFailed
+              ? posts.map((post, i) => (
                   <a
+                    key={post.id}
                     href={post.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="absolute inset-0 z-10 bg-black/0 transition-colors duration-300 hover:bg-black/20"
+                    className={`group relative aspect-square w-full overflow-hidden bg-gradient-to-br ${fallbackStyles[i]} border border-teal-primary/20 transition-all hover:shadow-md`}
                     aria-label="Instagramで投稿を見る"
-                  />
-                </div>
-              ))}
-        </div>
+                  >
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25 transition-colors group-hover:text-teal-primary">
+                      <InstagramIcon size={32} />
+                      <p className="text-xs tracking-widest">VIEW POST</p>
+                    </div>
+                  </a>
+                ))
+              : posts.map((post) => (
+                  <div
+                    key={post.id}
+                    className="relative aspect-square w-full overflow-hidden border border-teal-primary/20 bg-dark-text/5"
+                  >
+                    <div className="-mt-[54px]" style={{ width: "calc(100% + 2px)", marginLeft: "-1px" }}>
+                      <blockquote
+                        className="instagram-media"
+                        data-instgrm-captioned={false}
+                        data-instgrm-permalink={post.url}
+                        data-instgrm-version="14"
+                        style={{
+                          background: "transparent",
+                          border: 0,
+                          margin: 0,
+                          padding: 0,
+                          width: "100%",
+                          maxWidth: "none",
+                        }}
+                      />
+                    </div>
+                    {!embedLoaded && (
+                      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-dark-text/25">
+                        <InstagramIcon size={28} />
+                        <div className="h-1 w-8 animate-pulse rounded bg-teal-primary/30" />
+                      </div>
+                    )}
+                    <a
+                      href={post.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 z-10 bg-black/0 transition-colors duration-300 hover:bg-black/20"
+                      aria-label="Instagramで投稿を見る"
+                    />
+                  </div>
+                ))}
+          </div>
+        </ScrollAnimation>
 
         {/* Instagramフォローボタン */}
-        <div className="flex justify-center">
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 bg-teal-primary px-10 py-4 text-xs font-medium tracking-[0.3em] text-white transition-colors hover:bg-teal-primary/80"
-          >
-            <InstagramIcon size={18} />
-            INSTAGRAM をフォロー
-          </a>
-        </div>
+        <ScrollAnimation delay={0.15}>
+          <div className="flex justify-center">
+            <Button
+              variant="primary"
+              href={INSTAGRAM_URL}
+              external
+              aria-label="Instagram をフォローする"
+            >
+              <span className="flex items-center gap-3">
+                <InstagramIcon size={16} />
+                INSTAGRAM をフォロー
+              </span>
+            </Button>
+          </div>
+        </ScrollAnimation>
       </div>
     </section>
   );

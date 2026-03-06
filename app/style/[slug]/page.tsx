@@ -63,6 +63,7 @@ export default async function StyleDetailPage({ params }: Props) {
                   alt={style.title}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
+                  quality={90}
                   className="object-cover"
                 />
               ) : (
@@ -77,7 +78,7 @@ export default async function StyleDetailPage({ params }: Props) {
 
           {/* スタイル情報 */}
           <div className="flex flex-col justify-center lg:w-1/2">
-            <h1 className="text-2xl font-bold tracking-wide text-dark-text lg:text-3xl">
+            <h1 className="font-serif text-2xl font-medium tracking-wide text-dark-text lg:text-3xl">
               {style.title}
             </h1>
 

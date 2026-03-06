@@ -62,6 +62,7 @@ export default async function StaffDetailPage({ params }: Props) {
                   alt={staff.name}
                   fill
                   sizes="(max-width: 1024px) 100vw, 320px"
+                  quality={90}
                   className="object-cover"
                 />
               ) : (
