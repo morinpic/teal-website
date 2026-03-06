@@ -256,6 +256,24 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 47. ✅ 構造化データ修正・Hero CTA整理・ゴールド変数削除（backlog #36/#43/#44）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/polish-s-tasks`
+
+#### #36 構造化データの実情報入力
+- `app/page.tsx` の `localBusinessJsonLd.geo` 座標を `35.4438, 139.6422` → `35.4424, 139.6508` に修正（Google Maps 埋め込みと一致）
+
+#### #43 Hero の Scroll Down CTA 廃止
+- `components/HeroContent.tsx` から `SCROLL DOWN` の `<Link>` 要素を削除
+- RESERVE ボタンと下部スクロールインジケーター（縦線 animate-pulse）は維持
+- 不要になった `Link` import も削除
+
+#### #44 ゴールドカラー変数の削除
+- `app/globals.css` から `--color-gold-accent: #d4af37` / `--color-gold-light: #f4e8d0` および `/* Gold Accent */` コメントを削除（使用箇所が存在しないことを確認済み）
+- `docs/design-system/color-system.md` から「ゴールドアクセント（将来拡張）」セクションを削除
+
+---
+
 ### 46. ✅ Urbanistフォント導入・フォントシステム整理（backlog #45）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/urbanist-font-system`

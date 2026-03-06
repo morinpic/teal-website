@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -49,12 +48,6 @@ export default function HeroContent() {
           >
             RESERVE
           </a>
-          <Link
-            href="#news"
-            className="px-10 py-3 text-xs font-medium tracking-[0.3em] text-white/70 transition-colors hover:text-white"
-          >
-            SCROLL DOWN
-          </Link>
         </motion.div>
       </div>
       <motion.div
