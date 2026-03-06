@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -18,15 +18,16 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 export default function StyleGridAnimated({ styles }: { styles: StyleItem[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div ref={ref} className="grid grid-cols-2 gap-4 tablet:gap-6 lg:grid-cols-3">
       {styles.map((style, i) => (
         <motion.div
           key={style.id}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+          transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
         >
           <Link
             href={`/style/${style.slug}`}

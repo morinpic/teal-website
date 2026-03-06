@@ -43,5 +43,6 @@ export type Staff = MicroCMSBase & {
   photo?: MicroCMSImage;
   profile?: string; // リッチテキスト
   message?: string;
+  specialty?: string; // 得意なスタイル・施術
   slug: string;
 };
