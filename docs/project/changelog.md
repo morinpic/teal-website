@@ -256,6 +256,16 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 49. ✅ メニューセクションをタブ廃止・全一覧表示に変更
+
+**対応日:** 2026-03-07 / ブランチ: `feat/menu-section-redesign`
+
+- `components/MenuSection.tsx`: タブUI（`useState` + `activeId`）を廃止し、全カテゴリを縦スクロールで一覧表示するレイアウトに変更。`"use client"` 削除によりサーバーコンポーネント化。カテゴリ見出し（font-urbanist + teal + 横線）と料金テーブルを `space-y-12` で縦並び。`tr` のホバーエフェクトを削除（クリック不可要素のため）
+- `app/menu/page.tsx`: `/menu` 専用ページを削除（動線なし）。アクセス時は 404 になる
+- `app/sitemap.ts`: `/menu` エントリを削除
+
+---
+
 ### 48. ✅ 視覚的ヒエラルキー強化（backlog #37）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/visual-hierarchy`
