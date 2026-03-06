@@ -13,7 +13,12 @@
       "Bash(git commit:*)",
       "Bash(grep:*)",
       "Bash(git rm:*)",
-      "Bash(tmux:*)"
+      "Bash(tmux:*)",
+      "Bash(git checkout:*)",
+      "Bash(npx next:*)",
+      "Bash(node:*)",
+      "Bash(./node_modules/.bin/eslint .:*)",
+      "Bash(git stash:*)"
     ]
   },
   "teammateMode": "tmux"
