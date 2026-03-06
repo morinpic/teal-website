@@ -256,6 +256,25 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 45. ✅ デザインPolish Phase2 — #40/#41/#42 対応
+
+**対応日:** 2026-03-07 / ブランチ: `feat/design-polish-phase2`
+
+#### #42 背景色のクリームホワイト化
+- `app/globals.css` の `@theme` に `--color-background: #fafaf8` を追加
+- `app/layout.tsx` の body に `bg-background` クラスを適用
+- 各セクションの `bg-white` はそのまま維持し、白セクションとのリズムを保持
+
+#### #40 Cormorant Garamond（font-accent）の積極活用
+- `components/SectionHeading.tsx` の h2 を `font-serif font-medium` → `font-accent font-normal` に変更（NEWS/STYLE/MENU/STAFF/BLOG/SNS/FAQ 全セクション共通）
+- `components/AccessSection.tsx` の ACCESS h2 を `font-bold` → `font-accent font-normal` に変更
+- `app/menu/page.tsx` のカテゴリ h2（CUT/COLOR等）を `font-bold` → `font-accent font-normal` に変更
+
+#### #41 prefers-reduced-motion 対応の漏れ修正
+- `components/NewsListAnimated.tsx`: `useReducedMotion` を追加し、true 時は `y: 0` の初期値に（opacity のみアニメーション）
+- `components/AnimatedLine.tsx`: `useReducedMotion` を追加し、true 時は `initial: { width: 64 }`（アニメーションなしで即時表示）
+- `app/template.tsx`: `useReducedMotion` を追加し、true 時は `initial: { opacity: 1, y: 0 }`（ページ遷移アニメーションをスキップ）
+
 ---
 
 ## 対応サマリー
@@ -264,9 +283,9 @@
 |--------|------|--------|--------|----------|--------|
 | P0 | 6 | 5 | 0 | 0 | 1 |
 | P1 | 8 | 8 | 0 | 0 | 0 |
-| P2 | 26 | 24 | 0 | 2 | 0 |
+| P2 | 29 | 27 | 0 | 2 | 0 |
 | P3 | 4 | 1 | 0 | 0 | 3 |
-| **合計** | **44** | **38** | **0** | **2** | **4** |
+| **合計** | **47** | **41** | **0** | **2** | **4** |
 
 ## 対応スケジュール目安
 
@@ -280,5 +299,5 @@
 ---
 
 *作成日: 2026年3月4日*
-*最終更新: 2026年3月5日（#44 ブログ詳細ページタグ表示 対応完了）*
+*最終更新: 2026年3月7日（#40/#41/#42 デザインPolish Phase2 対応完了）*
 *このファイルを GitHub リポジトリの `docs/` に配置し、Claude Code で参照しながら改善を進めることを推奨*

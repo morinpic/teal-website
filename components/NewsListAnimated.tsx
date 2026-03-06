@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
 
@@ -17,13 +17,14 @@ const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 export default function NewsListAnimated({ items }: { items: NewsItem[] }) {
   const ref = useRef<HTMLUListElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <ul ref={ref} className="divide-y divide-dark-text/10">
       {items.map((item, i) => (
         <motion.li
           key={item.id}
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
         >

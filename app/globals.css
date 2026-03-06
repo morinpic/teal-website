@@ -10,6 +10,9 @@
   --color-dark-text: #1a1a1a;
   --color-gray-mid: #555555;
 
+  /* Background */
+  --color-background: #fafaf8;
+
   /* Gold Accent */
   --color-gold-accent: #d4af37;
   --color-gold-light: #f4e8d0;

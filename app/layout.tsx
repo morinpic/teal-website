@@ -88,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${cormorantGaramond.variable} font-sans text-dark-text antialiased`}
+        className={`${notoSansJP.variable} ${notoSerifJP.variable} ${cormorantGaramond.variable} bg-background font-sans text-dark-text antialiased`}
       >
         <a href="#main-content" className="skip-link">
           メインコンテンツへスキップ
