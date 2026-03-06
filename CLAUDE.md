@@ -72,8 +72,8 @@ npm run lint     # ESLint実行
 
 ### プロジェクト管理 (`docs/project/`)
 - 要件定義: `docs/project/requirements.md`
-- 開発改善計画・進捗管理: `docs/project/improvement-plan.md`
-- デザイン改善バックログ: `docs/project/improvement-list.md`
+- 完了済みタスクの対応履歴: `docs/project/changelog.md`
+- デザイン改善バックログ: `docs/project/backlog.md`
 - デザイン方針書: `docs/project/design-direction.md`
 - デザイン批評レポート: `docs/project/design-critique-v1.md`
 

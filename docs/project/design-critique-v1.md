@@ -3,7 +3,7 @@
 > 批評日: 2026-03-06
 > 対象: teal.（横浜元町）公式ウェブサイト Phase 1完了後の現状評価
 > 視点: Apple Design Director × 2026年トレンド
-> 参照: `docs/project/design-direction.md`, `docs/project/improvement-list.md`
+> 参照: `docs/project/design-direction.md`, `docs/project/backlog.md`
 
 ---
 
@@ -220,9 +220,9 @@
 
 ---
 
-## improvement-list.md との対照
+## backlog.md との対照
 
-| 批評での指摘 | improvement-list No | 優先度変更 |
+| 批評での指摘 | backlog No | 優先度変更 |
 |------------|-------------------|-----------|
 | セリフ体導入 | No.10 | ↑↑ Critical に格上げ |
 | モバイルタップターゲット | No.9 | ↑ Important |
