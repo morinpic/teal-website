@@ -13,7 +13,7 @@ export default function MenuSection() {
   const activeCategory = menuCategories.find((c) => c.id === activeId)!;
 
   return (
-    <section id="menu" className="bg-white px-6 py-20 lg:py-32">
+    <section id="menu" className="bg-white px-6 py-16 lg:py-24">
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="MENU" subtitle="メニュー・料金表" />
 

@@ -84,7 +84,7 @@ export default function SnsSection() {
   }, []);
 
   return (
-    <section id="sns" className="bg-white px-6 py-20 lg:py-32">
+    <section id="sns" className="bg-white px-6 py-16 lg:py-24">
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="SNS" subtitle="ソーシャルメディア" />
 

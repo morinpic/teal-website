@@ -256,6 +256,27 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 48. ✅ 視覚的ヒエラルキー強化（backlog #37）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/visual-hierarchy`
+
+セクションを3段階の Tier に分類し、padding とフォントサイズで視覚的な重みを表現。
+
+| Tier | セクション | 変更内容 |
+|------|-----------|---------|
+| Tier 1 | STYLE | `py-32 lg:py-48`、`size="lg"`（text-4xl lg:text-5xl）、コンテナ幅 `max-w-screen-2xl px-4 lg:px-8` |
+| Tier 2 | ABOUT | 変更なし（py-24 lg:py-36 は適切） |
+| Tier 2 | STAFF | `py-20 lg:py-32` → `py-24 lg:py-36` |
+| Tier 3 | MENU | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Tier 3 | FAQ | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Tier 3 | NEWS / BLOG | `py-24` → `py-16 lg:py-24` |
+| Tier 3 | SNS | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Utility | ACCESS | 変更なし |
+
+- `components/SectionHeading.tsx` に `size?: "lg" | "md"` prop を追加（md がデフォルト）
+
+---
+
 ### 47. ✅ 構造化データ修正・Hero CTA整理・ゴールド変数削除（backlog #36/#43/#44）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/polish-s-tasks`
