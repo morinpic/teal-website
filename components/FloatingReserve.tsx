@@ -10,7 +10,7 @@ export default function FloatingReserve() {
         href="https://beauty.hotpepper.jp/slnH000784195/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex w-full items-center justify-center bg-teal-primary py-4 text-sm font-medium tracking-[0.25em] text-white shadow-[0_-2px_12px_rgba(0,128,128,0.25)] transition-opacity hover:opacity-90"
+        className="flex min-h-[44px] w-full items-center justify-center bg-teal-primary py-4 text-sm font-medium tracking-[0.25em] text-white shadow-[0_-2px_12px_rgba(12,124,124,0.25)] transition-opacity hover:opacity-90"
       >
         ご予約はこちら &nbsp;／&nbsp; RESERVE
       </a>

@@ -70,10 +70,10 @@ export default function MenuSection() {
                     key={item.name}
                     className="border-b border-dark-text/10 transition-colors hover:bg-teal-primary/5"
                   >
-                    <td className="py-4 pr-4 text-sm leading-relaxed text-dark-text">
+                    <td className="py-4 pr-4 text-base leading-relaxed text-dark-text">
                       {item.name}
                     </td>
-                    <td className="py-4 text-right text-sm font-semibold text-teal-primary whitespace-nowrap">
+                    <td className="py-4 text-right text-base font-semibold text-teal-primary whitespace-nowrap">
                       {item.price}
                     </td>
                   </tr>

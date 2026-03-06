@@ -15,6 +15,11 @@
   --color-gold-light: #f4e8d0;
 
   --breakpoint-tablet: 769px;
+
+  /* フォントファミリー */
+  --font-sans: var(--font-sans-jp), "Hiragino Kaku Gothic ProN", sans-serif;
+  --font-serif: var(--font-serif-jp), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-accent: var(--font-accent), "Georgia", serif;
 }
 
 /* スキップリンク */
@@ -101,7 +106,8 @@
 /* リッチテキスト（microCMS 本文）スタイル */
 .rich-text h2 {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: var(--font-serif);
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
@@ -111,7 +117,8 @@
 
 .rich-text h3 {
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-family: var(--font-serif);
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   color: var(--color-dark-text);

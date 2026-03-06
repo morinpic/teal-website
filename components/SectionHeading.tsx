@@ -11,7 +11,7 @@ export default function SectionHeading({ title, subtitle, light = false }: Secti
   return (
     <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
       <h2
-        className={`text-3xl font-bold tracking-[0.2em] lg:text-4xl ${
+        className={`font-serif text-3xl font-medium tracking-[0.2em] lg:text-4xl ${
           light ? "text-white" : "text-dark-text"
         }`}
       >
@@ -19,7 +19,7 @@ export default function SectionHeading({ title, subtitle, light = false }: Secti
       </h2>
       {subtitle && (
         <p
-          className={`text-sm tracking-widest ${
+          className={`font-accent text-sm tracking-widest ${
             light ? "text-white/70" : "text-dark-text/50"
           }`}
         >

@@ -141,7 +141,7 @@ export default function Header() {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href, closeMenu)}
-                className="text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
+                className="flex min-h-[44px] items-center text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
               >
                 {link.label}
               </Link>

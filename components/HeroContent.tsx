@@ -1,18 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function HeroContent() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <>
       <div className="relative z-10 flex flex-col items-center gap-6 px-6 text-center text-white">
         <h1 className="sr-only">teal.</h1>
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.3 }}
         >
@@ -26,15 +28,15 @@ export default function HeroContent() {
           />
         </motion.div>
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.6 }}
-          className="text-xs font-light tracking-[0.4em] text-white/80"
+          className="font-accent text-sm font-light tracking-[0.4em] text-white/80"
         >
           hair salon / yokohama motomachi
         </motion.p>
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
           className="mt-6 flex flex-col items-center gap-4 sm:flex-row"

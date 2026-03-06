@@ -30,7 +30,7 @@ export default function AccessSection() {
 
           {/* 店舗情報テーブル */}
           <div className="lg:w-96">
-            <table className="w-full text-sm">
+            <table className="w-full text-base">
               <tbody className="divide-y divide-white/10">
                 <tr>
                   <th className="py-4 pr-6 text-left text-xs font-medium tracking-widest text-white/50 align-top">
