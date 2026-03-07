@@ -15,6 +15,10 @@ export default function AboutSection() {
             <div className="mt-2 h-px w-12 bg-teal-primary" />
           </div>
 
+          <p className="font-accent text-5xl lg:text-7xl font-light leading-none tracking-tight text-dark-text">
+            Your Story.
+          </p>
+
           <div className="flex flex-col gap-5">
             <p className="text-lg font-light leading-relaxed tracking-wide text-dark-text lg:text-xl">
               teal.は、横浜元町に佇む静かな美容院です。

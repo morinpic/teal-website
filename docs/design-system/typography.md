@@ -56,7 +56,7 @@ const notoSansJP = Noto_Sans_JP({
 
 | レベル | サイズ | Tailwind クラス | line-height | letter-spacing | 用途 |
 |---|---|---|---|---|---|
-| Display | - | - | - | - | （現在未使用、将来拡張用） |
+| Display | 60px / 80px / 96px | `text-5xl` / `text-7xl lg:text-8xl` | `leading-none` | `tracking-tight` / `tracking-tighter` | ページキャッチコピー・セクション装飾的タイトル |
 | h1 (sr-only) | - | `sr-only` | - | - | Hero のスクリーンリーダー用見出し |
 | h2 (セクション見出し) | 30px / 36px | `text-3xl lg:text-4xl` | デフォルト | `tracking-widest` (0.1em) / `tracking-[0.2em]` | 各セクションタイトル（NEWS, STYLE 等） |
 | h3 (カテゴリ) | 18px | `text-lg` | デフォルト | `tracking-widest` | メニューカテゴリタイトル |
@@ -65,6 +65,13 @@ const notoSansJP = Noto_Sans_JP({
 | Body (rich-text) | 16px | - | `line-height: 1.9` | デフォルト | microCMS本文 |
 | Small | 14px | `text-sm` | `leading-relaxed` | `tracking-widest` | サブタイトル、メニュー価格、抜粋 |
 | XS | 12px | `text-xs` | デフォルト | `tracking-widest` / `tracking-[0.3em]` / `tracking-[0.4em]` | 日付、ボタンラベル、メタ情報 |
+
+### Display レベルの使用ルール
+
+- **フォント:** `font-accent`（Cormorant Garamond）を基本とし、英字大見出しは `font-urbanist` も可
+- **ウェイト:** `font-light`（300）を基本
+- **用途:** Hero 直下・セクション冒頭の装飾的キャッチコピーに限定。日本語には使用しない
+- **カラー:** `text-dark-text`（通常表示）または `text-dark-text/10`（装飾的背景テキスト）
 
 ## letter-spacing の使い分け
 
