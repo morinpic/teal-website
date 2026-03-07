@@ -1,11 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { label: "NEWS", href: "/#news" },
   { label: "STYLE", href: "/#style" },
   { label: "MENU", href: "/#menu" },
-  { label: "STAFF", href: "/staff" },
+  { label: "STAFF", href: "/#staff" },
   { label: "BLOG", href: "/#blog" },
   { label: "ACCESS", href: "/#access" },
 ];
@@ -14,6 +17,24 @@ const RESERVE_URL = "https://beauty.hotpepper.jp/slnH000784195/";
 const INSTAGRAM_URL = "https://www.instagram.com/hashimoto514yokohama";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (pathname === "/" && href.startsWith("/#")) {
+      e.preventDefault();
+      const id = href.slice(2);
+      const element = document.getElementById(id);
+      if (element) {
+        const headerOffset = 64;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <footer className="bg-dark-text px-6 py-16 text-white">
       <div className="mx-auto max-w-screen-xl">
@@ -69,6 +90,7 @@ export default function Footer() {
             <Link
               key={link.label}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-xs font-medium tracking-widest text-white/70 transition-colors hover:text-white"
             >
               {link.label}
