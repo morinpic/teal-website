@@ -14,6 +14,7 @@ const navLinks = [
   { label: "FAQ", href: "/#faq" },
   { label: "NEWS", href: "/#news" },
   { label: "BLOG", href: "/#blog" },
+  { label: "SNS", href: "/#sns" },
   { label: "ACCESS", href: "/#access" },
 ];
 

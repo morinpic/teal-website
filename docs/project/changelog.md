@@ -266,7 +266,7 @@
 
 ---
 
-### 48. ✅ 視覚的ヒエラルキー強化（backlog #37）
+### 48. ✅ 視覚的ヒエラルキー強化（backlog D-16）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/visual-hierarchy`
 
@@ -287,25 +287,25 @@
 
 ---
 
-### 47. ✅ 構造化データ修正・Hero CTA整理・ゴールド変数削除（backlog #36/#43/#44）
+### 47. ✅ 構造化データ修正・Hero CTA整理・ゴールド変数削除（backlog P-05/D-22/D-23）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/polish-s-tasks`
 
-#### #36 構造化データの実情報入力
+#### P-05 構造化データの実情報入力
 - `app/page.tsx` の `localBusinessJsonLd.geo` 座標を `35.4438, 139.6422` → `35.4424, 139.6508` に修正（Google Maps 埋め込みと一致）
 
-#### #43 Hero の Scroll Down CTA 廃止
+#### D-22 Hero の Scroll Down CTA 廃止
 - `components/HeroContent.tsx` から `SCROLL DOWN` の `<Link>` 要素を削除
 - RESERVE ボタンと下部スクロールインジケーター（縦線 animate-pulse）は維持
 - 不要になった `Link` import も削除
 
-#### #44 ゴールドカラー変数の削除
+#### D-23 ゴールドカラー変数の削除
 - `app/globals.css` から `--color-gold-accent: #d4af37` / `--color-gold-light: #f4e8d0` および `/* Gold Accent */` コメントを削除（使用箇所が存在しないことを確認済み）
 - `docs/design-system/color-system.md` から「ゴールドアクセント（将来拡張）」セクションを削除
 
 ---
 
-### 46. ✅ Urbanistフォント導入・フォントシステム整理（backlog #45）
+### 46. ✅ Urbanistフォント導入・フォントシステム整理（backlog D-24）
 
 **対応日:** 2026-03-07 / ブランチ: `feat/urbanist-font-system`
 
@@ -317,21 +317,21 @@
 
 ---
 
-### 45. ✅ デザインPolish Phase2 — #40/#41/#42 対応
+### 45. ✅ デザインPolish Phase2 — D-20/R-04/D-21 対応
 
 **対応日:** 2026-03-07 / ブランチ: `feat/design-polish-phase2`
 
-#### #42 背景色のクリームホワイト化
+#### D-21 背景色のクリームホワイト化
 - `app/globals.css` の `@theme` に `--color-background: #fafaf8` を追加
 - `app/layout.tsx` の body に `bg-background` クラスを適用
 - 各セクションの `bg-white` はそのまま維持し、白セクションとのリズムを保持
 
-#### #40 Cormorant Garamond（font-accent）の積極活用
+#### D-20 Cormorant Garamond（font-accent）の積極活用
 - `components/SectionHeading.tsx` の h2 を `font-serif font-medium` → `font-accent font-normal` に変更（NEWS/STYLE/MENU/STAFF/BLOG/SNS/FAQ 全セクション共通）
 - `components/AccessSection.tsx` の ACCESS h2 を `font-bold` → `font-accent font-normal` に変更
 - `app/menu/page.tsx` のカテゴリ h2（CUT/COLOR等）を `font-bold` → `font-accent font-normal` に変更
 
-#### #41 prefers-reduced-motion 対応の漏れ修正
+#### R-04 prefers-reduced-motion 対応の漏れ修正
 - `components/NewsListAnimated.tsx`: `useReducedMotion` を追加し、true 時は `y: 0` の初期値に（opacity のみアニメーション）
 - `components/AnimatedLine.tsx`: `useReducedMotion` を追加し、true 時は `initial: { width: 64 }`（アニメーションなしで即時表示）
 - `app/template.tsx`: `useReducedMotion` を追加し、true 時は `initial: { opacity: 1, y: 0 }`（ページ遷移アニメーションをスキップ）
