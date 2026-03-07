@@ -48,6 +48,12 @@ export default function HeroContent() {
           >
             RESERVE
           </a>
+          <a
+            href="#about"
+            className="text-xs font-medium tracking-[0.3em] text-white/60 transition-colors hover:text-white/90"
+          >
+            SCROLL DOWN
+          </a>
         </motion.div>
       </div>
       <motion.div

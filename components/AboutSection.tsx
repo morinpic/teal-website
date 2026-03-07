@@ -9,7 +9,7 @@ export default function AboutSection() {
       <div className="mx-auto max-w-2xl text-center">
         <ScrollAnimation className="flex flex-col items-center gap-8">
           <div className="flex flex-col items-center gap-2">
-            <p className="text-xs tracking-[0.3em] text-teal-primary uppercase">
+            <p className="text-sm tracking-[0.3em] text-teal-primary uppercase">
               Hair Salon / Yokohama Motomachi
             </p>
             <div className="mt-2 h-px w-12 bg-teal-primary" />
@@ -19,7 +19,7 @@ export default function AboutSection() {
             Your Story.
           </p>
 
-          <div className="flex flex-col gap-5">
+          <div className="mt-4 flex flex-col gap-5">
             <p className="text-lg font-light leading-relaxed tracking-wide text-dark-text lg:text-xl">
               teal.は、横浜元町に佇む静かな美容院です。
             </p>
