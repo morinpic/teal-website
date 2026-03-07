@@ -38,7 +38,7 @@ export default function HeroContent() {
           initial={{ opacity: 0, y: prefersReducedMotion ? 0 : 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: EASE, delay: 0.9 }}
-          className="mt-6 flex flex-col items-center gap-4 sm:flex-row"
+          className="mt-6 flex flex-col items-center gap-6 sm:flex-row sm:gap-8"
         >
           <a
             href="https://beauty.hotpepper.jp/slnH000784195/"
@@ -50,6 +50,15 @@ export default function HeroContent() {
           </a>
           <a
             href="#about"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById("about");
+              if (el) {
+                const headerOffset = 64;
+                const pos = el.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo({ top: pos - headerOffset, behavior: "smooth" });
+              }
+            }}
             className="text-xs font-medium tracking-[0.3em] text-white/60 transition-colors hover:text-white/90"
           >
             SCROLL DOWN
