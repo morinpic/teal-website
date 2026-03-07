@@ -102,15 +102,16 @@ export default function Header() {
 
           {/* 予約ボタン（PC） + ハンバーガー（SP） */}
           <div className="flex items-center gap-4">
-            <Button
-              variant="primary"
-              href={RESERVE_URL}
-              external
-              aria-label="ホットペッパービューティーで予約する"
-              className="hidden lg:inline-block"
-            >
-              RESERVE
-            </Button>
+            <div className="hidden lg:block">
+              <Button
+                variant="primary"
+                href={RESERVE_URL}
+                external
+                aria-label="ホットペッパービューティーで予約する"
+              >
+                RESERVE
+              </Button>
+            </div>
 
             {/* ハンバーガーボタン（SP/tablet） */}
             <button
