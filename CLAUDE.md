@@ -15,7 +15,7 @@ npm run lint     # ESLint実行
 
 - **フレームワーク:** Next.js 15+ (App Router), React 19, TypeScript (strict)
 - **スタイリング:** TailwindCSS v4（`@theme` ディレクティブ）
-- **フォント:** Noto Sans JP / Noto Serif JP / Cormorant Garamond（Google Fonts, `next/font`）
+- **フォント:** Urbanist / Noto Sans JP / Noto Serif JP / Cormorant Garamond（Google Fonts, `next/font`）
 - **アニメーション:** Framer Motion v12
 - **CMS:** microCMS (Hobbyプラン) - `microcms-js-sdk`
 - **ホスティング:** Vercel (GitHub連携自動デプロイ)
@@ -27,8 +27,9 @@ npm run lint     # ESLint実行
 `@/*` でプロジェクトルートからのインポートが可能（tsconfig.json で設定済み）
 
 ### フォント設計
+- `font-urbanist`: Urbanist（セクション h2 大見出し・ロゴ統一）
 - `font-sans`: Noto Sans JP（本文・UI全般）
-- `font-serif`: Noto Serif JP（セクション見出し H1〜H2）
+- `font-serif`: Noto Serif JP（H1・ページタイトル系）
 - `font-accent`: Cormorant Garamond（英字アクセント・タグライン）
 
 ### CMS連携
@@ -44,7 +45,7 @@ npm run lint     # ESLint実行
 
 ### 主要コンポーネント
 - `ScrollAnimation`: スクロールトリガーのフェードイン（Framer Motion + `useReducedMotion` 対応）
-- `SectionHeading`: セクション見出し（セリフ体・AnimatedLine 含む）
+- `SectionHeading`: セクション見出し（Urbanist / size prop 対応・AnimatedLine 含む）
 - `Button`: ポリモーフィックなボタン/リンク（primary / secondary / ghost-white）
 - `StaffCardAnimated`: スタッフカードのスタガーアニメーション（Client Component）
 
@@ -65,7 +66,6 @@ npm run lint     # ESLint実行
 - `/news`, `/news/[slug]` - お知らせ一覧・詳細
 - `/style`, `/style/[slug]` - スタイルギャラリー一覧・詳細
 - `/blog`, `/blog/[slug]` - ブログ一覧・詳細（news APIからカテゴリでフィルタ）
-- `/menu` - メニュー・料金表
 - `/staff`, `/staff/[slug]` - スタッフ一覧・詳細
 
 ## 参照ドキュメント
