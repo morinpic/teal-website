@@ -40,7 +40,16 @@ export default function Footer() {
       <div className="mx-auto max-w-screen-xl">
         {/* ロゴ + 予約ボタン */}
         <div className="flex flex-col items-center gap-8 border-b border-white/20 pb-12 lg:flex-row lg:justify-between">
-          <Link href="/" className="flex items-center">
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center"
+          >
             <Image src="/images/teal_w.svg" alt="teal." width={100} height={40} className="h-10 w-auto" />
           </Link>
 
