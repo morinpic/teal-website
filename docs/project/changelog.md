@@ -256,6 +256,86 @@
 - [ ] ドメイン取得・DNS設定
 - [ ] Vercelでのカスタムドメイン設定
 
+### 49. ✅ メニューセクションをタブ廃止・全一覧表示に変更
+
+**対応日:** 2026-03-07 / ブランチ: `feat/menu-section-redesign`
+
+- `components/MenuSection.tsx`: タブUI（`useState` + `activeId`）を廃止し、全カテゴリを縦スクロールで一覧表示するレイアウトに変更。`"use client"` 削除によりサーバーコンポーネント化。カテゴリ見出し（font-urbanist + teal + 横線）と料金テーブルを `space-y-12` で縦並び。`tr` のホバーエフェクトを削除（クリック不可要素のため）
+- `app/menu/page.tsx`: `/menu` 専用ページを削除（動線なし）。アクセス時は 404 になる
+- `app/sitemap.ts`: `/menu` エントリを削除
+
+---
+
+### 48. ✅ 視覚的ヒエラルキー強化（backlog #37）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/visual-hierarchy`
+
+セクションを3段階の Tier に分類し、padding とフォントサイズで視覚的な重みを表現。
+
+| Tier | セクション | 変更内容 |
+|------|-----------|---------|
+| Tier 1 | STYLE | `py-32 lg:py-48`、`size="lg"`（text-4xl lg:text-5xl）、コンテナ幅 `max-w-screen-2xl px-4 lg:px-8` |
+| Tier 2 | ABOUT | 変更なし（py-24 lg:py-36 は適切） |
+| Tier 2 | STAFF | `py-20 lg:py-32` → `py-24 lg:py-36` |
+| Tier 3 | MENU | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Tier 3 | FAQ | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Tier 3 | NEWS / BLOG | `py-24` → `py-16 lg:py-24` |
+| Tier 3 | SNS | `py-20 lg:py-32` → `py-16 lg:py-24` |
+| Utility | ACCESS | 変更なし |
+
+- `components/SectionHeading.tsx` に `size?: "lg" | "md"` prop を追加（md がデフォルト）
+
+---
+
+### 47. ✅ 構造化データ修正・Hero CTA整理・ゴールド変数削除（backlog #36/#43/#44）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/polish-s-tasks`
+
+#### #36 構造化データの実情報入力
+- `app/page.tsx` の `localBusinessJsonLd.geo` 座標を `35.4438, 139.6422` → `35.4424, 139.6508` に修正（Google Maps 埋め込みと一致）
+
+#### #43 Hero の Scroll Down CTA 廃止
+- `components/HeroContent.tsx` から `SCROLL DOWN` の `<Link>` 要素を削除
+- RESERVE ボタンと下部スクロールインジケーター（縦線 animate-pulse）は維持
+- 不要になった `Link` import も削除
+
+#### #44 ゴールドカラー変数の削除
+- `app/globals.css` から `--color-gold-accent: #d4af37` / `--color-gold-light: #f4e8d0` および `/* Gold Accent */` コメントを削除（使用箇所が存在しないことを確認済み）
+- `docs/design-system/color-system.md` から「ゴールドアクセント（将来拡張）」セクションを削除
+
+---
+
+### 46. ✅ Urbanistフォント導入・フォントシステム整理（backlog #45）
+
+**対応日:** 2026-03-07 / ブランチ: `feat/urbanist-font-system`
+
+- `app/layout.tsx` に `Urbanist`（weight: 300/400/500/600, variable: `--font-urbanist`）を追加し、body の className に `urbanist.variable` を追加
+- `app/globals.css` の `@theme` に `--font-urbanist: var(--font-urbanist), "Urbanist", sans-serif` を追加（Tailwind で `font-urbanist` クラスとして使用可能に）
+- `components/SectionHeading.tsx` / `components/AccessSection.tsx` / `app/menu/page.tsx` の h2 を `font-accent` → `font-urbanist` に差し替え
+- Cormorant Garamond（font-accent）はスタッフ英語名・Hero サブテキスト等の小アクセント用途に限定
+- `docs/design-system/typography.md` にフォントファミリー比較表と Urbanist の選定理由・適用ルールを追記
+
+---
+
+### 45. ✅ デザインPolish Phase2 — #40/#41/#42 対応
+
+**対応日:** 2026-03-07 / ブランチ: `feat/design-polish-phase2`
+
+#### #42 背景色のクリームホワイト化
+- `app/globals.css` の `@theme` に `--color-background: #fafaf8` を追加
+- `app/layout.tsx` の body に `bg-background` クラスを適用
+- 各セクションの `bg-white` はそのまま維持し、白セクションとのリズムを保持
+
+#### #40 Cormorant Garamond（font-accent）の積極活用
+- `components/SectionHeading.tsx` の h2 を `font-serif font-medium` → `font-accent font-normal` に変更（NEWS/STYLE/MENU/STAFF/BLOG/SNS/FAQ 全セクション共通）
+- `components/AccessSection.tsx` の ACCESS h2 を `font-bold` → `font-accent font-normal` に変更
+- `app/menu/page.tsx` のカテゴリ h2（CUT/COLOR等）を `font-bold` → `font-accent font-normal` に変更
+
+#### #41 prefers-reduced-motion 対応の漏れ修正
+- `components/NewsListAnimated.tsx`: `useReducedMotion` を追加し、true 時は `y: 0` の初期値に（opacity のみアニメーション）
+- `components/AnimatedLine.tsx`: `useReducedMotion` を追加し、true 時は `initial: { width: 64 }`（アニメーションなしで即時表示）
+- `app/template.tsx`: `useReducedMotion` を追加し、true 時は `initial: { opacity: 1, y: 0 }`（ページ遷移アニメーションをスキップ）
+
 ---
 
 ## 対応サマリー
@@ -264,9 +344,9 @@
 |--------|------|--------|--------|----------|--------|
 | P0 | 6 | 5 | 0 | 0 | 1 |
 | P1 | 8 | 8 | 0 | 0 | 0 |
-| P2 | 26 | 24 | 0 | 2 | 0 |
+| P2 | 29 | 27 | 0 | 2 | 0 |
 | P3 | 4 | 1 | 0 | 0 | 3 |
-| **合計** | **44** | **38** | **0** | **2** | **4** |
+| **合計** | **47** | **41** | **0** | **2** | **4** |
 
 ## 対応スケジュール目安
 
@@ -280,5 +360,5 @@
 ---
 
 *作成日: 2026年3月4日*
-*最終更新: 2026年3月5日（#44 ブログ詳細ページタグ表示 対応完了）*
+*最終更新: 2026年3月7日（#45 Urbanistフォント導入・フォントシステム整理）*
 *このファイルを GitHub リポジトリの `docs/` に配置し、Claude Code で参照しながら改善を進めることを推奨*

@@ -1,3 +1,6 @@
+# Cowork skill packages (temporary, safe to delete after installing)
+*.skill
+
 # dependencies
 /node_modules
 /.pnp

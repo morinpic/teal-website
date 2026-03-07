@@ -7,7 +7,7 @@ export default async function StaffSection() {
   const { contents: staffList } = await getStaffList();
 
   return (
-    <section id="staff" className="bg-teal-primary px-6 py-20 lg:py-32">
+    <section id="staff" className="bg-teal-primary px-6 py-24 lg:py-36">
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="STAFF" subtitle="スタッフ紹介" light={true} />
 

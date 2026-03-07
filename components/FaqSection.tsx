@@ -37,7 +37,7 @@ export default function FaqSection() {
   const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
 
   return (
-    <section id="faq" className="bg-gray-100 px-6 py-20 lg:py-32">
+    <section id="faq" className="bg-gray-100 px-6 py-16 lg:py-24">
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="FAQ" subtitle="よくある質問" />
 

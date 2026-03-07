@@ -4,7 +4,7 @@ export default function AccessSection() {
       <div className="mx-auto max-w-screen-xl">
         {/* セクションヘッダー */}
         <div className="mb-16 text-center">
-          <h2 className="text-3xl font-bold tracking-widest text-white lg:text-4xl">
+          <h2 className="font-urbanist text-3xl font-normal tracking-widest text-white lg:text-4xl">
             ACCESS
           </h2>
           <p className="mt-2 text-sm tracking-widest text-white/60">

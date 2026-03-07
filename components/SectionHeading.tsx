@@ -5,15 +5,16 @@ type SectionHeadingProps = {
   title: string;
   subtitle?: string;
   light?: boolean;
+  size?: "lg" | "md";
 };
 
-export default function SectionHeading({ title, subtitle, light = false }: SectionHeadingProps) {
+export default function SectionHeading({ title, subtitle, light = false, size = "md" }: SectionHeadingProps) {
   return (
     <ScrollAnimation className="mb-16 flex flex-col items-center gap-3">
       <h2
-        className={`font-serif text-3xl font-medium tracking-[0.2em] lg:text-4xl ${
-          light ? "text-white" : "text-dark-text"
-        }`}
+        className={`font-urbanist font-normal tracking-[0.2em] ${
+          size === "lg" ? "text-4xl lg:text-5xl" : "text-3xl lg:text-4xl"
+        } ${light ? "text-white" : "text-dark-text"}`}
       >
         {title}
       </h2>

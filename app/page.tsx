@@ -44,8 +44,8 @@ const localBusinessJsonLd = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 35.4438,
-    longitude: 139.6422,
+    latitude: 35.4424,
+    longitude: 139.6508,
   },
   openingHoursSpecification: [
     {
@@ -99,9 +99,9 @@ export default async function Home() {
         <AboutSection />
 
         {/* STYLE セクション */}
-        <section id="style" className="bg-teal-primary/5 py-24">
-          <div className="mx-auto max-w-screen-xl px-6">
-            <SectionHeading title="STYLE" subtitle="スタイルギャラリー" />
+        <section id="style" className="bg-teal-primary/5 py-32 lg:py-48">
+          <div className="mx-auto max-w-screen-2xl px-4 lg:px-8">
+            <SectionHeading title="STYLE" subtitle="スタイルギャラリー" size="lg" />
             <StyleGridAnimated styles={styles} />
             <ScrollAnimation className="mt-16 flex justify-center" delay={0.1}>
               <Button variant="secondary" href="/style">
@@ -125,7 +125,7 @@ export default async function Home() {
         <FaqSection />
 
         {/* NEWS セクション */}
-        <section id="news" className="bg-white py-24">
+        <section id="news" className="bg-white py-16 lg:py-24">
           <div className="mx-auto max-w-screen-xl px-6">
             <SectionHeading title="NEWS" subtitle="お知らせ" />
             <NewsListAnimated items={newsList} />
@@ -138,7 +138,7 @@ export default async function Home() {
         </section>
 
         {/* BLOG セクション */}
-        <section id="blog" className="bg-teal-primary/5 py-24">
+        <section id="blog" className="bg-teal-primary/5 py-16 lg:py-24">
           <div className="mx-auto max-w-screen-xl px-6">
             <SectionHeading title="BLOG" subtitle="ブログ" />
 
