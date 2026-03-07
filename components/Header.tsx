@@ -62,7 +62,16 @@ export default function Header() {
       >
         <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4">
           {/* ロゴ */}
-          <Link href="/" className="flex items-center">
+          <Link
+            href="/"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center"
+          >
             <Image src="/images/teal_t.svg" alt="teal." width={100} height={40} className="h-10 w-auto" priority />
           </Link>
 
@@ -123,7 +132,17 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-40 flex flex-col bg-white lg:hidden">
           <div className="flex items-center justify-between px-6 py-4">
-            <Link href="/" onClick={closeMenu} className="flex items-center">
+            <Link
+              href="/"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+                closeMenu();
+              }}
+              className="flex items-center"
+            >
               <Image src="/images/teal_t.svg" alt="teal." width={100} height={40} className="h-10 w-auto" />
             </Link>
             <button

@@ -32,9 +32,15 @@ const faqs = [
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set());
 
-  const toggle = (i: number) => setOpenIndex(openIndex === i ? null : i);
+  const toggle = (i: number) =>
+    setOpenIndexes((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
 
   return (
     <section id="faq" className="bg-gray-100 px-6 py-16 lg:py-24">
@@ -47,17 +53,17 @@ export default function FaqSection() {
               <div className="border-b border-dark-text/10">
                 <button
                   onClick={() => toggle(i)}
-                  aria-expanded={openIndex === i}
+                  aria-expanded={openIndexes.has(i)}
                   aria-controls={`faq-answer-${i}`}
                   id={`faq-question-${i}`}
-                  className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 rounded-lg py-5 text-left transition-colors hover:bg-teal-primary/5"
                 >
                   <span className="text-sm font-medium leading-relaxed text-dark-text lg:text-base">
                     {faq.question}
                   </span>
                   <span
                     className={`flex-shrink-0 text-teal-primary transition-transform duration-200 ${
-                      openIndex === i ? "rotate-180" : ""
+                      openIndexes.has(i) ? "rotate-180" : ""
                     }`}
                     aria-hidden="true"
                   >
@@ -81,7 +87,7 @@ export default function FaqSection() {
                   role="region"
                   aria-labelledby={`faq-question-${i}`}
                   className={`overflow-hidden transition-all duration-300 ${
-                    openIndex === i ? "max-h-48 pb-5" : "max-h-0"
+                    openIndexes.has(i) ? "max-h-48 pb-5" : "max-h-0"
                   }`}
                 >
                   <p className="text-sm leading-loose text-dark-text/70 lg:text-base">
