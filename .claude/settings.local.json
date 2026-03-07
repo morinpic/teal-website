@@ -18,7 +18,8 @@
       "Bash(npx next:*)",
       "Bash(node:*)",
       "Bash(./node_modules/.bin/eslint .:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(npx eslint:*)"
     ]
   },
   "teammateMode": "tmux"

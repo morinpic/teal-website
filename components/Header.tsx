@@ -33,6 +33,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
+
   const closeMenu = () => setIsMenuOpen(false);
 
   const handleNavClick = (
@@ -110,7 +121,7 @@ export default function Header() {
             >
               <span
                 className={`block h-px w-6 bg-dark-text transition-transform duration-300 ${
-                  isMenuOpen ? "translate-y-2.5 rotate-45" : ""
+                  isMenuOpen ? "translate-y-[7px] rotate-45" : ""
                 }`}
               />
               <span
@@ -120,7 +131,7 @@ export default function Header() {
               />
               <span
                 className={`block h-px w-6 bg-dark-text transition-transform duration-300 ${
-                  isMenuOpen ? "-translate-y-2.5 -rotate-45" : ""
+                  isMenuOpen ? "-translate-y-[7px] -rotate-45" : ""
                 }`}
               />
             </button>
@@ -155,26 +166,18 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-1 flex-col items-center justify-center gap-8" aria-label="モバイルナビゲーション">
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href, closeMenu)}
-                className="flex min-h-[44px] items-center text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <div className="mt-4">
-              <Button
-                variant="primary"
-                href={RESERVE_URL}
-                external
-                aria-label="ホットペッパービューティーで予約する"
-              >
-                RESERVE
-              </Button>
+          <nav className="flex flex-1 items-center justify-center px-10" aria-label="モバイルナビゲーション">
+            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href, closeMenu)}
+                  className="flex min-h-[44px] items-center justify-center text-center text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
           </nav>
         </div>
