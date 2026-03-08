@@ -101,37 +101,35 @@ export default async function StyleListPage({ searchParams }: Props) {
           {/* ページネーション */}
           {totalPages > 1 && (
             <nav
-              className="mt-16 flex justify-center gap-2"
+              className="mt-16 flex items-center justify-center gap-4"
               aria-label="ページネーション"
             >
-              {page > 1 && (
+              {page > 1 ? (
                 <Link
                   href={`/style?page=${page - 1}`}
-                  className="flex h-10 w-10 items-center justify-center border border-dark-text/20 text-sm text-dark-text transition-colors hover:border-teal-primary hover:text-teal-primary"
+                  className="border border-dark-text/20 px-6 py-2 text-xs tracking-widest text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
                 >
-                  &lt;
+                  ← 前へ
                 </Link>
+              ) : (
+                <span className="border border-dark-text/10 px-6 py-2 text-xs tracking-widest text-dark-text/20">
+                  ← 前へ
+                </span>
               )}
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                <Link
-                  key={p}
-                  href={`/style?page=${p}`}
-                  className={`flex h-10 w-10 items-center justify-center border text-sm transition-colors ${
-                    p === page
-                      ? "border-teal-primary bg-teal-primary text-white"
-                      : "border-dark-text/20 text-dark-text hover:border-teal-primary hover:text-teal-primary"
-                  }`}
-                >
-                  {p}
-                </Link>
-              ))}
-              {page < totalPages && (
+              <span className="text-xs tracking-widest text-dark-text/50">
+                {page} / {totalPages}
+              </span>
+              {page < totalPages ? (
                 <Link
                   href={`/style?page=${page + 1}`}
-                  className="flex h-10 w-10 items-center justify-center border border-dark-text/20 text-sm text-dark-text transition-colors hover:border-teal-primary hover:text-teal-primary"
+                  className="border border-dark-text/20 px-6 py-2 text-xs tracking-widest text-dark-text/50 transition-colors hover:border-teal-primary hover:text-teal-primary"
                 >
-                  &gt;
+                  次へ →
                 </Link>
+              ) : (
+                <span className="border border-dark-text/10 px-6 py-2 text-xs tracking-widest text-dark-text/20">
+                  次へ →
+                </span>
               )}
             </nav>
           )}
