@@ -80,7 +80,7 @@ export default async function StaffDetailPage({ params }: Props) {
       {/* パンくず */}
       <div className="bg-white px-6 py-4">
         <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">
-          <Link href="/" className="hover:text-teal-primary">
+          <Link href="/" className="transition-colors hover:text-teal-primary">
             HOME
           </Link>
           <span className="mx-2">/</span>

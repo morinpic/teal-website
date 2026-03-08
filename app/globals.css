@@ -22,6 +22,11 @@
   --font-urbanist: var(--font-urbanist), "Urbanist", sans-serif;
 }
 
+/* リンクのカーソル */
+a {
+  cursor: pointer;
+}
+
 /* スキップリンク */
 .skip-link {
   position: absolute;

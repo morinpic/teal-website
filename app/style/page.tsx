@@ -27,7 +27,7 @@ export default async function StyleListPage({ searchParams }: Props) {
       {/* パンくず */}
       <div className="bg-white px-6 py-4 border-b border-dark-text/5">
         <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">
-          <Link href="/" className="hover:text-teal-primary">HOME</Link>
+          <Link href="/" className="transition-colors hover:text-teal-primary">HOME</Link>
           <span className="mx-2">/</span>
           <span className="text-dark-text">STYLE</span>
         </nav>
@@ -135,6 +135,15 @@ export default async function StyleListPage({ searchParams }: Props) {
               )}
             </nav>
           )}
+          {/* トップページへ戻る */}
+          <div className="mt-16 flex justify-center">
+            <Link
+              href="/"
+              className="text-xs tracking-widest text-dark-text/40 transition-colors hover:text-teal-primary"
+            >
+              ← トップページへ戻る
+            </Link>
+          </div>
         </div>
       </div>
     </div>

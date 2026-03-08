@@ -184,6 +184,15 @@ export default async function BlogPage({ searchParams }: Props) {
               )}
             </>
           )}
+          {/* トップページへ戻る */}
+          <div className="mt-16 flex justify-center">
+            <Link
+              href="/"
+              className="text-xs tracking-widest text-dark-text/40 transition-colors hover:text-teal-primary"
+            >
+              ← トップページへ戻る
+            </Link>
+          </div>
         </div>
       </section>
     </main>

@@ -62,11 +62,11 @@ export default async function StyleDetailPage({ params }: Props) {
       {/* パンくず */}
       <div className="bg-white px-6 py-4">
         <nav className="mx-auto max-w-screen-xl text-xs text-dark-text/50">
-          <Link href="/" className="hover:text-teal-primary">
+          <Link href="/" className="transition-colors hover:text-teal-primary">
             HOME
           </Link>
           <span className="mx-2">/</span>
-          <Link href="/style" className="hover:text-teal-primary">
+          <Link href="/style" className="transition-colors hover:text-teal-primary">
             STYLE
           </Link>
           <span className="mx-2">/</span>
@@ -137,7 +137,7 @@ export default async function StyleDetailPage({ params }: Props) {
             <div className="mt-12">
               <Link
                 href="/style"
-                className="inline-block border border-dark-text px-10 py-3 text-xs font-medium tracking-widest text-dark-text transition-colors hover:bg-dark-text hover:text-white"
+                className="text-xs tracking-widest text-dark-text/40 transition-colors hover:text-teal-primary"
               >
                 ← BACK TO STYLE
               </Link>
