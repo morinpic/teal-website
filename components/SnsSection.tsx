@@ -58,7 +58,7 @@ export default function SnsSection() {
   useEffect(() => {
     if (window.instgrm) {
       window.instgrm.Embeds.process();
-      setEmbedLoaded(true);
+      queueMicrotask(() => setEmbedLoaded(true));
       return;
     }
 

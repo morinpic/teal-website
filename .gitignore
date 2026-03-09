@@ -47,3 +47,6 @@ next-env.d.ts
 
 # auto-claude
 .auto-claude/
+
+# claude code local settings
+.claude/settings.local.json
