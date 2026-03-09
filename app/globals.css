@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --header-height: 64px;
+  --header-height: 72px;
 }
 
 @theme {
