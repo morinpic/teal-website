@@ -164,19 +164,17 @@ export default function Header() {
             </button>
           </div>
 
-          <nav className="flex flex-1 items-center justify-center px-10" aria-label="モバイルナビゲーション">
-            <div className="grid grid-cols-2 gap-x-12 gap-y-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href, closeMenu)}
-                  className="flex min-h-[44px] items-center justify-center text-center text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+          <nav className="flex flex-1 flex-col items-center justify-center gap-6" aria-label="モバイルナビゲーション">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href, closeMenu)}
+                className="flex min-h-[44px] items-center text-lg font-semibold uppercase tracking-widest text-dark-text transition-colors hover:text-teal-primary"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
