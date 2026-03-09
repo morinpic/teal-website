@@ -84,7 +84,7 @@ export default async function Home() {
         {/* Hero セクション */}
         <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
           <Image
-            src="/images/hero-bg.jpg"
+            src="/images/hero-bg.webp"
             alt=""
             fill
             className="object-cover"
