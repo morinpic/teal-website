@@ -48,6 +48,7 @@ export default config;
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "teal-website",
+  "main": ".open-next/worker.js",
   "compatibility_flags": ["nodejs_compat"],
   "compatibility_date": "2024-09-23",
   "assets": {
