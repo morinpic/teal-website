@@ -88,8 +88,8 @@ export default function SnsSection() {
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="SNS" subtitle="ソーシャルメディア" />
 
-        {/* Instagramグリッド */}
-        <ScrollAnimation>
+        {/* Instagramグリッド（PC のみ表示） */}
+        <ScrollAnimation className="hidden lg:block">
           <div
             ref={containerRef}
             className="mb-12 grid grid-cols-2 gap-2 tablet:grid-cols-3 lg:gap-3"
@@ -151,7 +151,7 @@ export default function SnsSection() {
 
         {/* Instagramフォローボタン */}
         <ScrollAnimation delay={0.15}>
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:mt-0">
             <Button
               variant="primary"
               href={INSTAGRAM_URL}
