@@ -61,9 +61,9 @@ export default config;
 
 ```json
 {
-  "cf:build": "npx @opennextjs/cloudflare",
+  "cf:build": "npx @opennextjs/cloudflare build",
   "cf:dev": "npx wrangler dev",
-  "cf:deploy": "npx @opennextjs/cloudflare && npx wrangler deploy"
+  "cf:deploy": "npx @opennextjs/cloudflare build && npx wrangler deploy"
 }
 ```
 
