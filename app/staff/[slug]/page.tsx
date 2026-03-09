@@ -11,8 +11,12 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const { contents } = await getStaffList();
-  return contents.map((staff) => ({ slug: staff.slug }));
+  try {
+    const { contents } = await getStaffList();
+    return contents.map((staff) => ({ slug: staff.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props) {

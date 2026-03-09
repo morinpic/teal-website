@@ -10,8 +10,12 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const { contents } = await getStyleList(100, 0);
-  return contents.map((style) => ({ slug: style.slug }));
+  try {
+    const { contents } = await getStyleList(100, 0);
+    return contents.map((style) => ({ slug: style.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props) {

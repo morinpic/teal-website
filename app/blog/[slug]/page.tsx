@@ -9,8 +9,12 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const { contents } = await getNewsList(100, 0, "category[equals]blog");
-  return contents.map((item) => ({ slug: item.slug }));
+  try {
+    const { contents } = await getNewsList(100, 0, "category[equals]blog");
+    return contents.map((item) => ({ slug: item.slug }));
+  } catch {
+    return [];
+  }
 }
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
