@@ -5,11 +5,11 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "NEWS", href: "/#news" },
+  { label: "ABOUT", href: "/#about" },
   { label: "STYLE", href: "/#style" },
   { label: "MENU", href: "/#menu" },
   { label: "STAFF", href: "/#staff" },
-  { label: "BLOG", href: "/#blog" },
+  { label: "JOURNAL", href: "/#news" },
   { label: "ACCESS", href: "/#access" },
 ];
 

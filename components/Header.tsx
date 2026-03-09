@@ -11,10 +11,7 @@ const navLinks = [
   { label: "STYLE", href: "/#style" },
   { label: "MENU", href: "/#menu" },
   { label: "STAFF", href: "/#staff" },
-  { label: "FAQ", href: "/#faq" },
-  { label: "NEWS", href: "/#news" },
-  { label: "BLOG", href: "/#blog" },
-  { label: "SNS", href: "/#sns" },
+  { label: "JOURNAL", href: "/#news" },
   { label: "ACCESS", href: "/#access" },
 ];
 
