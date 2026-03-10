@@ -26,6 +26,12 @@
   --font-urbanist: var(--font-urbanist), "Urbanist", sans-serif;
 }
 
+/* Hero セクション: 100vh fallback → 100svh (iOS Safari ツールバー表示時の高さで固定) */
+.hero-min-height {
+  min-height: calc(100vh - var(--header-height));
+  min-height: calc(100svh - var(--header-height));
+}
+
 /* リンクのカーソル */
 a {
   cursor: pointer;

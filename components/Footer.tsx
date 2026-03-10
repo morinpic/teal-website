@@ -28,7 +28,9 @@ export default function Footer() {
       const id = href.slice(2);
       const element = document.getElementById(id);
       if (element) {
-        const headerOffset = 64;
+        const headerOffset = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+        );
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
       }

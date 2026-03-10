@@ -53,7 +53,9 @@ export default function Header() {
       const id = href.slice(2);
       const element = document.getElementById(id);
       if (element) {
-        const headerOffset = 64;
+        const headerOffset = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+        );
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
       }
@@ -69,7 +71,7 @@ export default function Header() {
           isScrolled ? "shadow-md" : ""
         }`}
       >
-        <div className="mx-auto flex max-w-screen-xl items-center justify-between px-6 py-4">
+        <div className="mx-auto flex h-[var(--header-height)] max-w-screen-xl items-center justify-between px-6 py-4">
           {/* ロゴ */}
           <Link
             href="/"

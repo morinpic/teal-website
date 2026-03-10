@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, Noto_Serif_JP, Cormorant_Garamond, Urbanist } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -35,6 +35,12 @@ const urbanist = Urbanist({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

@@ -82,7 +82,7 @@ export default async function Home() {
       <main id="main-content">
 
         {/* Hero セクション */}
-        <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center justify-center overflow-hidden">
+        <section className="hero-min-height relative flex items-center justify-center overflow-hidden">
           <Image
             src="/images/hero-bg.webp"
             alt=""

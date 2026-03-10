@@ -54,7 +54,9 @@ export default function HeroContent() {
               e.preventDefault();
               const el = document.getElementById("about");
               if (el) {
-                const headerOffset = 64;
+                const headerOffset = parseInt(
+                  getComputedStyle(document.documentElement).getPropertyValue("--header-height")
+                );
                 const pos = el.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo({ top: pos - headerOffset, behavior: "smooth" });
               }
@@ -65,14 +67,6 @@ export default function HeroContent() {
           </a>
         </motion.div>
       </div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: EASE, delay: 1.2 }}
-        className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
-      >
-        <div className="h-12 w-px animate-pulse bg-white/50" />
-      </motion.div>
     </>
   );
 }
