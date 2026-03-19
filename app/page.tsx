@@ -7,6 +7,7 @@ import SnsSection from "@/components/SnsSection";
 import AccessSection from "@/components/AccessSection";
 import ScrollAnimation from "@/components/ScrollAnimation";
 import HeroContent from "@/components/HeroContent";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import NewsListAnimated from "@/components/NewsListAnimated";
 import StyleGridAnimated from "@/components/StyleGridAnimated";
 import SectionHeading from "@/components/SectionHeading";
@@ -83,15 +84,8 @@ export default async function Home() {
 
         {/* Hero セクション */}
         <section className="hero-min-height relative flex items-center justify-center overflow-hidden">
-          <Image
-            src="/images/hero-salon.png"
-            alt=""
-            fill
-            className="object-cover"
-            priority
-            aria-hidden="true"
-          />
-          <div className="absolute inset-0 bg-black/60" />
+          <HeroSlideshow />
+          <div className="absolute inset-0 bg-black/60" style={{ zIndex: 2 }} />
           <HeroContent />
         </section>
 
