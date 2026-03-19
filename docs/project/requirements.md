@@ -28,9 +28,9 @@ Studio.siteで制作を進めていたが、CMSの管理画面がスマートフ
 |------|----------|------|
 | フレームワーク | Next.js (App Router) | 動的ルーティング、SSG/ISR対応 |
 | CMS | microCMS (Hobbyプラン・無料) | API 5つ、コンテンツ10,000件、メンバー3名 |
-| ホスティング | Vercel (無料プラン) | GitHub連携による自動デプロイ |
+| ホスティング | Cloudflare Pages (Free) | OpenNext経由、GitHub連携による自動デプロイ |
 | バージョン管理 | GitHub | ソースコード管理 |
-| スタイリング | 未定（TailwindCSS推奨） | デザイン実装時に確定 |
+| スタイリング | TailwindCSS v4 | `@theme` ディレクティブによるデザイントークン管理 |
 | 開発ツール | Claude Code | AI支援による開発 |
 
 ### 2.1 CMS設計（microCMS API構成）
@@ -71,9 +71,6 @@ teal.
 ├── BLOG 一覧 (/blog)
 │   ├── ページネーション（※ NEWSと統合、カテゴリでフィルタ）
 │   └── BLOG 詳細 (/blog/[slug])
-│
-├── MENU 詳細 (/menu)
-│   └── カテゴリ別料金表
 │
 ├── STAFF 一覧 (/staff)
 │   └── STAFF 詳細 (/staff/[slug])
@@ -144,11 +141,7 @@ teal.
 ### 4.7 BLOG 詳細ページ (/blog/[slug])
 - NEWS詳細と同様の構成
 
-### 4.8 MENU 詳細ページ (/menu)
-- カテゴリ別の料金表を全て表示
-- カテゴリ：CUT / COLOR / PERM / TREATMENT / OTHER
-
-### 4.9 STAFF 詳細ページ (/staff/[slug])
+### 4.8 STAFF 詳細ページ (/staff/[slug])
 - スタッフ写真、名前、肩書き
 - 自己紹介文
 - 得意なスタイル・メッセージ等
@@ -190,7 +183,7 @@ teal.
 ### 6.2 フッター
 - teal. ロゴ
 - 予約ボタン（ホットペッパービューティーへのリンク）
-- SNSアイコン（Instagram / X）
+- SNSアイコン（Instagram）
 - コピーライト
 
 ---
@@ -203,8 +196,7 @@ teal.
 - CTAボタンとして目立つ位置に配置（ヘッダー固定 or フローティング）
 
 ### 7.2 SNS
-- Instagram 投稿埋め込み
-- X（Twitter）リンク
+- Instagram 投稿埋め込み（※ Xは未運用のため非掲載）
 
 ### 7.3 地図
 - Google Maps Embed API
@@ -298,7 +290,7 @@ teal.
 
 ### 11.4 セキュリティ
 - microCMS API キーの環境変数管理
-- HTTPS 通信（Vercel標準）
+- HTTPS 通信（Cloudflare Pages標準）
 
 ---
 
@@ -310,7 +302,7 @@ teal.
 - スタッフ情報 → microCMS管理画面から更新
 
 ### 12.2 デプロイフロー
-- GitHub main ブランチへのプッシュ → Vercel 自動デプロイ
+- GitHub main ブランチへのプッシュ → Cloudflare Pages 自動デプロイ
 - microCMS Webhook → ISR による自動再生成
 
 ---
@@ -332,11 +324,11 @@ teal.
 - [ ] 独自ドメインの取得（teal-salon.com 等）
 - [ ] STYLEセクション用の写真素材の準備
 - [ ] スタッフ自己紹介文の原稿
-- [ ] Instagram / X アカウントURLの確認
+- [x] Instagram アカウントURL確認済み（X は未運用）
 - [ ] ファビコン・OGP画像の作成
 - [ ] 「お客様の声」セクション追加の検討（将来）
 
 ---
 
-*最終更新: 2026年3月3日*
+*最終更新: 2026年3月19日*
 *作成: Cowork ディスカッションにて*

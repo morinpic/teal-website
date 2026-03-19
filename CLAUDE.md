@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-teal.（横浜元町の美容院）の公式ウェブサイト。Next.js App Router + microCMS + Vercel で構成。
+teal.（横浜元町の美容院）の公式ウェブサイト。Next.js App Router + microCMS + Cloudflare Pages で構成。
 
 ## コマンド
 
@@ -9,16 +9,19 @@ npm run dev      # 開発サーバー起動
 npm run build    # プロダクションビルド
 npm run start    # プロダクションサーバー起動
 npm run lint     # ESLint実行
+npm run cf:build   # Cloudflare Pages 用ビルド
+npm run cf:dev     # Cloudflare Pages ローカル開発
+npm run cf:deploy  # Cloudflare Pages デプロイ
 ```
 
 ## 技術スタック
 
-- **フレームワーク:** Next.js 15+ (App Router), React 19, TypeScript (strict)
+- **フレームワーク:** Next.js 16+ (App Router), React 19, TypeScript (strict)
 - **スタイリング:** TailwindCSS v4（`@theme` ディレクティブ）
 - **フォント:** Urbanist / Noto Sans JP / Noto Serif JP / Cormorant Garamond（Google Fonts, `next/font`）
 - **アニメーション:** Framer Motion v12
 - **CMS:** microCMS (Hobbyプラン) - `microcms-js-sdk`
-- **ホスティング:** Vercel (GitHub連携自動デプロイ)
+- **ホスティング:** Cloudflare Pages (OpenNext, GitHub連携自動デプロイ)
 - **Lint:** ESLint (`next/core-web-vitals`)
 
 ## アーキテクチャ
@@ -48,6 +51,7 @@ npm run lint     # ESLint実行
 - `SectionHeading`: セクション見出し（Urbanist / size prop 対応・AnimatedLine 含む）
 - `Button`: ポリモーフィックなボタン/リンク（primary / secondary / ghost-white）
 - `StaffCardAnimated`: スタッフカードのスタガーアニメーション（Client Component）
+- `HeroSlideshow`: Hero背景画像のクロスフェードスライドショー（6秒間隔、useReducedMotion対応）
 
 ### 環境変数
 - `MICROCMS_SERVICE_DOMAIN` - microCMS サービスドメイン
@@ -56,7 +60,7 @@ npm run lint     # ESLint実行
 - `.env.local.example` にテンプレートあり
 
 ### SEO・構造化データ
-- `app/page.tsx`: HairSalon スキーマ（営業時間・sameAs・画像含む）
+- `app/page.tsx`: LocalBusiness (HairSalon) スキーマ（営業時間・sameAs・geo・画像含む）
 - 各詳細ページ: BreadcrumbList スキーマ
 - `app/staff/[slug]`: Person スキーマ追加済み
 - サイトマップ: `app/sitemap.ts`（全ページ動的生成）
@@ -86,6 +90,7 @@ npm run lint     # ESLint実行
 
 ### インフラ (`docs/infra/`)
 - セットアップ手順: `docs/infra/setup-guide.md`
+- Cloudflare Pages 移行手順: `docs/infra/cloudflare-migration.md`
 
 ## ドキュメント命名規則
 
