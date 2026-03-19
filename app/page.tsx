@@ -84,7 +84,7 @@ export default async function Home() {
         {/* Hero セクション */}
         <section className="hero-min-height relative flex items-center justify-center overflow-hidden">
           <Image
-            src="/images/hero-bg.webp"
+            src="/images/salon-interior.jpg"
             alt=""
             fill
             className="object-cover"
