@@ -57,51 +57,47 @@ className="border border-white px-6 py-2 text-xs font-medium tracking-widest tex
 - `tracking-widest` または `tracking-[0.3em]`: 大文字ラベルとの組み合わせ
 - `text-xs font-medium`: 全ボタンラベル共通
 
-## セクション見出し
+## セクション見出し（SectionHeading）
 
-現在は共通コンポーネントではなく、各セクションで直接記述。以下が共通パターン:
-
-### 白背景セクション（NEWS, STYLE, MENU, SNS）
+共通コンポーネント `components/SectionHeading.tsx` で全セクション統一。
 
 ```tsx
-<div className="mb-16 text-center">
-  <h2 className="text-3xl font-bold tracking-widest text-dark-text lg:text-4xl">
-    MENU
-  </h2>
-  <p className="mt-2 text-sm tracking-widest text-dark-text/60">
-    メニュー・料金表
-  </p>
-</div>
+<SectionHeading title="STYLE" subtitle="スタイルギャラリー" size="lg" />
+<SectionHeading title="NEWS" subtitle="お知らせ" />
+<SectionHeading title="STAFF" subtitle="スタッフ紹介" light />
 ```
 
-### ダーク背景セクション（STAFF, ACCESS）
+### Props
 
-```tsx
-<div className="mb-16 text-center">
-  <h2 className="text-3xl font-bold tracking-widest text-white lg:text-4xl">
-    STAFF
-  </h2>
-  <p className="mt-2 text-sm tracking-widest text-white/70">
-    スタッフ紹介
-  </p>
-</div>
-```
+| Prop | 型 | デフォルト | 説明 |
+|---|---|---|---|
+| `title` | `string` | — | 英字タイトル（大文字） |
+| `subtitle` | `string` | — | 日本語サブタイトル |
+| `light` | `boolean` | `false` | ダーク/teal背景時に `true`（テキスト白） |
+| `size` | `"lg" \| "md"` | `"md"` | 見出しサイズ（Tier 1 セクションは `"lg"`） |
 
-### 構成
+### サイズバリエーション
+
+| size | h2 サイズ | 用途 |
+|---|---|---|
+| `"lg"` | `text-4xl lg:text-5xl` | Tier 1 セクション（STYLE） |
+| `"md"` | `text-3xl lg:text-4xl` | Tier 2/3 セクション（その他） |
+
+### スタイル
 
 | 要素 | スタイル |
 |---|---|
-| ラッパー | `mb-16 text-center` |
-| 英字タイトル (h2) | `text-3xl font-bold tracking-widest lg:text-4xl` |
-| 日本語サブタイトル (p) | `mt-2 text-sm tracking-widest` + 透過色 |
+| ラッパー | `mb-16 flex flex-col items-center gap-3` + ScrollAnimation |
+| 英字タイトル (h2) | `font-urbanist font-normal tracking-[0.2em]` |
+| 日本語サブタイトル (p) | `text-sm tracking-widest` + 透過色 |
+| 装飾ライン | `AnimatedLine`（スクロールインビュー時に `width: 0→64px`） |
 
 ### カラーバリエーション
 
-| 背景 | タイトル色 | サブタイトル色 |
-|---|---|---|
-| 白 (`bg-white`) | `text-dark-text` | `text-dark-text/60` |
-| Teal (`bg-teal-primary`) | `text-white` | `text-white/70` |
-| ダーク (`bg-dark-text`) | `text-white` | `text-white/60` |
+| 背景 | `light` | タイトル色 | サブタイトル色 |
+|---|---|---|---|
+| 白 / クリーム | `false` | `text-dark-text` | `text-dark-text/60` |
+| Teal / ダーク | `true` | `text-white` | `text-white/70` |
 
 ## カード
 
@@ -151,28 +147,41 @@ className="border border-white px-6 py-2 text-xs font-medium tracking-widest tex
 
 ## メニューセクション（MenuSection）
 
+サーバーコンポーネント。全カテゴリを縦一覧で表示（タブUI廃止済み）。
+
 ### レイアウト
 
 ```tsx
-<div className="grid gap-8 tablet:grid-cols-2 lg:grid-cols-3">
-  <div className="border border-dark-text/10 p-8">
-    <h3 className="text-lg font-bold tracking-widest text-teal-primary">{title}</h3>
-    <ul className="space-y-3">
-      <li className="flex items-start justify-between gap-4 text-sm text-dark-text">
-        <span className="flex-1">{name}</span>
-        <span className="shrink-0 font-medium">{price}</span>
-      </li>
-    </ul>
-  </div>
+<div className="mx-auto max-w-2xl space-y-12">
+  {menuCategories.map((category) => (
+    <div key={category.id}>
+      <div className="mb-6 flex items-center gap-6">
+        <h3 className="font-urbanist text-xl font-normal tracking-widest text-teal-primary">
+          {category.title}
+        </h3>
+        <div className="flex-1 border-t border-dark-text/10" />
+      </div>
+      <table className="w-full border-collapse">
+        <tbody className="divide-y divide-dark-text/5">
+          <tr>
+            <td className="py-4 pr-4 text-base leading-relaxed text-dark-text">{item.name}</td>
+            <td className="py-4 text-right text-base font-semibold text-teal-primary whitespace-nowrap">{item.price}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  ))}
 </div>
 ```
 
 | プロパティ | 値 |
 |---|---|
-| カードボーダー | `border border-dark-text/10` |
-| カードパディング | `p-8` |
-| カテゴリタイトル | `text-lg font-bold tracking-widest text-teal-primary` |
-| メニュー項目 | `flex justify-between`, 名前（flex-1）+ 価格（shrink-0） |
+| コンテナ幅 | `max-w-2xl`（672px） |
+| カテゴリ間隔 | `space-y-12` |
+| カテゴリタイトル | `font-urbanist text-xl font-normal tracking-widest text-teal-primary` |
+| 区切り線 | `border-t border-dark-text/10`（タイトル横） |
+| 行区切り | `divide-y divide-dark-text/5` |
+| 価格 | `font-semibold text-teal-primary whitespace-nowrap` |
 | 注記 | `text-xs text-dark-text/50` |
 
 ## アニメーション
@@ -205,9 +214,18 @@ transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
 ### Hero アニメーション
 
 ```tsx
-// ロゴ → サブテキスト → ボタン → スクロールインジケーター
-delay: 0.3 → 0.6 → 0.9 → 1.2（0.3秒間隔）
+// ロゴ → サブテキスト → ボタン群
+delay: 0.3 → 0.6 → 0.9（0.3秒間隔）
 duration: 0.8s
+```
+
+### Hero スライドショー（HeroSlideshow）
+
+```tsx
+// 2枚の背景画像を自動クロスフェード
+interval: 6000ms
+fade duration: 1.5s, ease: "easeInOut"
+// useReducedMotion 時: 1枚目固定、切り替えなし
 ```
 
 ### ScrollToTop ボタン
