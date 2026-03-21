@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getNewsList, getStaffList, getStyleList } from "@/lib/microcms";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 固定ページ

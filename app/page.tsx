@@ -22,11 +22,11 @@ export const metadata: Metadata = {
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app",
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama",
   },
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",

@@ -34,7 +34,7 @@ const urbanist = Urbanist({
   variable: "--font-urbanist",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama";
 
 export const viewport: Viewport = {
   width: "device-width",

@@ -4,7 +4,7 @@ import { getStaffDetail, getStaffList } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama";
 
 type Props = {
   params: Promise<{ id: string }>;

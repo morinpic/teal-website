@@ -19,7 +19,7 @@ export async function generateStaticParams() {
   }
 }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal.yokohama";
 
 export async function generateMetadata({ params }: Props) {
   const { id } = await params;
