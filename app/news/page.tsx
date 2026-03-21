@@ -22,7 +22,7 @@ export default async function NewsPage({ searchParams }: Props) {
   const { contents: newsList, totalCount } = await getNewsList(
     PER_PAGE,
     offset,
-    "category[equals]news"
+    "category[contains]news"
   );
   const totalPages = Math.ceil(totalCount / PER_PAGE);
 

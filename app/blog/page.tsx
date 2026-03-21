@@ -23,8 +23,8 @@ export default async function BlogPage({ searchParams }: Props) {
   const offset = (currentPage - 1) * PER_PAGE;
 
   const filters = tag
-    ? `category[equals]blog[and]tags[contains]${tag}`
-    : "category[equals]blog";
+    ? `category[contains]blog[and]tags[contains]${tag}`
+    : "category[contains]blog";
 
   const { contents: blogList, totalCount } = await getNewsList(
     PER_PAGE,

@@ -5,6 +5,7 @@ import {
   dummyStyleList,
   dummyStaffList,
 } from "@/lib/dummy-data";
+import { normalizeCategory } from "@/lib/utils";
 
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
 const apiKey = process.env.MICROCMS_API_KEY;
@@ -24,10 +25,10 @@ export async function getNewsList(
   if (useDummy || !client) {
     let contents = dummyNewsList;
     if (filters) {
-      // filters例: "category[equals]blog"
-      const match = filters.match(/category\[equals\](\w+)/);
+      // filters例: "category[contains]blog"
+      const match = filters.match(/category\[contains\](\w+)/);
       if (match) {
-        contents = contents.filter((n) => n.category === match[1]);
+        contents = contents.filter((n) => normalizeCategory(n.category) === match[1]);
       }
       const tagMatch = filters.match(/tags\[contains\](.+)/);
       if (tagMatch) {
@@ -46,7 +47,7 @@ export async function getNewsList(
   } catch {
     let contents = dummyNewsList;
     if (filters) {
-      const match = filters.match(/category\[equals\](\w+)/);
+      const match = filters.match(/category\[contains\](\w+)/);
       if (match) contents = contents.filter((n) => n.category === match[1]);
       const tagMatch = filters.match(/tags\[contains\](.+)/);
       if (tagMatch) contents = contents.filter((n) => n.tags?.includes(tagMatch[1]));

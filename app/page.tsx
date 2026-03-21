@@ -71,8 +71,8 @@ const localBusinessJsonLd = {
 };
 
 export default async function Home() {
-  const { contents: newsList } = await getNewsList(6, 0, "category[equals]news");
-  const { contents: blogList } = await getNewsList(3, 0, "category[equals]blog");
+  const { contents: newsList } = await getNewsList(6, 0, "category[contains]news");
+  const { contents: blogList } = await getNewsList(3, 0, "category[contains]blog");
   const { contents: styles } = await getStyleList(6, 0);
 
   return (

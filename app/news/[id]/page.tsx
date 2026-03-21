@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getNewsDetail, getNewsList } from "@/lib/microcms";
-import { extractExcerpt } from "@/lib/utils";
+import { extractExcerpt, normalizeCategory } from "@/lib/utils";
 import type { News } from "@/lib/types";
 
 type Props = {
@@ -12,7 +12,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   try {
-    const { contents } = await getNewsList(100, 0, "category[equals]news");
+    const { contents } = await getNewsList(100, 0, "category[contains]news");
     return contents.map((item) => ({ id: item.id }));
   } catch {
     return [];
@@ -50,12 +50,12 @@ export default async function NewsDetailPage({ params }: Props) {
     notFound();
   }
 
-  if (item.category !== "news") {
+  if (normalizeCategory(item.category) !== "news") {
     notFound();
   }
 
   // 前後記事取得
-  const { contents: allNews } = await getNewsList(100, 0, "category[equals]news");
+  const { contents: allNews } = await getNewsList(100, 0, "category[contains]news");
   const currentIndex = allNews.findIndex((n) => n.id === id);
   const prevItem = currentIndex < allNews.length - 1 ? allNews[currentIndex + 1] : null;
   const nextItem = currentIndex > 0 ? allNews[currentIndex - 1] : null;

@@ -18,7 +18,7 @@ export type MicroCMSBase = {
 export type News = MicroCMSBase & {
   title: string;
   content: string; // リッチテキスト
-  category: "news" | "blog";
+  category: "news" | "blog" | string[];
   eyecatch?: MicroCMSImage;
   excerpt?: string; // 概要
   tags?: string[];

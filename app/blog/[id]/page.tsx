@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getNewsDetail, getNewsList } from "@/lib/microcms";
-import { extractExcerpt } from "@/lib/utils";
+import { extractExcerpt, normalizeCategory } from "@/lib/utils";
 import type { News } from "@/lib/types";
 
 type Props = {
@@ -13,7 +13,7 @@ export const dynamicParams = true;
 
 export async function generateStaticParams() {
   try {
-    const { contents } = await getNewsList(100, 0, "category[equals]blog");
+    const { contents } = await getNewsList(100, 0, "category[contains]blog");
     return contents.map((item) => ({ id: item.id }));
   } catch {
     return [];
@@ -51,12 +51,12 @@ export default async function BlogDetailPage({ params }: Props) {
     notFound();
   }
 
-  if (item.category !== "blog") {
+  if (normalizeCategory(item.category) !== "blog") {
     notFound();
   }
 
   // 前後記事取得
-  const { contents: allBlog } = await getNewsList(100, 0, "category[equals]blog");
+  const { contents: allBlog } = await getNewsList(100, 0, "category[contains]blog");
   const currentIndex = allBlog.findIndex((n) => n.id === id);
   const prevItem = currentIndex < allBlog.length - 1 ? allBlog[currentIndex + 1] : null;
   const nextItem = currentIndex > 0 ? allBlog[currentIndex - 1] : null;

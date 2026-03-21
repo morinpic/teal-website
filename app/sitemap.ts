@@ -39,7 +39,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // NEWS 記事ページ
-  const { contents: newsList } = await getNewsList(100, 0, "category[equals]news");
+  const { contents: newsList } = await getNewsList(100, 0, "category[contains]news");
   const newsRoutes: MetadataRoute.Sitemap = newsList.map((item) => ({
     url: `${siteUrl}/news/${item.id}`,
     lastModified: new Date(item.updatedAt),
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // BLOG 記事ページ
-  const { contents: blogList } = await getNewsList(100, 0, "category[equals]blog");
+  const { contents: blogList } = await getNewsList(100, 0, "category[contains]blog");
   const blogRoutes: MetadataRoute.Sitemap = blogList.map((item) => ({
     url: `${siteUrl}/blog/${item.id}`,
     lastModified: new Date(item.updatedAt),
