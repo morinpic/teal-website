@@ -45,7 +45,7 @@ export default async function StaffPage() {
                 className="group flex flex-col items-center text-center"
               >
                 {/* 写真 */}
-                <div className="mb-4 aspect-square w-full overflow-hidden bg-dark-text/10">
+                <div className="relative mb-4 aspect-square w-full overflow-hidden bg-dark-text/10">
                   {staff.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
@@ -73,6 +73,7 @@ export default async function StaffPage() {
                       </svg>
                     </div>
                   )}
+                  <div className="absolute inset-0 bg-dark-text/40 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
 
                 {/* 名前・肩書き */}

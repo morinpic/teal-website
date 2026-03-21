@@ -71,11 +71,7 @@ export default function StaffCardAnimated({ staff, index }: Props) {
         <p className="mt-1 text-xs tracking-widest text-white/70">
           {staff.position}
         </p>
-        {staff.specialty && (
-          <p className="mt-3 max-w-[200px] text-xs leading-relaxed text-white/50">
-            {staff.specialty}
-          </p>
-        )}
+
       </Link>
     </motion.div>
   );
