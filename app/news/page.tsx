@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getNewsList } from "@/lib/microcms";
+import { extractExcerpt } from "@/lib/utils";
 
 const PER_PAGE = 10;
 
@@ -53,8 +54,8 @@ export default async function NewsPage({ searchParams }: Props) {
       <section className="bg-white py-20">
         <div className="mx-auto max-w-screen-lg px-6">
           {newsList.length === 0 ? (
-            <p className="text-center text-dark-text/50">
-              現在お知らせはありません。
+            <p className="py-12 text-center text-sm text-dark-text/40">
+              お知らせはまだありません
             </p>
           ) : (
             <>
@@ -62,7 +63,7 @@ export default async function NewsPage({ searchParams }: Props) {
                 {newsList.map((item) => (
                   <li key={item.id}>
                     <Link
-                      href={`/news/${item.slug}`}
+                      href={`/news/${item.id}`}
                       className="group flex flex-col gap-2 py-8 transition-colors tablet:flex-row tablet:items-start tablet:gap-10"
                     >
                       <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-32 tablet:pt-1">
@@ -76,11 +77,9 @@ export default async function NewsPage({ searchParams }: Props) {
                         <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
                           {item.title}
                         </p>
-                        {item.excerpt && (
-                          <p className="text-sm leading-relaxed text-dark-text/60">
-                            {item.excerpt}
-                          </p>
-                        )}
+                        <p className="text-sm leading-relaxed text-dark-text/60">
+                          {item.excerpt || extractExcerpt(item.content)}
+                        </p>
                       </div>
                     </Link>
                   </li>

@@ -7,22 +7,22 @@ import Button from "@/components/Button";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export async function generateStaticParams() {
   try {
     const { contents } = await getStaffList();
-    return contents.map((staff) => ({ slug: staff.slug }));
+    return contents.map((staff) => ({ id: staff.id }));
   } catch {
     return [];
   }
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
-    const staff = await getStaffDetail(slug);
+    const staff = await getStaffDetail(id);
     const description = `横浜元町の美容院 teal. スタッフ: ${staff.name}（${staff.position}）`;
     return {
       title: `${staff.name} | STAFF | teal.`,
@@ -39,11 +39,11 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function StaffDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const { id } = await params;
 
   let staff;
   try {
-    staff = await getStaffDetail(slug);
+    staff = await getStaffDetail(id);
   } catch {
     notFound();
   }
@@ -54,7 +54,7 @@ export default async function StaffDetailPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "HOME", item: siteUrl },
       { "@type": "ListItem", position: 2, name: "STAFF", item: `${siteUrl}/staff` },
-      { "@type": "ListItem", position: 3, name: staff.name, item: `${siteUrl}/staff/${slug}` },
+      { "@type": "ListItem", position: 3, name: staff.name, item: `${siteUrl}/staff/${id}` },
     ],
   };
 

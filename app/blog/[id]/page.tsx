@@ -1,16 +1,18 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getNewsDetail, getNewsList } from "@/lib/microcms";
+import { extractExcerpt } from "@/lib/utils";
 import type { News } from "@/lib/types";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export async function generateStaticParams() {
   try {
-    const { contents } = await getNewsList(100, 0, "category[equals]news");
-    return contents.map((item) => ({ slug: item.slug }));
+    const { contents } = await getNewsList(100, 0, "category[equals]blog");
+    return contents.map((item) => ({ id: item.id }));
   } catch {
     return [];
   }
@@ -19,12 +21,12 @@ export async function generateStaticParams() {
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
-    const item = await getNewsDetail(slug);
-    const description = item.excerpt ?? `横浜元町の美容院 teal. からのお知らせ: ${item.title}`;
+    const item = await getNewsDetail(id);
+    const description = item.excerpt || extractExcerpt(item.content);
     return {
-      title: `${item.title} | NEWS | teal.`,
+      title: `${item.title} | BLOG | teal.`,
       description,
       openGraph: {
         title: `${item.title} | teal.`,
@@ -33,37 +35,37 @@ export async function generateMetadata({ params }: Props) {
       },
     };
   } catch {
-    return { title: "NEWS | teal." };
+    return { title: "BLOG | teal." };
   }
 }
 
-export default async function NewsDetailPage({ params }: Props) {
-  const { slug } = await params;
+export default async function BlogDetailPage({ params }: Props) {
+  const { id } = await params;
 
   let item: News;
   try {
-    item = await getNewsDetail(slug);
+    item = await getNewsDetail(id);
   } catch {
     notFound();
   }
 
-  if (item.category !== "news") {
+  if (item.category !== "blog") {
     notFound();
   }
 
   // 前後記事取得
-  const { contents: allNews } = await getNewsList(100, 0, "category[equals]news");
-  const currentIndex = allNews.findIndex((n) => n.slug === slug);
-  const prevItem = currentIndex < allNews.length - 1 ? allNews[currentIndex + 1] : null;
-  const nextItem = currentIndex > 0 ? allNews[currentIndex - 1] : null;
+  const { contents: allBlog } = await getNewsList(100, 0, "category[equals]blog");
+  const currentIndex = allBlog.findIndex((n) => n.id === id);
+  const prevItem = currentIndex < allBlog.length - 1 ? allBlog[currentIndex + 1] : null;
+  const nextItem = currentIndex > 0 ? allBlog[currentIndex - 1] : null;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "HOME", item: siteUrl },
-      { "@type": "ListItem", position: 2, name: "NEWS", item: `${siteUrl}/news` },
-      { "@type": "ListItem", position: 3, name: item.title, item: `${siteUrl}/news/${slug}` },
+      { "@type": "ListItem", position: 2, name: "BLOG", item: `${siteUrl}/blog` },
+      { "@type": "ListItem", position: 3, name: item.title, item: `${siteUrl}/blog/${id}` },
     ],
   };
 
@@ -88,20 +90,50 @@ export default async function NewsDetailPage({ params }: Props) {
               HOME
             </Link>
             <span>/</span>
-            <Link href="/news" className="transition-colors hover:text-teal-primary">
-              NEWS
+            <Link href="/blog" className="transition-colors hover:text-teal-primary">
+              BLOG
             </Link>
             <span>/</span>
             <span className="line-clamp-1 text-dark-text/70">{item.title}</span>
           </nav>
-          <p className="mb-3 text-xs tracking-widest text-dark-text/50">
-            {publishedDate}
+          <p className="mb-2 text-xs tracking-widest text-teal-primary">
+            BLOG
           </p>
-          <h1 className="text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
+          <h1 className="mb-4 text-2xl font-bold leading-relaxed text-dark-text lg:text-3xl">
             {item.title}
           </h1>
+          <p className="mb-2 text-xs tracking-widest text-dark-text/50">
+            {publishedDate}
+          </p>
+          {item.tags && item.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {item.tags.map((t) => (
+                <Link
+                  key={t}
+                  href={`/blog?tag=${t}`}
+                  className="text-[10px] tracking-wider text-teal-primary border border-teal-primary/30 px-2 py-0.5 transition-colors hover:bg-teal-primary hover:text-white"
+                >
+                  {t}
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      {/* eyecatch */}
+      {item.eyecatch && (
+        <div className="mx-auto max-w-screen-lg px-6 pt-10">
+          <Image
+            src={item.eyecatch.url}
+            alt={item.title}
+            width={item.eyecatch.width ?? 800}
+            height={item.eyecatch.height ?? 450}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="w-full object-cover"
+          />
+        </div>
+      )}
 
       {/* 記事本文 */}
       <article className="bg-white py-20">
@@ -118,7 +150,7 @@ export default async function NewsDetailPage({ params }: Props) {
               <div className="flex-1">
                 {prevItem && (
                   <Link
-                    href={`/news/${prevItem.slug}`}
+                    href={`/blog/${prevItem.id}`}
                     className="group flex flex-col gap-1"
                   >
                     <span className="text-xs tracking-widest text-dark-text/40">
@@ -134,10 +166,10 @@ export default async function NewsDetailPage({ params }: Props) {
               {/* 一覧に戻る */}
               <div className="flex items-center justify-center">
                 <Link
-                  href="/news"
+                  href="/blog"
                   className="text-xs tracking-widest text-dark-text/40 transition-colors hover:text-teal-primary"
                 >
-                  ← NEWS一覧に戻る
+                  ← BLOG一覧に戻る
                 </Link>
               </div>
 
@@ -145,7 +177,7 @@ export default async function NewsDetailPage({ params }: Props) {
               <div className="flex flex-1 justify-end text-right">
                 {nextItem && (
                   <Link
-                    href={`/news/${nextItem.slug}`}
+                    href={`/blog/${nextItem.id}`}
                     className="group flex flex-col gap-1"
                   >
                     <span className="text-xs tracking-widest text-dark-text/40">

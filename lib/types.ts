@@ -20,7 +20,6 @@ export type News = MicroCMSBase & {
   content: string; // リッチテキスト
   category: "news" | "blog";
   eyecatch?: MicroCMSImage;
-  slug: string;
   excerpt?: string; // 概要
   tags?: string[];
 };
@@ -32,7 +31,6 @@ export type Style = MicroCMSBase & {
   stylist?: string;
   menu?: string;
   description?: string;
-  slug: string;
 };
 
 // Staff (スタッフ)
@@ -44,5 +42,4 @@ export type Staff = MicroCMSBase & {
   profile?: string; // リッチテキスト
   message?: string;
   specialty?: string; // 得意なスタイル・施術
-  slug: string;
 };

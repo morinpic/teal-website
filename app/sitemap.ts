@@ -41,7 +41,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // NEWS 記事ページ
   const { contents: newsList } = await getNewsList(100, 0, "category[equals]news");
   const newsRoutes: MetadataRoute.Sitemap = newsList.map((item) => ({
-    url: `${siteUrl}/news/${item.slug}`,
+    url: `${siteUrl}/news/${item.id}`,
     lastModified: new Date(item.updatedAt),
     changeFrequency: "monthly",
     priority: 0.6,
@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // BLOG 記事ページ
   const { contents: blogList } = await getNewsList(100, 0, "category[equals]blog");
   const blogRoutes: MetadataRoute.Sitemap = blogList.map((item) => ({
-    url: `${siteUrl}/blog/${item.slug}`,
+    url: `${siteUrl}/blog/${item.id}`,
     lastModified: new Date(item.updatedAt),
     changeFrequency: "monthly",
     priority: 0.6,
@@ -59,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // STYLE 詳細ページ
   const { contents: styleList } = await getStyleList(100, 0);
   const styleRoutes: MetadataRoute.Sitemap = styleList.map((item) => ({
-    url: `${siteUrl}/style/${item.slug}`,
+    url: `${siteUrl}/style/${item.id}`,
     lastModified: new Date(item.updatedAt),
     changeFrequency: "monthly",
     priority: 0.5,
@@ -68,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // STAFF 詳細ページ
   const { contents: staffList } = await getStaffList();
   const staffRoutes: MetadataRoute.Sitemap = staffList.map((item) => ({
-    url: `${siteUrl}/staff/${item.slug}`,
+    url: `${siteUrl}/staff/${item.id}`,
     lastModified: new Date(item.updatedAt),
     changeFrequency: "monthly",
     priority: 0.6,

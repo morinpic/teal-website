@@ -56,23 +56,21 @@ export async function getNewsList(
   }
 }
 
-// News詳細取得（slugで検索）
-export async function getNewsDetail(slug: string): Promise<News> {
+// News詳細取得（idで直接取得）
+export async function getNewsDetail(id: string): Promise<News> {
   if (useDummy || !client) {
-    const found = dummyNewsList.find((n) => n.slug === slug);
-    if (!found) throw new Error(`News not found: ${slug}`);
+    const found = dummyNewsList.find((n) => n.id === id);
+    if (!found) throw new Error(`News not found: ${id}`);
     return found;
   }
 
   try {
-    const res = await client.getList<News>({
+    return await client.getListDetail<News>({
       endpoint: "news",
-      queries: { filters: `slug[equals]${slug}`, limit: 1 },
+      contentId: id,
     });
-    if (!res.contents[0]) throw new Error(`News not found: ${slug}`);
-    return res.contents[0];
   } catch (e) {
-    const found = dummyNewsList.find((n) => n.slug === slug);
+    const found = dummyNewsList.find((n) => n.id === id);
     if (!found) throw e;
     return found;
   }
@@ -99,23 +97,21 @@ export async function getStyleList(
   }
 }
 
-// Style詳細取得（slugで検索）
-export async function getStyleDetail(slug: string): Promise<Style> {
+// Style詳細取得（idで直接取得）
+export async function getStyleDetail(id: string): Promise<Style> {
   if (useDummy || !client) {
-    const found = dummyStyleList.find((s) => s.slug === slug);
-    if (!found) throw new Error(`Style not found: ${slug}`);
+    const found = dummyStyleList.find((s) => s.id === id);
+    if (!found) throw new Error(`Style not found: ${id}`);
     return found;
   }
 
   try {
-    const res = await client.getList<Style>({
+    return await client.getListDetail<Style>({
       endpoint: "style",
-      queries: { filters: `slug[equals]${slug}`, limit: 1 },
+      contentId: id,
     });
-    if (!res.contents[0]) throw new Error(`Style not found: ${slug}`);
-    return res.contents[0];
   } catch (e) {
-    const found = dummyStyleList.find((s) => s.slug === slug);
+    const found = dummyStyleList.find((s) => s.id === id);
     if (!found) throw e;
     return found;
   }
@@ -137,23 +133,21 @@ export async function getStaffList(): Promise<{ contents: Staff[]; totalCount: n
   }
 }
 
-// Staff詳細取得（slugで検索）
-export async function getStaffDetail(slug: string): Promise<Staff> {
+// Staff詳細取得（idで直接取得）
+export async function getStaffDetail(id: string): Promise<Staff> {
   if (useDummy || !client) {
-    const found = dummyStaffList.find((s) => s.slug === slug);
-    if (!found) throw new Error(`Staff not found: ${slug}`);
+    const found = dummyStaffList.find((s) => s.id === id);
+    if (!found) throw new Error(`Staff not found: ${id}`);
     return found;
   }
 
   try {
-    const res = await client.getList<Staff>({
+    return await client.getListDetail<Staff>({
       endpoint: "staff",
-      queries: { filters: `slug[equals]${slug}`, limit: 1 },
+      contentId: id,
     });
-    if (!res.contents[0]) throw new Error(`Staff not found: ${slug}`);
-    return res.contents[0];
   } catch (e) {
-    const found = dummyStaffList.find((s) => s.slug === slug);
+    const found = dummyStaffList.find((s) => s.id === id);
     if (!found) throw e;
     return found;
   }

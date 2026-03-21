@@ -6,22 +6,22 @@ import { notFound } from "next/navigation";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://teal-website.vercel.app";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 };
 
 export async function generateStaticParams() {
   try {
     const { contents } = await getStyleList(100, 0);
-    return contents.map((style) => ({ slug: style.slug }));
+    return contents.map((style) => ({ id: style.id }));
   } catch {
     return [];
   }
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { id } = await params;
   try {
-    const style = await getStyleDetail(slug);
+    const style = await getStyleDetail(id);
     const description = style.description ?? `横浜元町の美容院 teal. のスタイル作品: ${style.title}`;
     return {
       title: `${style.title} | STYLE | teal.`,
@@ -38,11 +38,11 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function StyleDetailPage({ params }: Props) {
-  const { slug } = await params;
+  const { id } = await params;
 
   let style;
   try {
-    style = await getStyleDetail(slug);
+    style = await getStyleDetail(id);
   } catch {
     notFound();
   }
@@ -53,7 +53,7 @@ export default async function StyleDetailPage({ params }: Props) {
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "HOME", item: siteUrl },
       { "@type": "ListItem", position: 2, name: "STYLE", item: `${siteUrl}/style` },
-      { "@type": "ListItem", position: 3, name: style.title, item: `${siteUrl}/style/${slug}` },
+      { "@type": "ListItem", position: 3, name: style.title, item: `${siteUrl}/style/${id}` },
     ],
   };
 

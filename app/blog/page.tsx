@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getNewsList } from "@/lib/microcms";
+import { extractExcerpt } from "@/lib/utils";
 
 const PER_PAGE = 9;
 
@@ -87,8 +88,8 @@ export default async function BlogPage({ searchParams }: Props) {
           </div>
 
           {blogList.length === 0 ? (
-            <p className="text-center text-dark-text/50">
-              現在ブログ記事はありません。
+            <p className="py-12 text-center text-sm text-dark-text/40">
+              ブログ記事は準備中です
             </p>
           ) : (
             <>
@@ -96,12 +97,12 @@ export default async function BlogPage({ searchParams }: Props) {
                 {blogList.map((item) => (
                   <li key={item.id}>
                     <Link
-                      href={`/blog/${item.slug}`}
+                      href={`/blog/${item.id}`}
                       className="group flex flex-col gap-4"
                     >
                       {/* サムネイル */}
                       <div className="relative aspect-video w-full overflow-hidden bg-gray-200">
-                        {item.eyecatch && (
+                        {item.eyecatch ? (
                           <Image
                             src={item.eyecatch.url}
                             alt={item.title}
@@ -109,6 +110,10 @@ export default async function BlogPage({ searchParams }: Props) {
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             className="object-cover transition-opacity duration-300 group-hover:opacity-80"
                           />
+                        ) : (
+                          <div className="flex h-full w-full items-center justify-center bg-gray-200">
+                            <span className="text-xs text-dark-text/30">No Image</span>
+                          </div>
                         )}
                       </div>
 
@@ -136,11 +141,9 @@ export default async function BlogPage({ searchParams }: Props) {
                         <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
                           {item.title}
                         </p>
-                        {item.excerpt && (
-                          <p className="text-sm leading-relaxed text-dark-text/60">
-                            {item.excerpt}
-                          </p>
-                        )}
+                        <p className="text-sm leading-relaxed text-dark-text/60">
+                          {item.excerpt || extractExcerpt(item.content)}
+                        </p>
                       </div>
                     </Link>
                   </li>

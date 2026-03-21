@@ -7,7 +7,6 @@ import Image from "next/image";
 
 type StyleItem = {
   id: string;
-  slug: string;
   title: string;
   menu?: string;
   image?: { url: string };
@@ -30,7 +29,7 @@ export default function StyleGridAnimated({ styles }: { styles: StyleItem[] }) {
           transition={{ duration: 0.7, ease: EASE, delay: i * 0.1 }}
         >
           <Link
-            href={`/style/${style.slug}`}
+            href={`/style/${style.id}`}
             className="group block overflow-hidden"
           >
             <div className="relative aspect-square w-full overflow-hidden bg-gray-200">

@@ -12,7 +12,7 @@ export const dummyNewsList: News[] = [
     title: "年末年始の営業のお知らせ",
     content: "<p>年末年始の営業時間についてお知らせします。12月31日〜1月3日は休業いたします。</p>",
     category: "news",
-    slug: "year-end-holiday",
+
     excerpt: "年末年始の営業時間についてお知らせします。",
   },
   {
@@ -24,7 +24,7 @@ export const dummyNewsList: News[] = [
     title: "新メニュー登場のお知らせ",
     content: "<p>新しいトリートメントメニューが登場しました。ぜひお試しください。</p>",
     category: "news",
-    slug: "new-menu-announcement",
+
     excerpt: "新しいトリートメントメニューが登場しました。",
   },
   {
@@ -36,7 +36,7 @@ export const dummyNewsList: News[] = [
     title: "臨時休業のお知らせ",
     content: "<p>諸事情により、3月10日（月）は臨時休業とさせていただきます。</p>",
     category: "news",
-    slug: "temporary-closure",
+
     excerpt: "3月10日（月）は臨時休業とさせていただきます。",
   },
   {
@@ -48,7 +48,7 @@ export const dummyNewsList: News[] = [
     title: "春のヘアカラートレンド2026",
     content: "<p>今年の春トレンドカラーをご紹介します。透明感のある柔らかいカラーが人気です。</p>",
     category: "blog",
-    slug: "spring-color-trend-2026",
+
     excerpt: "今年の春トレンドカラーをご紹介します。",
     eyecatch: { url: "https://picsum.photos/seed/blog1/800/450", width: 800, height: 450 },
     tags: ["ヘアカラー", "トレンド"],
@@ -62,7 +62,7 @@ export const dummyNewsList: News[] = [
     title: "ヘアケアの基本：正しいシャンプーの方法",
     content: "<p>毎日のシャンプーで気をつけたいポイントをお伝えします。</p>",
     category: "blog",
-    slug: "correct-shampooing",
+
     excerpt: "毎日のシャンプーで気をつけたいポイントをお伝えします。",
     eyecatch: { url: "https://picsum.photos/seed/blog2/800/450", width: 800, height: 450 },
     tags: ["ヘアケア"],
@@ -76,7 +76,7 @@ export const dummyNewsList: News[] = [
     title: "縮毛矯正とストレートパーマの違い",
     content: "<p>縮毛矯正とストレートパーマ、どちらを選べばいいか迷っている方へ解説します。</p>",
     category: "blog",
-    slug: "rebonding-vs-straightperm",
+
     excerpt: "縮毛矯正とストレートパーマの違いを解説します。",
     eyecatch: { url: "https://picsum.photos/seed/blog3/800/450", width: 800, height: 450 },
     tags: ["パーマ・縮毛矯正"],
@@ -95,7 +95,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "カット",
     description: "自然な動きを活かしたナチュラルボブスタイル。",
-    slug: "natural-bob",
   },
   {
     id: "style-2",
@@ -108,7 +107,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "オールハイライト + カット",
     description: "立体感と透明感を演出するハイライトカラー。",
-    slug: "highlight-color",
   },
   {
     id: "style-3",
@@ -121,7 +119,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "カット + デザインパーマ",
     description: "トレンドの外ハネデザインパーマスタイル。",
-    slug: "outward-curl-medium",
   },
   {
     id: "style-4",
@@ -134,7 +131,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "髪質改善縮毛矯正",
     description: "サラサラ・ツヤツヤの美しいストレートヘア。",
-    slug: "glossy-straight",
   },
   {
     id: "style-5",
@@ -147,7 +143,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "カット",
     description: "レイヤーを活かしたトレンドのウルフスタイル。",
-    slug: "wolf-cut",
   },
   {
     id: "style-6",
@@ -160,7 +155,6 @@ export const dummyStyleList: Style[] = [
     stylist: "橋本 貴広",
     menu: "ヘアカラーオール + カット",
     description: "根元から毛先に向かってグラデーションで仕上げたカラー。",
-    slug: "gradation-color",
   },
 ];
 
@@ -177,6 +171,5 @@ export const dummyStaffList: Staff[] = [
     photo: { url: "https://imgbp.hotp.jp/CSP/IMG_SRC/72/38/B252057238/B252057238.jpg", width: 400, height: 400 },
     profile: "<p>横浜元町の美容院 teal. のオーナー兼ヘアデザイナー。お客様一人ひとりに寄り添ったスタイルをご提案します。</p>",
     message: "あなたの魅力を最大限に引き出すスタイルをご一緒に作りましょう。",
-    slug: "takahiro-hashimoto",
   },
 ];

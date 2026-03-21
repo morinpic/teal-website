@@ -26,7 +26,7 @@ export default function StaffCardAnimated({ staff, index }: Props) {
       transition={{ duration: 0.7, ease: EASE, delay: index * 0.12 }}
     >
       <Link
-        href={`/staff/${staff.slug}`}
+        href={`/staff/${staff.id}`}
         className="group flex w-64 flex-col items-center text-center"
       >
         {/* 写真 */}

@@ -3,11 +3,12 @@
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { extractExcerpt } from "@/lib/utils";
 
 type NewsItem = {
   id: string;
-  slug: string;
   title: string;
+  content: string;
   publishedAt: string;
   excerpt?: string;
 };
@@ -29,7 +30,7 @@ export default function NewsListAnimated({ items }: { items: NewsItem[] }) {
           transition={{ duration: 0.5, ease: EASE, delay: i * 0.06 }}
         >
           <Link
-            href={`/news/${item.slug}`}
+            href={`/news/${item.id}`}
             className="group flex flex-col gap-2 py-6 transition-colors tablet:flex-row tablet:items-start tablet:gap-8"
           >
             <time className="shrink-0 text-xs tracking-widest text-dark-text/50 tablet:w-28 tablet:pt-0.5">
@@ -43,11 +44,9 @@ export default function NewsListAnimated({ items }: { items: NewsItem[] }) {
               <p className="font-medium leading-relaxed text-dark-text transition-colors group-hover:text-teal-primary">
                 {item.title}
               </p>
-              {item.excerpt && (
-                <p className="text-sm leading-relaxed text-dark-text/60">
-                  {item.excerpt}
-                </p>
-              )}
+              <p className="text-sm leading-relaxed text-dark-text/60">
+                {item.excerpt || extractExcerpt(item.content)}
+              </p>
             </div>
           </Link>
         </motion.li>
