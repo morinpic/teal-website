@@ -125,14 +125,16 @@ teal.（横浜元町の美容院）ウェブサイトの改善タスク管理バ
 
 ## I: インフラ
 
-> ✅ 完了 3件 ／ ⬜ 未着手 0件 ／ ⏭️ スキップ 0件
+> ✅ 完了 3件 ／ ⬜ 未着手 2件 ／ ⏭️ スキップ 0件
 
 | No | 対応項目 | 概要 | コスト | おすすめ度 | 進捗 |
 |----|---------|------|:------:|:----------:|:----:|
 | I-01 | VercelからCloudflare Pagesへの移行 | Vercelのプランが商用利用不可のためCloudflare Pages (OpenNext)へ移行。帯域無制限・GitHub連携・自動デプロイ・プレビューデプロイを維持。移行手順は `docs/infra/cloudflare-migration.md` 参照 | M | ★★★★★ | ✅ |
 | I-02 | microCMS セットアップ＆実データ投入 | アカウント作成・サービス作成・API3つ（news / style / staff）のフィールド設定・APIキー取得・Cloudflare環境変数設定まで。API設計は `docs/infra/setup-guide.md` 参照。コンテンツ（スタッフ写真・スタイル写真・記事）の実データ投入も含む | S〜M | ★★★★★ | ✅ |
 | I-03 | アナリティクス導入（Cloudflare Web Analytics） | Cloudflare Pages ダッシュボードから有効化。Cookie 不要・バナー不要・無料。PV・UU・リファラー・デバイス比率を把握。イベント計測が必要になった段階で Plausible への移行を検討 | S | ★★★★★ | ✅ |
+| I-04 | GitHub リポジトリ整理（Public化対応） | Public化に伴い、不要な Issues のクローズ、リポジトリ説明文・トピックの設定、README.md の整備など | S | ★★★★☆ | ⬜ |
+| I-05 | デプロイ構成の見直し・ドキュメント整理 | microCMS Webhook → GitHub Actions → cf:deploy の構成に変更。CLAUDE.md・setup-guide.md・cloudflare-migration.md を現在の構成に合わせて更新。不要になったドキュメント・プロンプトファイルの整理 | S | ★★★★★ | ⬜ |
 
 ---
 
-*作成: 2026-03-06 / 最終更新: 2026-03-21 / 全65項目 / ✅ 完了: 54項目 / ⬜ 未着手: 0項目 / ⏭️ スキップ: 11項目*
+*作成: 2026-03-06 / 最終更新: 2026-03-21 / 全67項目 / ✅ 完了: 54項目 / ⬜ 未着手: 2項目 / ⏭️ スキップ: 11項目*
