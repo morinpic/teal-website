@@ -11,19 +11,24 @@ export default async function StaffSection() {
       <div className="mx-auto max-w-screen-xl">
         <SectionHeading title="STAFF" subtitle="スタッフ紹介" light={true} />
 
-        {/* スタッフ一覧 */}
-        <div className="flex flex-wrap justify-center gap-10">
-          {staffList.map((staff, index) => (
-            <StaffCardAnimated key={staff.id} staff={staff} index={index} />
-          ))}
-        </div>
-
-        {/* READ MORE ボタン */}
-        <div className="mt-16 flex justify-center">
-          <Button variant="ghost-white" href="/staff">
-            READ MORE
-          </Button>
-        </div>
+        {staffList.length > 0 ? (
+          <>
+            <div className="flex flex-wrap justify-center gap-10">
+              {staffList.map((staff, index) => (
+                <StaffCardAnimated key={staff.id} staff={staff} index={index} />
+              ))}
+            </div>
+            <div className="mt-16 flex justify-center">
+              <Button variant="ghost-white" href="/staff">
+                READ MORE
+              </Button>
+            </div>
+          </>
+        ) : (
+          <p className="py-12 text-center text-sm text-white/40">
+            スタッフ情報は準備中です
+          </p>
+        )}
       </div>
     </section>
   );
