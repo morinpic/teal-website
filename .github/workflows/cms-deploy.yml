@@ -1,0 +1,20 @@
+name: CMS Content Deploy
+
+on:
+  repository_dispatch:
+    types: [cms-update]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DEPLOY_TOKEN }}
+
+      - name: Trigger redeploy
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "chore: CMS content update"
+          git push
