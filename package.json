@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "cf:build": "npx @opennextjs/cloudflare build",
+    "cf:build": "node -e \"console.log('[DEBUG] MICROCMS_SERVICE_DOMAIN:', process.env.MICROCMS_SERVICE_DOMAIN || '(undefined)'); console.log('[DEBUG] MICROCMS_API_KEY:', process.env.MICROCMS_API_KEY ? '(set, length=' + process.env.MICROCMS_API_KEY.length + ')' : '(undefined)'); console.log('[DEBUG] NEXT_PUBLIC_SITE_URL:', process.env.NEXT_PUBLIC_SITE_URL || '(undefined)');\" && npx @opennextjs/cloudflare build",
     "cf:dev": "npx wrangler dev",
     "cf:deploy": "npx @opennextjs/cloudflare build && npx wrangler deploy"
   },
