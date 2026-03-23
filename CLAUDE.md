@@ -86,7 +86,7 @@ npm run cf:deploy  # Cloudflare Pages デプロイ
 - `/news`, `/news/[id]` - お知らせ一覧・詳細
 - `/style`, `/style/[id]` - スタイルギャラリー一覧・詳細
 - `/blog`, `/blog/[id]` - ブログ一覧・詳細（news APIからカテゴリでフィルタ）
-- `/staff`, `/staff/[slug]` - スタッフ一覧・詳細
+- `/staff`, `/staff/[id]` - スタッフ一覧・詳細
 
 ## 参照ドキュメント
 
