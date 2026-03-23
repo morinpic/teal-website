@@ -44,7 +44,10 @@ npm run cf:deploy  # Cloudflare Pages デプロイ
 - 画像 quality: サムネイル系 85 / メインビジュアル系 90
 
 ### 型定義（lib/types.ts）
-- `Staff` 型に `specialty?: string`（得意なスタイル・施術）を定義済み。microCMS 側フィールド追加後に有効化される
+- URL パラメータは microCMS の自動生成 `id` を使用（独自 slug フィールドは廃止）
+- `category` フィールドは microCMS のセレクトフィールドが配列で返すため `string | string[]` 型
+- `normalizeCategory()` ヘルパーで配列/文字列を正規化（`lib/utils.ts`）
+- `extractExcerpt()` で `content` からプレーンテキストを自動抽出（`excerpt` 未入力時のフォールバック）
 
 ### 主要コンポーネント
 - `ScrollAnimation`: スクロールトリガーのフェードイン（Framer Motion + `useReducedMotion` 対応）
@@ -58,18 +61,31 @@ npm run cf:deploy  # Cloudflare Pages デプロイ
 - `MICROCMS_API_KEY` - microCMS APIキー
 - `NEXT_PUBLIC_SITE_URL` - 本番サイトURL（構造化データ・OGP に使用）
 - `.env.local.example` にテンプレートあり
+- Cloudflare には **ビルド時**（Settings > Build > 変数とシークレット）と **ランタイム**（Settings > 変数とシークレット）の **2箇所** に同じ変数を設定する必要がある
+
+### デプロイ
+- **本番URL:** https://teal.yokohama
+- **ホスティング:** Cloudflare Workers（OpenNext 経由）
+- **自動デプロイ:** git push → Cloudflare Workers Builds が自動ビルド＆デプロイ
+- **CMS コンテンツ更新時:** microCMS Webhook → GitHub Actions (`cms-deploy.yml`) → `cf:deploy`
+- **重要設定:** `wrangler.jsonc` に `keep_vars: true` を設定済み（デプロイ時にランタイム変数が削除されるのを防止）
+
+### CI/CD
+- `.github/workflows/ci.yml` — push / PR 時に Lint + Type Check + Build
+- `.github/workflows/cms-deploy.yml` — microCMS Webhook → ビルド＆デプロイ
+- `.github/workflows/lighthouse.yml` — PR 時に Lighthouse CI（パフォーマンス・a11y・SEO 計測）
 
 ### SEO・構造化データ
 - `app/page.tsx`: LocalBusiness (HairSalon) スキーマ（営業時間・sameAs・geo・画像含む）
 - 各詳細ページ: BreadcrumbList スキーマ
-- `app/staff/[slug]`: Person スキーマ追加済み
+- `app/staff/[id]`: Person スキーマ追加済み
 - サイトマップ: `app/sitemap.ts`（全ページ動的生成）
 
 ### ページ構成
 - `/` - トップページ（Hero, ABOUT, STYLE, MENU, STAFF, FAQ, NEWS, BLOG, SNS, ACCESS）
-- `/news`, `/news/[slug]` - お知らせ一覧・詳細
-- `/style`, `/style/[slug]` - スタイルギャラリー一覧・詳細
-- `/blog`, `/blog/[slug]` - ブログ一覧・詳細（news APIからカテゴリでフィルタ）
+- `/news`, `/news/[id]` - お知らせ一覧・詳細
+- `/style`, `/style/[id]` - スタイルギャラリー一覧・詳細
+- `/blog`, `/blog/[id]` - ブログ一覧・詳細（news APIからカテゴリでフィルタ）
 - `/staff`, `/staff/[slug]` - スタッフ一覧・詳細
 
 ## 参照ドキュメント

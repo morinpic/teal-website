@@ -26,5 +26,5 @@ teal. ウェブサイトのドキュメント一覧。
 
 | ドキュメント | 概要 |
 |-------------|------|
-| [setup-guide.md](infra/setup-guide.md) | Cloudflare Pages デプロイ・microCMS セットアップ手順 |
-| [cloudflare-migration.md](infra/cloudflare-migration.md) | Vercel → Cloudflare Pages 移行手順 |
+| [setup-guide.md](infra/setup-guide.md) | Cloudflare Workers デプロイ・microCMS セットアップ・Webhook 設定 |
+| [cloudflare-migration.md](infra/cloudflare-migration.md) | Vercel → Cloudflare Pages 移行手順（完了済み・歴史的資料） |
