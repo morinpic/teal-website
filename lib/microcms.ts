@@ -12,6 +12,11 @@ const apiKey = process.env.MICROCMS_API_KEY;
 
 const useDummy = !serviceDomain || !apiKey;
 
+// デバッグ: ビルド時の環境変数確認（一時的）
+console.log("[DEBUG microcms.ts] serviceDomain:", serviceDomain || "(undefined)");
+console.log("[DEBUG microcms.ts] apiKey:", apiKey ? "(set)" : "(undefined)");
+console.log("[DEBUG microcms.ts] useDummy:", useDummy);
+
 const client = useDummy
   ? null
   : createClient({ serviceDomain, apiKey });
@@ -44,7 +49,8 @@ export async function getNewsList(
       endpoint: "news",
       queries: { limit, offset, filters },
     });
-  } catch {
+  } catch (e) {
+    console.error("[DEBUG microcms.ts] getNewsList ERROR:", e);
     let contents = dummyNewsList;
     if (filters) {
       const match = filters.match(/category\[contains\](\w+)/);
