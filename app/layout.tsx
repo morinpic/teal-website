@@ -101,6 +101,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://images.microcms-assets.io" />
+        <link rel="dns-prefetch" href="https://images.microcms-assets.io" />
+      </head>
       <body
         className={`${notoSansJP.variable} ${notoSerifJP.variable} ${cormorantGaramond.variable} ${urbanist.variable} bg-background font-sans text-dark-text antialiased`}
       >
