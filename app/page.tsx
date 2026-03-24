@@ -35,7 +35,7 @@ const localBusinessJsonLd = {
   description:
     "横浜元町の美容院 teal.（ティール）。カット、カラー、パーマ、トリートメントなど、お客様一人ひとりに寄り添った施術をご提供します。",
   url: siteUrl,
-  image: `${siteUrl}/opengraph-image`,
+  image: `${siteUrl}/ogp.jpg`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "元町3-131-1 グローバル横浜元町4F",
