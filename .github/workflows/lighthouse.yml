@@ -41,8 +41,23 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
+      - name: Setup Node.js
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
       - name: Run Lighthouse CI (Scheduled)
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           npm install -g @lhci/cli@0.14.x
-          lhci autorun --collect.url=https://teal.yokohama --collect.numberOfRuns=3
+          lhci autorun \
+            --collect.url=https://teal.yokohama \
+            --collect.numberOfRuns=3 \
+            --collect.settings.preset=desktop \
+            --upload.target=temporary-public-storage \
+            --assert.assertions.categories:performance="warn, minScore: 0.8" \
+            --assert.assertions.categories:accessibility="error, minScore: 0.9" \
+            --assert.assertions.categories:best-practices="warn, minScore: 0.8" \
+            --assert.assertions.categories:seo="error, minScore: 0.9" \
+            --no-lighthouserc
