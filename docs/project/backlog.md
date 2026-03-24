@@ -125,7 +125,7 @@ teal.（横浜元町の美容院）ウェブサイトの改善タスク管理バ
 
 ## I: インフラ
 
-> ✅ 完了 5件 ／ ⬜ 未着手 0件 ／ ⏭️ スキップ 0件
+> ✅ 完了 10件 ／ ⬜ 未着手 0件 ／ ⏭️ スキップ 0件
 
 | No | 対応項目 | 概要 | コスト | おすすめ度 | 進捗 |
 |----|---------|------|:------:|:----------:|:----:|
@@ -134,7 +134,12 @@ teal.（横浜元町の美容院）ウェブサイトの改善タスク管理バ
 | I-03 | アナリティクス導入（Cloudflare Web Analytics） | Cloudflare Pages ダッシュボードから有効化。Cookie 不要・バナー不要・無料。PV・UU・リファラー・デバイス比率を把握。イベント計測が必要になった段階で Plausible への移行を検討 | S | ★★★★★ | ✅ |
 | I-04 | GitHub リポジトリ整理（Public化対応） | Public化に伴い、不要な Issues のクローズ、リポジトリ説明文・トピックの設定、README.md の整備など | S | ★★★★☆ | ✅ |
 | I-05 | デプロイ構成の見直し・ドキュメント整理 | microCMS Webhook → GitHub Actions → cf:deploy の構成に変更。CLAUDE.md・setup-guide.md・cloudflare-migration.md を現在の構成に合わせて更新。不要になったドキュメント・プロンプトファイルの整理 | S | ★★★★★ | ✅ |
+| I-06 | OGP 画像を静的ファイルに切り替え | `app/opengraph-image.tsx`（動的生成）は Cloudflare Workers で 500 エラーのため削除。`public/ogp.jpg` に静的画像を配置し、`layout.tsx` の metadata で指定。JSON-LD も `/ogp.jpg` を参照 | S | ★★★★★ | ✅ |
+| I-07 | npm audit セキュリティパッチ適用 | `npm audit fix` で Next.js 以外の7件（undici, flatted 等）は修正済み。Next.js 16.2.1 は Cloudflare Workers/OpenNext 非互換（Error 1101）のため 16.1.6 にロールバック。Next.js の脆弱性修正は互換性が確認でき次第適用 | S | ★★★★★ | ✅ |
+| I-08 | ダミーデータの外部画像参照を整理 | `lib/dummy-data.ts` の `imgbp.hotp.jp`・`picsum.photos` を `placehold.jp` に統一。`next.config.ts` から不要な3ドメイン削除 | S | ★★★★☆ | ✅ |
+| I-09 | スタッフ一覧ページの img → Image 置き換え | `app/staff/page.tsx` の `<img>` を `next/image` の `<Image fill>` に置き換え。`eslint-disable` コメント削除 | S | ★★★☆☆ | ✅ |
+| I-10 | Umami アナリティクス導入（クライアント共有対応） | Umami Cloud（無料プラン）を導入。`app/layout.tsx` にトラッキングスクリプト追加。Share URL でクライアントにアナリティクスを共有可能。Cloudflare Web Analytics と併用 | M | ★★★★☆ | ✅ |
 
 ---
 
-*作成: 2026-03-06 / 最終更新: 2026-03-24 / 全67項目 / ✅ 完了: 56項目 / ⬜ 未着手: 0項目 / ⏭️ スキップ: 11項目*
+*作成: 2026-03-06 / 最終更新: 2026-03-24 / 全72項目 / ✅ 完了: 61項目 / ⬜ 未着手: 0項目 / ⏭️ スキップ: 11項目*
