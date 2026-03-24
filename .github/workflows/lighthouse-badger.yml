@@ -5,6 +5,11 @@ on:
     - cron: "0 3 * * 1"  # 毎週月曜 12:00 JST
   workflow_dispatch:
 
+env:
+  URLS: "https://teal.yokohama"
+  TOKEN_NAME: GITHUB_TOKEN
+  REPO_BRANCH: "${{ github.repository }} main"
+
 jobs:
   lighthouse-badger:
     runs-on: ubuntu-latest
@@ -12,10 +17,16 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          token: ${{ secrets[env.TOKEN_NAME] }}
+
+      - uses: actions/checkout@v6
+        with:
+          repository: "myactionway/lighthouse-badges"
+          path: temp_lighthouse_badges_nested
 
       - uses: myactionway/lighthouse-badger-action@v2.2
         with:
-          urls: "https://teal.yokohama"
+          urls: ${{ env.URLS }}
           badges_args: "-b pagespeed -o lighthouse_results -r"
           audit_type: "desktop"
-          token: ${{ secrets.GITHUB_TOKEN }}
