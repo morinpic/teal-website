@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
-const images = ["/images/hero-salon.png", "/images/salon-reception.png"];
+const images = ["/images/hero-salon.webp", "/images/salon-reception.webp"];
 const INTERVAL = 6000;
 const FADE_DURATION = 1.5;
 
@@ -38,6 +38,7 @@ export default function HeroSlideshow() {
             alt=""
             fill
             className="object-cover"
+            sizes="100vw"
             priority={index === 0}
             loading={index === 0 ? undefined : "eager"}
             aria-hidden="true"
