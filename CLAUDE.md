@@ -73,7 +73,13 @@ npm run cf:deploy  # Cloudflare Pages デプロイ
 ### CI/CD
 - `.github/workflows/ci.yml` — push / PR 時に Lint + Type Check + Build
 - `.github/workflows/cms-deploy.yml` — microCMS Webhook → ビルド＆デプロイ
-- `.github/workflows/lighthouse.yml` — PR 時に Lighthouse CI（パフォーマンス・a11y・SEO 計測）
+- `.github/workflows/lighthouse.yml` — PR 時にローカルビルド計測 + 毎週月曜に本番 URL 直接計測（`workflow_dispatch` で手動実行も可）
+- `.github/workflows/link-check.yml` — 毎週月曜に lychee で本番サイトのリンク切れチェック（レポートを artifact に保存）
+- `.github/dependabot.yml` — npm + GitHub Actions の依存更新 PR を週1自動作成
+
+### アナリティクス
+- **Cloudflare Web Analytics** — Cloudflare ダッシュボードから確認（Cookie 不要・無料）
+- **Umami Cloud** — `app/layout.tsx` にトラッキングスクリプト追加済み。Share URL でクライアントへの共有が可能
 
 ### SEO・構造化データ
 - `app/page.tsx`: LocalBusiness (HairSalon) スキーマ（営業時間・sameAs・geo・画像含む）
