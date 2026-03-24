@@ -30,4 +30,4 @@ jobs:
           urls: ${{ env.URLS }}
           badges_args: "-b pagespeed -o lighthouse_results -r"
           audit_type: "desktop"
-          desktop_lighthouse_params: "--only-categories=performance,accessibility,best-practices,seo"
+          desktop_lighthouse_params: "--config-path=.lighthousebadger.json"
