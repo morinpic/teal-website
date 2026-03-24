@@ -1,5 +1,10 @@
 # teal.
 
+[![CI](https://github.com/morinpic/teal-website/actions/workflows/ci.yml/badge.svg)](https://github.com/morinpic/teal-website/actions/workflows/ci.yml)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![Cloudflare](https://img.shields.io/badge/Cloudflare_Workers-deployed-F38020?logo=cloudflare&logoColor=white)](https://teal.yokohama)
+[![License](https://img.shields.io/badge/license-All_Rights_Reserved-red)](./LICENSE)
+
 横浜元町の美容院 **teal.** の公式ウェブサイト。
 
 🌐 https://teal.yokohama
@@ -14,7 +19,7 @@
 | CMS | microCMS (Hobby プラン) |
 | ホスティング | Cloudflare Workers (OpenNext) |
 | CI/CD | GitHub Actions |
-| アナリティクス | Cloudflare Web Analytics |
+| アナリティクス | Cloudflare Web Analytics / Umami Cloud |
 
 ## セットアップ
 
