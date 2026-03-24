@@ -5,10 +5,7 @@
 [![Cloudflare](https://img.shields.io/badge/Cloudflare_Workers-deployed-F38020?logo=cloudflare&logoColor=white)](https://teal.yokohama)
 [![License](https://img.shields.io/badge/license-All_Rights_Reserved-red)](./LICENSE)
 
-![Performance](./lighthouse_results/lighthouse_performance.svg)
-![Accessibility](./lighthouse_results/lighthouse_accessibility.svg)
-![Best Practices](./lighthouse_results/lighthouse_best-practices.svg)
-![SEO](./lighthouse_results/lighthouse_seo.svg)
+![Lighthouse](./lighthouse_results/desktop/pagespeed.svg)
 
 横浜元町の美容院 **teal.** の公式ウェブサイト。
 
