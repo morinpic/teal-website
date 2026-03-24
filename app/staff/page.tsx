@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { getStaffList } from "@/lib/microcms";
 
 export const metadata: Metadata = {
@@ -47,13 +48,12 @@ export default async function StaffPage() {
                 {/* 写真 */}
                 <div className="relative mb-4 aspect-square w-full overflow-hidden bg-dark-text/10">
                   {staff.photo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={staff.photo.url}
                       alt={staff.name}
-                      width={staff.photo.width}
-                      height={staff.photo.height}
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 50vw, 300px"
                     />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-dark-text/5 to-teal-primary/10">
