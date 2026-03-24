@@ -1,0 +1,21 @@
+name: Lighthouse Badger
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"  # 毎週月曜 12:00 JST
+  workflow_dispatch:
+
+jobs:
+  lighthouse-badger:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: MyActionWay/lighthouse-badger-action@v2
+        with:
+          urls: "https://teal.yokohama"
+          badges_args: "-b pagespeed -o lighthouse_results -r"
+          audit_type: "desktop"
+          token: ${{ secrets.GITHUB_TOKEN }}
