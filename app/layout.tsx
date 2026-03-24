@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingReserve from "@/components/FloatingReserve";
+import Script from "next/script";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -111,6 +112,12 @@ export default function RootLayout({
         <Footer />
         <ScrollToTop />
         <FloatingReserve />
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="1c1b1ca4-8196-47c9-af2e-4859b25ae99a"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
